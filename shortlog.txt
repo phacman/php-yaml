@@ -1,0 +1,2039 @@
+Fabien Potencier (568):
+      2010-08-21 01:09:55 | 88d5c1b | renamed Symfony\Components to Symfony\Component
+      2010-08-24 14:52:55 | b33aecc | [FrameworkBundle] added support for previous exceptions in the exception pages
+      2010-11-29 23:09:02 | 8fc2cd0 | [Yaml] fixed parsing of simple inline documents
+      2011-02-18 13:52:11 | 0603a77 | added the LICENSE file for the YAML component
+      2011-03-06 14:40:06 | 687f8a7 | replaced symfony-project.org by symfony.com
+      2011-03-08 22:33:19 | a0f73dd | [Yaml] moved most protected methods and properties to private
+      2011-03-24 11:02:09 | a474fe2 | [Yaml] tagged the guaranteed BC API
+      2011-05-14 19:37:28 | 9a5dc42 | [Yaml] tweaked error message
+      2011-06-08 14:12:55 | 55a9416 | fixed CS
+      2011-06-14 14:16:59 | 6af9123 | fixed CS
+      2011-06-14 14:19:35 | e993626 | [Yaml] renamed load() to parse()
+      2011-06-14 14:31:23 | 252ddda | [Yaml] removed support for YAML 1.1 spec
+      2011-06-14 14:44:54 | c3e1d03 | [Yaml] moved exceptions to their own sub-namespace (added a specific exception for the dump)
+      2011-06-20 12:13:52 | 2b858b0 | added more information about a resource in error and debug messages
+      2011-08-22 17:06:47 | 8490b8b | [Yaml] made a small optimization (tag: v2.0.1)
+      2011-09-29 19:29:32 | 5304239 | Merge branch '2.0'
+      2011-09-29 19:40:43 | 679a8d4 | updated composer.json for 2.1
+      2011-11-01 15:30:24 | f897fd9 | updated composer.json files to contain information about autoloading and target dirs
+      2011-11-01 15:32:44 | 2b62c0f | merged 2.0
+      2011-11-02 15:42:41 | 6d7a0b4 | bumped Symfony version in composer.json files to 2.0.5 (tag: v2.0.5)
+      2011-11-02 17:18:45 | 06b80fa | bumped Symfony version to 2.0.6-DEV
+      2011-11-04 11:17:10 | 21cb2c0 | [Yaml] fixed dumper for floats when the locale separator is not a dot (tag: v2.0.6)
+      2011-11-07 19:43:15 | 797098c | [Yaml] Yaml::parse() does not evaluate loaded files as PHP files by default anymore
+      2011-11-07 23:53:25 | bf3552e | merged 2.0
+      2011-11-17 09:58:37 | 6756c8f | bumped Symfony version in composer.json files to 2.0.7 (tag: v2.0.7)
+      2011-12-13 11:50:54 | b5c391e | [DoctrineBridge] fixed some CS
+      2011-12-13 19:12:53 | 3f5ebd8 | merged 2.0
+      2011-12-18 15:42:02 | ba3f69d | merged branch lsmith77/component_readmes (PR #2561)
+      2011-12-18 17:18:13 | 58e4af2 | tweaked the README files
+      2011-12-18 17:42:59 | f801d51 | fixed CS
+      2011-12-18 17:48:17 | c7f3b6f | merged 2.0
+      2012-01-05 17:51:20 | 6de6e5a | removed the version attribute in all composer.json files (tag: v2.0.9)
+      2012-01-05 17:54:04 | 32d840a | merged 2.0
+      2012-01-08 23:42:19 | 7affd2e | Revert "merged 2.0"
+      2012-01-11 18:45:55 | c2c765d | fixed some phpdoc
+      2012-01-11 18:47:52 | cd96e95 | merged 2.0
+      2012-01-16 10:44:08 | 1eaee09 | merged 2.0
+      2012-02-22 21:59:56 | 2fc601e | merged 2.0
+      2012-03-28 17:43:52 | 0647ee4 | moved component and bridge unit tests to the src/ directory
+      2012-04-20 14:18:51 | 52807f7 | merged 2.0
+      2012-04-25 14:14:55 | 774b1d5 | merged 2.0
+      2012-04-26 21:43:51 | 0297c08 | [Yaml] added CHANGELOG
+      2012-04-27 21:55:40 | e39a6a7 | Revert "merged branch Seldaek/master (PR #4133)"
+      2012-05-01 19:59:34 | 2ba1b80 | merged branch willdurand/fix-components (PR #4155)
+      2012-05-07 12:29:08 | f6d671a | updated minimum PHP version to 5.3.3
+      2012-05-08 11:27:29 | e74c1f7 | merged branch gajdaw/2_1_component_yaml_fix_4022 (PR #4126)
+      2012-05-11 20:04:46 | d7dd482 | removed some files from check_cs as they have been fixed now
+      2012-05-05 12:55:15 | 2b7a2e0 | switched to use mbstring whenever possible instead of iconv
+      2012-05-15 20:56:32 | 8c927ae | fixed phpdoc @param alignment (tag: v2.0.14)
+      2012-05-16 00:19:31 | e84e637 | fixed phpdoc @param alignment
+      2012-05-16 09:44:57 | bb3d972 | fixed test
+      2012-05-18 21:37:58 | 7eb7026 | fixed CS (tag: v2.0.15)
+      2012-05-18 21:41:48 | 49ad500 | fixed CS
+      2012-06-09 18:40:39 | c634a6b | merged branch paul-matthews/master (PR #4042)
+      2012-06-09 19:04:17 | c123857 | merged branch jakzal/yamlDoubleQuotesDumperFix (PR #4320)
+      2012-06-13 16:57:32 | 8272d98 | [Yaml] fixed string parsing (closes #4561)
+      2012-07-01 13:19:53 | fa301d6 | [Yaml] fixed parsing when a mapping is mixed within a sequence and vice-versa (closes #4634)
+      2012-07-09 16:38:28 | 04edc32 | fixed CS (mainly method signatures) (tag: v2.0.21, tag: v2.0.20, tag: v2.0.19, tag: v2.0.18, tag: v2.0.17, tag: v2.0.16)
+      2012-07-09 16:50:58 | 711eb7f | fixed CS
+      2012-07-13 23:21:01 | 84ec179 | raised the minimum version of PHP to 5.3.4 (closes #3856)
+      2012-07-15 14:13:51 | 5e7bcc7 | Revert "raised the minimum version of PHP to 5.3.4 (closes #3856)"
+      2012-09-06 22:45:30 | 826fe43 | udpated composer.json to 2.2
+      2012-09-18 21:05:29 | f1f0e0f | merged branch romainneutron/DependencyInjectionExceptions (PR #5399)
+      2012-10-06 23:57:59 | 1f7ba14 | Merge branch '2.1'
+      2012-10-24 19:41:27 | 76256c6 | Merge branch '2.1'
+      2012-06-09 19:04:17 | 9f3d53a | merged branch jakzal/yamlDoubleQuotesDumperFix (PR #4320) (tag: v2.1.3)
+      2012-11-04 12:29:56 | 5435fd7 | Merge branch '2.1'
+      2012-11-09 13:18:50 | 1b1b0b4 | made usage of Composer autoloader for subtree-split unit tests
+      2012-11-13 18:08:04 | bed4fdd | Merge branch '2.1'
+      2012-12-15 17:02:34 | 69f09b9 | [Yaml] tweaked phpdoc (closes #6275)
+      2013-01-04 20:58:00 | 3fc20ae | updated license year
+      2013-01-04 20:59:43 | 5a9724a | updated license year
+      2013-01-04 21:00:54 | 04b4da8 | Merge branch '2.0' into 2.1
+      2013-01-09 12:51:07 | 7dd0427 | removed the .gitattributes files (closes #6605, reverts #5674)
+      2013-01-17 18:01:21 | a436568 | [Yaml] deprecated the possibility to pass a file name to Yaml::parse()
+      2013-01-17 12:31:37 | f0b39e4 | added a way to enable/disable PHP support when parsing a YAML input via Yaml::parse()
+      2013-01-17 12:34:45 | 9ac8f42 | added a way to enable/disable object support when parsing/dumping
+      2013-01-17 19:16:00 | e16e309 | [Yaml] fixed default value
+      2013-01-17 19:20:05 | b2d680c | Merge branch '2.0' into 2.1
+      2013-01-17 19:25:59 | cfadc2c | Merge branch '2.1'
+      2013-01-17 20:53:40 | 3f0e5d3 | [Yaml] fixed typo
+      2013-01-18 01:16:19 | 67069f6 | [Yaml] fixed unneeded BC break (tag: v2.0.22)
+      2013-01-18 01:21:51 | 1ab2bd4 | Merge branch '2.0' into 2.1 (tag: v2.1.7)
+      2013-01-18 01:22:20 | fd0ef38 | Merge branch '2.1'
+      2013-01-18 10:25:05 | 92b11a7 | merged branch ezzatron/yaml-negative-integers (PR #6784)
+      2012-06-13 16:57:32 | c508a87 | [Yaml] fixed ignored text when parsing an inlined mapping or sequence (closes #6786) (tag: v2.0.25, tag: v2.0.24, tag: v2.0.23, origin/2.0)
+      2013-01-22 11:14:10 | fef0f81 | Merge branch '2.0' into 2.1
+      2013-01-24 00:21:00 | f5337ce | Merge branch '2.1'
+      2013-01-27 20:12:43 | 882b70f | [Yaml] fixed wrong merge (indentation default is 4 as of 2.1) (tag: v2.1.8)
+      2013-01-27 20:49:19 | b293027 | Merge branch '2.1' (tag: v2.2.0)
+      2013-02-01 01:39:01 | f198ac2 | updated the branch alias in composer files
+      2013-03-06 21:38:49 | bf9bdaa | Merge branch '2.1' into 2.2
+      2013-03-06 21:50:21 | 7562774 | Merge branch '2.2'
+      2013-03-23 11:49:54 | 3f6d4ab | Merge branch '2.1' into 2.2 (tag: v2.2.1)
+      2013-03-23 12:06:49 | ee65d31 | Merge branch '2.2'
+      2013-03-01 12:25:57 | 380cd8d | [Yaml] removed deprecated support of PHP parsin when parsing YAML files
+      2013-04-17 09:27:14 | 9b824a4 | Merge branch '2.1' into 2.2
+      2013-04-17 09:31:37 | 5e37b29 | Merge branch '2.2'
+      2013-05-10 22:08:31 | 2412f99 | Merge branch '2.1' into 2.2 (tag: v2.2.3, tag: v2.2.2)
+      2013-05-10 22:12:13 | 246b254 | Merge branch '2.2' (tag: v2.3.1, tag: v2.3.0)
+      2013-05-16 11:54:39 | e7245ab | updated version to 2.4
+      2013-07-11 23:36:36 | d7e5b5a | Merge branch '2.2' into 2.3 (tag: v2.3.2)
+      2013-07-11 23:37:15 | 6756f48 | Merge branch '2.3'
+      2013-07-22 00:19:01 | 27f45a0 | Merge branch '2.3'
+      2013-08-23 19:14:07 | ac71fb7 | Merge branch '2.2' into 2.3
+      2013-08-23 19:14:52 | 19ab504 | Merge branch '2.3'
+      2013-08-24 19:26:22 | 5a279f1 | Merge branch '2.2' into 2.3 (tag: v2.3.4)
+      2013-08-29 10:54:01 | 824c4f0 | Merge branch '2.3'
+      2013-09-18 11:27:26 | 1af6027 | updated the composer install command to reflect changes in Composer
+      2013-09-19 13:45:20 | 1443b6c | Merge branch '2.2' into 2.3
+      2013-09-19 13:47:34 | f7b8b7f | Merge branch '2.3'
+      2013-09-19 20:22:28 | 743ee50 | merged branch unkind/bugfix-yaml-parse-exception (PR #8897)
+      2013-09-19 20:24:31 | f9ef1a2 | [Yaml] reverted previous merge partially (refs #8897)
+      2013-09-19 20:27:31 | 5227f1c | fixed PHP 5.3 compatibility
+      2013-09-22 21:26:55 | 53ba205 | [Yaml] fixed a test on PHP < 5.4
+      2013-09-22 21:30:19 | bb697b6 | [Yaml] fixed typo (tag: v2.2.9, tag: v2.2.8, tag: v2.2.7)
+      2013-09-22 22:04:39 | 6bb881b | Merge branch '2.2' into 2.3 (tag: v2.3.6, tag: v2.3.5)
+      2013-09-22 22:04:51 | 9db2f62 | Merge branch '2.3' (tag: v2.4.0-BETA1)
+      2013-10-17 15:48:01 | c1bda5b | Merge branch '2.2' into 2.3 (tag: v2.3.7)
+      2013-10-17 15:48:11 | 6f5246e | Merge branch '2.3' (tag: v2.4.0-RC1, tag: v2.4.0-BETA2)
+      2013-11-25 00:15:22 | 3446204 | updated version to 2.5
+      2013-11-25 13:14:57 | 4f3569b | fixed some typos (tag: v2.2.11, origin/2.2)
+      2013-11-25 18:49:41 | 5fc7c04 | Merge branch '2.2' into 2.3 (tag: v2.3.8)
+      2013-11-26 20:40:27 | 1ae235a | Merge branch '2.3' into 2.4 (tag: v2.4.0)
+      2013-11-26 20:42:52 | c35add8 | Merge branch '2.4'
+      2013-12-28 11:37:38 | 8a22ac6 | [Yaml] fixed some license headers
+      2013-12-28 11:46:05 | 490c1c4 | fixed CS for lambdas (tag: v2.3.9)
+      2013-12-28 12:12:03 | 4e1a237 | Merge branch '2.3' into 2.4 (tag: v2.4.1)
+      2013-12-28 12:12:58 | c768e15 | Merge branch '2.4'
+      2014-01-07 17:28:54 | bb6ddaf | Merge branch '2.3' into 2.4 (tag: v2.4.2)
+      2014-01-07 17:29:57 | 3aa9fb3 | Merge branch '2.4'
+      2014-02-24 20:20:54 | e3349ba | Merge branch '2.3' into 2.4
+      2014-02-24 20:21:51 | a494de3 | Merge branch '2.4'
+      2014-02-27 21:04:59 | 723e46b | Merge branch '2.3' into 2.4
+      2014-03-03 16:53:01 | 9d102c0 | Merge branch '2.4'
+      2014-03-04 20:04:39 | 3acf34f | [Yaml] fix for a HHVM bug (tag: v2.3.12)
+      2014-03-12 22:29:58 | 77a41c2 | Merge branch '2.3' into 2.4 (tag: v2.4.3)
+      2014-03-26 15:51:10 | 32c8010 | Merge branch '2.4' (tag: v2.5.0-BETA1)
+      2014-04-12 21:44:00 | bee9ade | made types consistent with those defined in Hack
+      2014-04-12 21:54:57 | 56d8bfd | made phpdoc types consistent with those defined in Hack
+      2014-04-16 11:15:58 | 78d453b | unified return null usages
+      2014-04-16 12:02:57 | d3cd4be | Merge branch '2.3' into 2.4
+      2014-04-16 12:08:40 | ae2ed0f | Merge branch '2.4'
+      2014-04-16 14:30:19 | 14e468e | fixed types in phpdocs
+      2014-04-16 14:34:31 | 0554ab8 | Merge branch '2.3' into 2.4
+      2014-04-16 14:36:21 | 1573d82 | Merge branch '2.4'
+      2014-04-19 00:35:25 | c10f8ed | minor #10717 unified return null usages (fabpot) (tag: v2.3.13)
+      2014-04-19 00:37:09 | 65539ec | Merge branch '2.3' into 2.4 (tag: v2.4.4)
+      2014-04-19 00:40:13 | 05c2435 | Merge branch '2.4' (tag: v2.5.0-BETA2)
+      2014-05-12 13:27:48 | fd22bb8 | Merge branch '2.3' into 2.4 (tag: v2.4.6, tag: v2.4.5)
+      2014-05-12 13:28:39 | cf03367 | Merge branch '2.4'
+      2014-05-23 18:36:49 | 55d8749 | updated version to 2.6
+      2014-06-20 21:41:51 | 7cd659e | Merge branch '2.5'
+      2014-07-08 15:46:35 | e7f7922 | Merge branch '2.3' into 2.4 (tag: v2.4.7)
+      2014-07-08 16:21:33 | 1057e87 | Merge branch '2.4' into 2.5 (tag: v2.5.1)
+      2014-07-08 16:21:41 | df17d0d | Merge branch '2.5'
+      2014-07-09 13:04:55 | e63eb0f | Merge branch '2.3' into 2.4 (tag: v2.4.8)
+      2014-07-09 13:05:48 | f868ecd | Merge branch '2.4' into 2.5 (tag: v2.5.2)
+      2014-07-09 13:06:26 | e0b5cb9 | Merge branch '2.5'
+      2014-08-28 05:42:35 | 71ceeca | [Yaml] fixed mapping keys containing a quoted # (tag: v2.3.19)
+      2014-08-31 07:18:18 | 8716cb8 | Merge branch '2.3' into 2.4 (tag: v2.4.9)
+      2014-08-31 07:22:04 | 01a7695 | Merge branch '2.4' into 2.5 (tag: v2.5.4)
+      2014-08-31 07:28:38 | f5ff7bd | Merge branch '2.5'
+      2014-09-15 22:23:23 | a4882d0 | bug #11799 [YAML] fix handling of empty sequence items (xabbuh)
+      2014-09-17 13:45:32 | 1481243 | Merge branch '2.3' into 2.4
+      2014-09-17 13:50:16 | b34598c | Merge branch '2.4' into 2.5
+      2014-09-17 13:54:14 | 0937b92 | Merge branch '2.5'
+      2014-09-21 22:53:12 | 2f2c974 | fixed CS (tag: v2.3.20)
+      2014-09-22 12:51:05 | 297fd84 | Merge branch '2.3' into 2.4 (tag: v2.4.10, origin/2.4)
+      2014-09-22 13:14:18 | b1dbc53 | Merge branch '2.4' into 2.5 (tag: v2.5.5)
+      2014-09-22 15:59:59 | 1a84834 | Merge branch '2.5'
+      2014-10-01 09:50:18 | 2d9f527 | Merge branch '2.3' into 2.5 (tag: v2.5.6)
+      2014-10-01 09:53:11 | c4c5920 | Merge branch '2.5'
+      2014-10-05 17:53:50 | a47f30e | feature #11976 [Yaml] Ensure whole number floats have their data type is persisted. (Alex Pott)
+      2014-10-26 10:41:27 | 9ebe1a3 | Merge branch '2.3' into 2.5
+      2014-10-26 10:46:28 | eaaec86 | Merge branch '2.5'
+      2014-11-03 06:54:42 | 6a81c93 | Merge branch '2.3' into 2.5
+      2014-11-03 06:55:50 | ff1193d | Merge branch '2.5' (tag: v2.6.0-BETA1)
+      2014-11-10 21:00:54 | 6165f4b | updated version to 2.7
+      2014-11-11 11:37:22 | 21ac893 | updated version to 3.0
+      2014-11-16 21:04:21 | 668e013 | minor #12372 [Yaml] don't override internal PHP constants (xabbuh)
+      2014-11-20 16:22:25 | 900d38b | Merge branch '2.3' into 2.5 (tag: v2.5.7)
+      2014-11-20 16:24:23 | 51c845c | Merge branch '2.5' into 2.6 (tag: v2.6.0-BETA2, tag: v2.6.0)
+      2014-11-20 16:24:30 | 75deb1b | Merge branch '2.6' into 2.7
+      2014-11-20 16:24:36 | 70ea5d7 | Merge branch '2.7'
+      2014-12-02 23:15:53 | b6ad726 | Merge branch '2.3' into 2.5 (tag: v2.5.8)
+      2014-12-02 23:19:20 | 3346fc0 | Merge branch '2.5' into 2.6 (tag: v2.6.1)
+      2014-12-02 23:19:50 | 610f019 | Merge branch '2.6' into 2.7
+      2014-12-02 23:20:06 | f3339ab | Merge branch '2.7'
+      2014-12-04 11:55:19 | 5ef4eb8 | Merge branch '2.3' into 2.5
+      2014-12-05 15:00:15 | 09e9ff7 | Merge branch '2.5' into 2.6
+      2014-12-08 11:43:57 | a091363 | Merge branch '2.6' into 2.7
+      2014-12-08 11:44:04 | 9895c6a | Merge branch '2.7'
+      2014-12-20 19:01:23 | 25f8f2e | Merge branch '2.3' into 2.5
+      2014-12-20 19:02:27 | 96d0b36 | Merge branch '2.5' into 2.6
+      2014-12-22 19:29:52 | 8f39f8a | Merge branch '2.3' into 2.5
+      2014-12-22 19:44:09 | 676e87d | Merge branch '2.5' into 2.6
+      2014-12-22 19:45:18 | 4acdf4f | Merge branch '2.6' into 2.7
+      2014-12-22 19:45:23 | 350f978 | Merge branch '2.7'
+      2014-12-30 12:03:46 | f844544 | Merge branch '2.3' into 2.5
+      2014-12-30 12:04:52 | b153aae | Merge branch '2.5' into 2.6
+      2014-12-30 12:05:46 | 7918f04 | Merge branch '2.6' into 2.7
+      2014-12-30 12:05:58 | 0ef66f2 | Merge branch '2.7'
+      2015-01-03 11:01:13 | 782f0fa | Merge branch '2.3' into 2.5
+      2015-01-03 11:01:59 | d0993c8 | Merge branch '2.5' into 2.6
+      2015-01-03 11:02:46 | eb04260 | Merge branch '2.6' into 2.7
+      2015-01-03 11:04:30 | ce15df6 | Merge branch '2.7'
+      2015-01-03 17:48:25 | 522b6c2 | Merge branch '2.3' into 2.5 (tag: v2.5.9)
+      2015-01-06 13:39:25 | ae0af40 | Merge branch '2.7'
+      2015-01-08 14:13:07 | 8b64b53 | [Yaml] removed deprecation notices on internal constant
+      2015-01-08 14:43:03 | 8510fcb | [Yaml] maked a test as being for deprecated feature
+      2015-01-08 15:57:51 | a07f9e5 | added missing error_reporting
+      2015-01-08 16:01:33 | e6beb5c | minor #13325 [Yaml] removed deprecation notices on internal constant (fabpot)
+      2015-01-08 20:12:45 | 08d169e | Merge branch '2.7'
+      2015-01-09 00:38:30 | 39b3263 | bumped min PHP version to 5.3.9
+      2015-01-09 21:07:12 | 8a4279a | Merge branch '2.3' into 2.5
+      2015-01-09 21:07:16 | 645953f | Merge branch '2.5' into 2.6
+      2015-01-09 21:07:24 | 16c97a1 | Merge branch '2.6' into 2.7
+      2015-01-09 22:59:30 | 05ee2e2 | Merge branch '2.7'
+      2015-01-16 16:53:48 | 4fea5b4 | bug #13262 [Yaml] Improve YAML boolean escaping (petert82, larowlan)
+      2015-01-16 17:51:58 | a49b1f6 | Merge branch '2.3' into 2.5
+      2015-01-16 17:55:47 | 0c170bf | Merge branch '2.5' into 2.6
+      2015-01-16 17:55:54 | f562c11 | Merge branch '2.6' into 2.7
+      2015-01-16 17:56:00 | 49a5154 | Merge branch '2.7'
+      2015-01-20 04:39:13 | 97bf9d1 | Merge branch '2.3' into 2.5
+      2015-01-20 04:40:20 | 7fad7f8 | Merge branch '2.5' into 2.6
+      2015-01-20 04:40:35 | 077ae12 | Merge branch '2.6' into 2.7
+      2015-01-20 04:40:45 | c855d00 | Merge branch '2.7'
+      2015-01-25 06:54:01 | 11a44f3 | bug #13352 [Yaml] fixed parse shortcut Key after unindented collection. (aitboudad) (tag: v2.3.25)
+      2015-01-25 07:37:39 | 6eb40ab | Merge branch '2.3' into 2.5 (tag: v2.5.12, tag: v2.5.11, tag: v2.5.10, origin/2.5)
+      2015-01-25 07:39:26 | 60ed775 | Merge branch '2.5' into 2.6 (tag: v2.6.4)
+      2015-01-25 07:39:35 | 02ba3dc | Merge branch '2.6' into 2.7
+      2015-01-25 07:42:01 | b4f5ed7 | Merge branch '2.7'
+      2015-02-08 10:41:14 | d06c0f9 | renamed composer.phar to composer to be consistent with the Symfony docs
+      2015-02-11 10:12:14 | 4d48f3d | Merge branch '2.3' into 2.6
+      2015-02-11 10:17:51 | 43aac34 | Merge branch '2.6' into 2.7
+      2015-02-12 11:47:54 | 29e51dd | Merge branch '2.7'
+      2015-03-07 10:40:15 | e369824 | Merge branch '2.3' into 2.6
+      2015-03-07 10:43:00 | 601ca9a | Merge branch '2.6' into 2.7
+      2015-03-07 10:44:26 | 791de50 | Merge branch '2.7'
+      2015-03-12 17:31:07 | 14c1656 | Merge branch '2.6' into 2.7
+      2015-03-22 19:55:57 | 1f2ce08 | Merge branch '2.3' into 2.6
+      2015-03-22 19:57:18 | bc25047 | Merge branch '2.6' into 2.7
+      2015-03-24 20:09:17 | d5aac0f | Merge branch '2.7'
+      2015-03-30 18:33:35 | 51a2549 | minor #14090 CS: Unary operators should be placed adjacent to their operands (keradus) (tag: v2.3.27)
+      2015-03-30 18:54:10 | 174f009 | Merge branch '2.3' into 2.6 (tag: v2.6.6)
+      2015-03-30 18:55:07 | 3882af2 | Merge branch '2.6' into 2.7
+      2015-03-30 18:59:03 | 1e49d5f | Merge branch '2.7'
+      2015-04-08 08:30:27 | 6059e5c | Merge branch '2.3' into 2.6
+      2015-04-10 10:19:44 | 57102e5 | Merge branch '2.6' into 2.7
+      2015-04-10 10:23:38 | 43e7bee | removed 3.0 constraints from 2.7 composer files (tag: v2.7.0-BETA1)
+      2015-04-10 10:30:08 | a4d5ffb | Merge branch '2.8'
+      2015-04-10 10:31:54 | 0855034 | bumped deps on 2.8 in all composer.json
+      2015-04-10 11:55:07 | 00ed50e | Revert "removed 3.0 constraints from 2.7 composer files"
+      2015-04-10 11:56:33 | fdded56 | updated version to 2.8
+      2015-05-02 18:18:45 | f157ab0 | Merge branch '2.3' into 2.6 (tag: v2.6.9, tag: v2.6.8, tag: v2.6.7)
+      2015-05-02 18:21:08 | 4a29a52 | Merge branch '2.6' into 2.7 (tag: v2.7.0-BETA2, tag: v2.7.0)
+      2015-06-05 22:54:27 | b52a9d1 | Merge branch '2.6' into 2.7
+      2015-06-09 18:06:55 | 4a24e86 | Merge branch '2.7' into 2.8
+      2015-06-11 20:27:52 | 709857e | Merge branch '2.7' into 2.8
+      2015-07-26 12:08:49 | 6b3e24f | Merge branch '2.6' into 2.7
+      2015-07-26 12:09:29 | b7bf092 | Merge branch '2.7' into 2.8
+      2015-07-26 12:09:51 | e464136 | Merge branch '2.8'
+      2015-08-09 11:56:25 | 3b0e30f | bug #15480 [Yaml] Nested merge keys (mathroc)
+      2015-08-22 10:42:07 | 212832b | Merge branch '2.7' into 2.8
+      2015-08-22 10:44:28 | dd40f21 | Merge branch '2.8'
+      2015-08-24 09:53:33 | 2dc7b06 | fixes CS (tag: v2.7.4)
+      2015-08-24 10:18:02 | 1a0bd40 | Merge branch '2.7' into 2.8
+      2015-08-24 10:21:16 | 3984bc7 | Merge branch '2.8'
+      2015-09-14 17:14:09 | 31cb2ad | Merge branch '2.3' into 2.7 (tag: v2.7.5)
+      2015-09-14 17:15:17 | d196cb1 | Merge branch '2.7' into 2.8
+      2015-09-14 17:15:24 | 990d0c4 | Merge branch '2.8'
+      2015-09-30 09:37:21 | b9c86a9 | bug #15482 [Yaml] Improve newline handling in folded scalar blocks (teohhanhui)
+      2015-09-30 12:14:28 | d19d5e6 | Merge branch '2.3' into 2.7
+      2015-09-30 12:15:55 | 01a41e4 | Merge branch '2.7' into 2.8
+      2015-09-30 12:18:13 | 52ace17 | Merge branch '2.8'
+      2015-10-02 00:11:01 | 134af66 | bug #15860 [Yaml] Fix improper comments removal (ogizanagi)
+      2015-10-02 13:12:23 | 71960c2 | Revert "bug #15860 [Yaml] Fix improper comments removal (ogizanagi)"
+      2015-10-02 15:29:10 | e992a07 | Merge branch '2.8'
+      2015-10-02 15:36:41 | 29c3697 | Merge branch '2.3' into 2.7
+      2015-10-02 15:38:01 | 36ddab7 | Merge branch '2.7' into 2.8
+      2015-10-02 15:38:08 | a8fb8cb | Merge branch '2.8'
+      2015-10-07 13:28:58 | a262138 | bug #15793 [Yaml] Allow tabs before comments at the end of a line (superdav42)
+      2015-10-11 15:05:15 | 6941545 | [Yaml] deprecated non-escaped \ in double-quoted strings when parsing
+      2015-10-12 13:22:36 | 6b88895 | Merge branch '2.8'
+      2015-10-11 15:23:49 | 3ed9e6a | [Yaml] removed parsing of non-escaped backslash in a double-quoted string
+      2015-10-12 14:16:35 | ff7f886 | [Yaml] marked some classes as being internal
+      2015-10-19 12:47:48 | f301c74 | [Yaml] deprecated usage of @ and ` at the beginning of an unquoted string
+      2015-10-30 23:10:21 | e50a377 | Merge branch '2.3' into 2.7
+      2015-10-30 23:15:42 | 3c13963 | Merge branch '2.7' into 2.8
+      2015-10-31 02:35:59 | 04b1ec5 | Merge branch '2.8'
+      2015-11-02 23:25:31 | 8c4ca8f | removed @covers annotations in tests
+      2015-11-02 23:29:24 | cb8f989 | Merge branch '2.7' into 2.8
+      2015-11-02 23:34:04 | 1759da7 | Merge branch '2.8'
+      2015-11-28 14:03:53 | f196d99 | Merge branch '2.8'
+      2015-11-30 15:32:50 | d0c5e68 | Merge branch '2.3' into 2.7
+      2015-11-30 15:35:10 | f798241 | Merge branch '2.7' into 2.8 (tag: v2.8.0)
+      2015-11-30 15:36:17 | 4113f97 | Merge branch '2.8' (tag: v3.0.0)
+      2015-12-01 00:39:17 | 1a68e8e | updated version to 3.1
+      2015-12-18 19:59:46 | 9101150 | Merge branch '2.3' into 2.7
+      2015-12-26 16:37:43 | 1d96518 | Merge branch '2.3' into 2.7 (tag: v2.7.8)
+      2015-12-26 16:37:56 | ac84cbb | Merge branch '2.7' into 2.8 (tag: v2.8.1)
+      2015-12-26 16:39:53 | 3df4099 | Merge branch '2.8' into 3.0 (tag: v3.0.1)
+      2015-12-26 16:42:39 | d6a9079 | Merge branch '3.0'
+      2016-01-03 18:32:00 | cb5204a | Merge branch '2.3' into 2.7
+      2016-01-03 18:33:41 | 0ee54de | Merge branch '2.7' into 2.8
+      2016-01-03 18:35:16 | 5a0074f | Merge branch '2.8' into 3.0
+      2016-01-03 18:35:40 | 5b5f043 | Merge branch '3.0'
+      2016-01-04 14:01:16 | b2cbedb | bug #17159 [Yaml] recognize when a block scalar is left (xabbuh)
+      2016-01-04 19:50:38 | 085a1eb | bug #17197 [Yaml] cast arrays to objects after parsing has finished (xabbuh)
+      2016-01-21 09:28:40 | a297b22 | fixed CS
+      2016-01-21 09:59:09 | 530ab86 | Merge branch '2.3' into 2.7
+      2016-01-21 12:05:51 | d7f2d2c | Merge branch '2.7' into 2.8
+      2016-01-21 12:24:53 | 1548a0a | fixed CS
+      2016-01-21 12:38:31 | e58719e | Merge branch '2.8' into 3.0
+      2016-01-21 13:01:50 | a9326ad | Merge branch '3.0'
+      2016-01-22 09:35:55 | 7269f74 | bug #17461 [Yaml] tag for dumped PHP objects must be a local one (xabbuh)
+      2016-01-22 09:37:40 | 2ed0f78 | feature #17462 [Yaml] deprecate parsing the !!php/object tag (xabbuh)
+      2016-01-24 14:05:56 | 7aa9c34 | Merge branch '2.3' into 2.7
+      2016-01-24 14:06:16 | ccbaef9 | Merge branch '2.7' into 2.8
+      2016-01-24 14:11:10 | 661faea | Merge branch '2.8' into 3.0
+      2016-01-27 07:57:57 | b09e90c | minor #17480 Static code analysis (Koc)
+      2016-01-31 10:56:20 | 5552043 | Merge branch '2.3' into 2.7
+      2016-02-12 19:14:34 | 2b2c0e9 | feature #17743 [Yaml] dumper flag for enabling exceptions on invalid type (xabbuh)
+      2016-02-16 09:11:42 | 5c024b0 | Merge branch '2.8' into 3.0
+      2016-02-16 10:10:35 | 11a720a | minor #17740 [Yaml] mark the Inline class as internal (xabbuh)
+      2016-02-23 18:16:06 | b5ba64c | Merge branch '2.8' into 3.0 (tag: v3.0.3)
+      2016-02-28 13:09:55 | 939b8e1 | feature #17728 [Yaml] add option to dump objects as maps (xabbuh)
+      2016-03-02 13:10:06 | 9f492c4 | Merge branch '2.3' into 2.7
+      2016-03-02 13:10:16 | f5c746c | Merge branch '2.7' into 2.8
+      2016-03-02 13:18:25 | 2d61fed | Merge branch '2.8' into 3.0
+      2016-03-02 13:23:16 | ab0314f | Merge branch '3.0'
+      2016-03-04 10:12:08 | d5a6f4c | minor #17997 Updated all the README files (javiereguiluz) (tag: v2.3.41, tag: v2.3.40, tag: v2.3.39)
+      2016-03-04 10:52:28 | e9877e0 | Merge branch '2.3' into 2.7 (tag: v2.7.13, tag: v2.7.12, tag: v2.7.11)
+      2016-03-04 10:54:35 | 584e52c | Merge branch '2.7' into 2.8 (tag: v2.8.4)
+      2016-03-04 10:55:57 | 0047c83 | Merge branch '2.8' into 3.0 (tag: v3.0.6, tag: v3.0.5, tag: v3.0.4)
+      2016-03-04 10:56:56 | 801d412 | Merge branch '3.0'
+      2016-03-30 17:44:34 | 407e31a | feature #18294 [Yaml] dump non UTF-8 encoded strings as binary data (xabbuh) (tag: v3.1.0-BETA1)
+      2016-05-13 21:13:23 | 08bc755 | updated version to 3.2
+      2016-05-23 12:02:43 | 30cf16b | bug #18840 [Yaml] properly handle unindented collections (xabbuh)
+      2016-05-24 12:57:18 | 507901b | Merge branch '2.3' into 2.7
+      2016-05-24 13:00:02 | 5190891 | Merge branch '2.7' into 2.8
+      2016-05-24 13:03:10 | 06766b4 | Merge branch '2.8' into 3.0
+      2016-05-24 13:06:56 | 4c2e68f | Merge branch '3.0' into 3.1 (tag: v3.1.0-RC1)
+      2016-05-24 13:07:02 | c7a7ec3 | Merge branch '3.1'
+      2016-06-06 11:55:42 | 676eabb | Merge branch '2.3' into 2.7
+      2016-06-08 16:14:46 | d847282 | Merge branch '2.7' into 2.8
+      2016-06-16 22:29:32 | 7eaa2ba | bug #19029 [YAML] Fixed parsing problem with nested DateTime lists (jkphl)
+      2016-06-21 09:03:42 | 318dd06 | fixed CS
+      2016-06-21 09:41:01 | 5b65683 | Merge branch '3.1'
+      2016-06-28 08:50:50 | d529c0f | removed dots at the end of @param and @return (tag: v2.7.15)
+      2016-06-29 08:29:29 | dba4bb5 | Merge branch '2.7' into 2.8 (tag: v2.8.8)
+      2016-06-29 08:40:00 | d7dfe7f | Merge branch '2.8' into 3.0 (tag: v3.0.8)
+      2016-06-29 08:41:56 | 2884c26 | Merge branch '3.0' into 3.1 (tag: v3.1.2)
+      2016-06-29 08:43:10 | 6bcab17 | Merge branch '3.1'
+      2016-06-29 08:48:55 | bebaa04 | minor #19160 [Yaml] Avoid using both Input/Output and SymfonyStyle in LintCommand (chalasr)
+      2016-08-09 16:44:53 | 8094454 | feature #19529 Add Yaml::PARSE_EXCEPTION_ON_DUPLICATE to throw exceptions on duplicates (Alex Pott)
+      2016-08-13 21:49:42 | 5b61eed | minor #19538 [Yaml] update changelog and upgrade files (xabbuh)
+      2016-08-27 19:28:58 | 314e11e | minor #19758 [Yaml] improve deprecation message and changelog (xabbuh)
+      2016-08-27 19:29:21 | 91aab60 | fixed CS
+      2016-09-02 04:57:56 | e754073 | Merge branch '2.7' into 2.8 (tag: v2.8.12, tag: v2.8.11, tag: v2.8.10)
+      2016-09-02 05:12:52 | f291ed2 | Merge branch '2.8' into 3.1 (tag: v3.1.4)
+      2016-09-02 05:14:06 | aa8be22 | Merge branch '3.1'
+      2016-09-25 19:21:58 | ef38bb2 | Merge branch '3.1'
+      2016-09-28 07:06:31 | f3abbc0 | [FrameworkBundle] fixed yaml:lint when yaml is not installed along side framwork-bundle
+      2016-11-06 19:24:48 | e0c8bd4 | Merge branch '3.1'
+      2016-11-14 19:15:57 | befb26a | Merge branch '2.7' into 2.8 (tag: v2.8.15, tag: v2.8.14)
+      2016-11-14 19:20:02 | eaa5562 | Merge branch '2.8' into 3.1
+      2016-11-14 19:20:13 | 92e2f6d | Merge branch '3.1' (tag: v3.2.0-RC1)
+      2016-11-19 23:35:20 | b009b78 | updated version to 3.3
+      2016-12-13 12:39:51 | f8c054e | Merge branch '3.2'
+      2017-01-02 23:30:00 | d25ffc4 | updated LICENSE year
+      2017-01-02 23:30:24 | fe535f7 | Merge branch '2.7' into 2.8
+      2017-01-02 23:31:54 | f8cd3c0 | Merge branch '2.8' into 3.1
+      2017-01-02 23:32:22 | 85466ff | Merge branch '3.1' into 3.2
+      2017-01-02 23:33:09 | 8922f15 | Merge branch '3.2'
+      2017-01-03 16:44:39 | 809772e | bug #21084 [Yaml] handle empty lines inside unindented collection (xabbuh) (tag: v2.7.23)
+      2017-01-08 19:01:14 | a5c421b | feature #21114 [Yaml] parse multi-line strings (xabbuh)
+      2017-01-09 17:37:34 | a7be123 | minor #21191 [Yaml] Remove unused argument (GuilhemN)
+      2017-01-21 19:33:48 | 10e18c7 | fixed typo
+      2017-01-21 19:37:26 | 4f01d1b | Revert "fixed typo"
+      2017-01-21 19:40:50 | 322a8c2 | Merge branch '2.7' into 2.8 (tag: v2.8.17)
+      2017-01-21 20:01:39 | 752bc2a | Merge branch '2.8' into 3.1 (tag: v3.1.10, origin/3.1)
+      2017-01-21 20:06:35 | e1718c6 | Merge branch '3.1' into 3.2 (tag: v3.2.3)
+      2017-01-21 20:10:26 | 7928849 | Merge branch '3.2'
+      2017-02-17 01:43:37 | 596bf28 | Merge branch '2.7' into 2.8
+      2017-02-17 01:46:52 | 9724c68 | Merge branch '2.8' into 3.2 (tag: v3.2.4)
+      2017-02-17 01:50:29 | 218d7c3 | Merge branch '3.2'
+      2017-02-20 02:22:09 | 5acae93 | feature #21471 [Yaml] Allow dumping empty array as YAML sequence (c960657)
+      2017-02-20 19:58:22 | 685ed13 | minor #21678 [Yaml] fix DUMP_EMPTY_ARRAY_AS_SEQUENCE flag value (xabbuh)
+      2017-02-28 05:24:56 | d1ef72c | Merge branch '2.7' into 2.8
+      2017-02-28 05:30:50 | d1820b5 | Merge branch '2.8' into 3.2
+      2017-02-28 05:34:20 | 4c908f8 | Merge branch '3.2'
+      2017-03-01 17:39:50 | 7f98ec6 | minor #21650 [Yaml] add tests for specific mapping keys (xabbuh) (tag: v2.7.25)
+      2017-03-01 21:13:50 | 2a7bab3 | Merge branch '2.7' into 2.8 (tag: v2.8.18)
+      2017-03-01 21:18:25 | 24e1be1 | Merge branch '2.8' into 3.2
+      2017-03-01 21:19:35 | e152862 | Merge branch '3.2'
+      2017-03-17 19:20:26 | 329911d | bug #21523 #20411 fix Yaml parsing for very long quoted strings (RichardBradley)
+      2017-03-20 16:59:57 | c847146 | feature #22059 [Yaml] deprecate "? " starting unquoted strings (xabbuh)
+      2017-03-22 22:08:11 | 76ae7f2 | minor #22067 [Yaml] ParseException: pcre.backtrack_limit reached (nicolas-grekas)
+      2017-04-05 18:20:10 | 6f50dd7 | feature #22274 [Yaml] report deprecations when linting YAML files (xabbuh)
+      2017-04-12 17:07:15 | bb09834 | Merge branch '2.7' into 2.8
+      2017-04-12 17:13:17 | f84327c | Merge branch '2.8' into 3.2
+      2017-04-12 17:14:56 | 5972baa | Merge branch '3.2'
+      2017-05-01 17:31:55 | 93ccdde | Merge branch '2.7' into 2.8 (tag: v2.8.21, tag: v2.8.20)
+      2017-05-01 17:55:58 | acec26f | Merge branch '2.8' into 3.2 (tag: v3.2.8)
+      2017-05-01 18:01:29 | dcbd318 | Merge branch '3.2' (tag: v3.3.0-BETA1)
+      2017-05-11 20:37:16 | a94764d | bug #22409 [Yaml] respect inline level when dumping objects as maps (goetas, xabbuh)
+      2017-05-17 19:21:40 | 19248c8 | updated version to 3.4
+      2017-05-17 19:33:00 | 16e14c9 | updated version to 4.0
+      2017-05-17 21:41:56 | 22f9790 | bumped minimum version to PHP 7.1
+      2017-05-24 17:33:08 | 73422f9 | feature #22770 [Yaml] remove deprecated features (xabbuh)
+      2017-05-26 02:10:58 | 58d147e | Merge branch '3.3' into 3.4
+      2017-05-26 02:11:32 | 1f7ca4e | Merge branch '3.4'
+      2017-05-26 02:27:00 | 0ee1516 | minor #22885 [3.4] Allow 4.* deps (nicolas-grekas)
+      2017-05-26 02:42:36 | 4cdb9fe | bug #22829 [Yaml] fix colon without space deprecation (xabbuh) (tag: v3.2.9)
+      2017-06-01 20:56:34 | dee17ff | Using FQ name for PHP_VERSION_ID (tag: v2.7.34, tag: v2.7.33, tag: v2.7.32, tag: v2.7.31, tag: v2.7.30, tag: v2.7.29)
+      2017-06-01 23:52:29 | 4c29dec | Merge branch '2.7' into 2.8 (tag: v2.8.27, tag: v2.8.26, tag: v2.8.25, tag: v2.8.24, tag: v2.8.23, tag: v2.8.22)
+      2017-06-03 01:05:06 | 9752a30 | minor #23031 [Yaml] Clarify "incompatible key casting" deprecation message (rvanlaak) (tag: v3.3.2, tag: v3.3.1)
+      2017-06-12 21:12:26 | 2a18a53 | Merge branch '3.4'
+      2017-06-14 23:38:21 | 08c6449 | feature #22909 [Yaml] Deprecate using the non-specific tag (GuilhemN)
+      2017-06-30 00:22:16 | 989487a | feature #23294 [Yaml][Lint] Add line numbers to JSON output. (WybrenKoelmans)
+      2017-06-30 14:21:18 | bb3acf5 | Merge branch '3.4'
+      2017-07-03 13:20:17 | 519fb08 | feature #23288 [Yaml] deprecate the !str tag (xabbuh)
+      2017-07-03 16:32:35 | 292c61a | Merge branch '3.4'
+      2017-07-06 13:27:33 | 273b555 | feature #22762 [Yaml] Support tagged scalars (GuilhemN)
+      2017-09-15 19:59:28 | effdc4d | Merge branch '2.7' into 2.8
+      2017-09-30 17:00:25 | 8603b46 | minor #24342 removed useless PHPDoc (OskarStark)
+      2017-11-10 22:03:56 | 1456882 | Merge branch '3.3' into 3.4 (tag: v3.4.0-RC2, tag: v3.4.0-RC1, tag: v3.4.0-BETA4)
+      2017-11-21 20:31:29 | cf16b19 | updated version to 4.1
+      2017-12-04 21:15:22 | f6a99b9 | Merge branch '3.3' into 3.4 (tag: v3.4.1)
+      2017-12-11 23:38:23 | afe0cd3 | Merge branch '3.3' into 3.4 (tag: v3.4.2)
+      2017-12-31 07:16:51 | de6970a | Merge branch '2.7' into 2.8
+      2017-12-31 08:33:21 | 9bd000c | fixed some deprecation messages
+      2017-12-31 09:07:31 | 96f968f | Merge branch '3.3' into 3.4
+      2017-12-31 09:25:36 | 9a6ca01 | fixed some deprecation messages
+      2018-01-03 10:23:28 | b7f5408 | fixed years in copyright (tag: v2.7.45, tag: v2.7.44, tag: v2.7.43, tag: v2.7.42, tag: v2.7.41, tag: v2.7.40)
+      2018-01-03 10:36:31 | be720fc | Merge branch '2.7' into 2.8 (tag: v2.8.38, tag: v2.8.37, tag: v2.8.36, tag: v2.8.35, tag: v2.8.34, tag: v2.8.33)
+      2018-01-03 10:37:11 | 7c80d81 | Merge branch '2.8' into 3.3 (tag: v3.3.15)
+      2018-01-03 10:37:34 | 25c192f | Merge branch '3.3' into 3.4 (tag: v3.4.3)
+      2018-01-03 10:38:00 | b84f646 | Merge branch '3.4' into 4.0 (tag: v4.0.3)
+      2018-01-03 10:38:11 | e428409 | Merge branch '4.0'
+      2018-02-19 15:18:43 | d594ee0 | removed version in @final @internal for version < 4.0
+      2018-02-19 23:08:53 | de5f125 | minor #26229 removed version in @final @internal for version < 4.0 (fabpot) (tag: v4.0.6, tag: v4.0.5)
+      2018-04-03 08:24:00 | 8b34ebb | Merge branch '3.4' into 4.0 (tag: v4.0.8, tag: v4.0.7)
+      2018-04-03 08:25:17 | 97c4a37 | Merge branch '4.0'
+      2018-05-07 10:12:24 | 048b1be | Merge branch '3.4' into 4.0 (tag: v4.0.13, tag: v4.0.12, tag: v4.0.11, tag: v4.0.10)
+      2018-05-07 10:14:12 | 0659e9c | Merge branch '4.0' (tag: v4.1.0-BETA3, tag: v4.1.0-BETA2, tag: v4.1.0-BETA1)
+      2018-05-07 17:51:25 | 55f138b | updated version to 4.2
+      2018-09-04 19:55:13 | cb4f943 | minor #28307 Mark ExceptionInterfaces throwable #2 (ostrolucky)
+      2018-09-08 09:40:26 | dce4103 | removed usage of backticks in exception messages
+      2018-09-30 06:38:13 | ac5af7c | Merge branch '3.4' into 4.1 (tag: v4.1.5)
+      2018-09-30 06:40:00 | 01fae64 | Merge branch '4.1'
+      2018-11-26 19:19:01 | d4fc8a5 | updated version to 4.3
+      2018-12-23 17:06:12 | e441723 | Merge branch '3.4' into 4.1
+      2019-01-16 12:39:14 | 9015c61 | switched array() to []
+      2019-01-16 13:59:17 | ba11776 | fixed CS on YAML fixtures (tag: v3.4.22)
+      2019-01-16 21:21:11 | b5794d3 | Merge branch '3.4' into 4.1
+      2019-01-16 21:24:45 | ed61766 | fixed CS
+      2019-01-16 21:56:49 | 874d921 | fixed CS (tag: v4.1.12, tag: v4.1.11, origin/4.1)
+      2019-01-16 23:31:39 | d1f605b | Merge branch '4.1' into 4.2
+      2019-01-16 23:35:37 | d461670 | fixed CS (tag: v4.2.3)
+      2019-01-17 00:53:39 | 4c7b2f8 | Merge branch '4.2' into short-array-master
+      2019-03-30 18:58:42 | 6712daf | Merge branch '3.4' into 4.2 (tag: v4.2.9, tag: v4.2.8, tag: v4.2.7, tag: v4.2.6, tag: v4.2.5, tag: v4.2.10)
+      2019-04-06 17:04:46 | c60ecf5 | Merge branch '4.2' (tag: v4.3.2, tag: v4.3.1, tag: v4.3.0-RC1, tag: v4.3.0-BETA2, tag: v4.3.0-BETA1, tag: v4.3.0)
+      2019-05-09 10:23:25 | 4e85fcc | updated version to 4.4
+      2019-05-28 15:18:42 | 8d8932c | updated version to 5.0
+      2019-08-01 10:48:49 | b363e3b | minor #32786 add parameter type declarations to private methods (xabbuh)
+      2019-08-04 05:32:09 | 9306691 | feature #32669 [Yaml] Add flag to dump NULL as ~ (OskarStark)
+      2019-09-11 18:41:19 | 41e1635 | bug #33517 [Yaml] properly catch legacy tag syntax usages (xabbuh) (tag: v4.3.5)
+      2019-09-15 11:41:08 | 564b63f | Merge branch '4.3' into 4.4
+      2019-09-16 11:15:34 | 79800cc | feature #33579 Adding .gitattributes to remove Tests directory from "dist" (Nyholm)
+      2019-09-16 11:16:50 | 516c382 | Merge branch '4.4'
+      2019-09-25 21:53:23 | 110e3e9 | feature #33658 [Yaml] fix parsing inline YAML spanning multiple lines (xabbuh)
+      2019-10-22 18:44:54 | 13bfb7f | minor #33963 Add .gitignore to .gitattributes (reedy)
+      2019-11-17 21:31:35 | 01fff05 | updated version to 5.1
+      2020-01-11 18:57:28 | 247b7e4 | feature #34387 [Yaml] Added yaml-lint binary (jschaedl)
+      2020-01-21 11:20:29 | 5e3a474 | Merge branch '3.4' into 4.3
+      2020-01-21 11:20:44 | d39b4ca | Merge branch '4.3' into 4.4
+      2020-03-09 13:53:35 | 37d6a73 | bug #36004 [Yaml] fix dumping strings containing CRs (xabbuh)
+      2020-03-15 12:01:00 | d54c2a8 | Add missing dots at the end of exception messages
+      2020-03-15 13:05:03 | 5342b6f | Merge branch '3.4' into 4.4
+      2020-03-15 17:33:06 | ff4677d | Merge branch '4.4' into 5.0
+      2020-03-15 17:51:35 | 5be9309 | Merge branch '5.0'
+      2020-03-16 10:32:23 | 688cfb1 | Fix quotes in exception messages
+      2020-03-16 11:56:54 | 43d7a46 | Merge branch '3.4' into 4.4 (tag: v4.4.6)
+      2020-03-16 15:10:54 | d45d73e | Merge branch '4.4' into 5.0 (tag: v5.0.6)
+      2020-03-16 16:12:54 | bfce19d | Merge branch '5.0'
+      2020-03-27 19:56:45 | 9d0368a | Merge branch '4.4' into 5.0
+      2020-05-11 10:51:54 | 7233ac2 | bug #36743 [Yaml] Fix escaped quotes in quoted multi-line string (ossinkine) (tag: v3.4.42, tag: v3.4.41)
+      2020-08-10 10:27:51 | f5f122c | Merge branch '3.4' into 4.4
+      2020-08-10 11:03:57 | 244ba10 | Merge branch '4.4' into 5.1
+      2020-08-11 12:42:46 | 079faef | bug #37744 [Yaml] Fix for #36624; Allow PHP constant as first key in block (jnye)
+      2020-08-13 09:22:32 | c3a7761 | Merge branch '3.4' into 4.4
+      2020-08-13 09:24:11 | 9ac517c | Merge branch '4.4' into 5.1
+      2020-08-17 10:48:54 | 072ad98 | Fix CS
+      2020-08-17 13:01:29 | b18f8ac | Merge branch '4.4' into 5.1
+      2020-08-23 12:22:13 | 2061f4a | Merge branch '3.4' into 4.4
+      2020-08-23 12:22:34 | 726cb33 | Merge branch '4.4' into 5.1
+      2020-08-26 11:30:46 | e2a6952 | Merge branch '3.4' into 4.4 (tag: v4.4.13, tag: v4.4.12)
+      2020-08-26 11:30:57 | a44bd3a | Merge branch '4.4' into 5.1 (tag: v5.1.5, tag: v5.1.4)
+      2020-09-07 08:10:28 | 4a19e98 | Merge branch '4.4' into 5.1
+      2020-09-17 07:53:48 | e53b8b6 | Merge branch '3.4' into 4.4
+      2020-09-18 13:04:33 | a2b5a78 | bug #38228 [Yaml Parser] Fix edge cases when parsing multiple documents (digilist)
+      2020-09-27 06:36:23 | c788596 | Merge branch '3.4' into 4.4 (tag: v4.4.15, tag: v4.4.14)
+      2020-09-27 06:44:28 | e147a68 | Merge branch '4.4' into 5.1 (tag: v5.1.7, tag: v5.1.6)
+      2020-10-14 12:30:35 | f4805c0 | Merge branch '3.4' into 4.4
+      2021-01-01 12:24:35 | dcd7108 | Bump license year
+      2021-01-01 12:25:51 | c096474 | Merge branch '4.4' into 5.1
+      2021-01-01 12:27:20 | fcdb28a | Merge branch '5.2' into 5.x
+      2021-01-01 12:44:44 | 22beebc | bug #39668 [Yaml] do not dump extra trailing newlines for multiline blocks (xabbuh)
+      2021-01-10 11:16:05 | 498ad4e | Improve composer.json descriptions
+      2021-01-10 19:26:00 | 4f26eb0 | Merge branch '4.4' into 5.1
+      2021-01-10 19:26:23 | a55c55c | Merge branch '5.2' into 5.x
+      2021-01-10 19:26:45 | 9bbbc93 | minor #39773 Improve composer.json descriptions (fabpot)
+      2021-01-10 19:29:19 | 0b53be3 | Merge branch '4.4' into 5.1
+      2021-01-10 19:31:27 | 6647256 | Merge branch '5.2' into 5.x
+      2021-01-10 15:29:43 | 471d834 | Use ::class keyword when possible
+      2021-01-11 09:02:33 | f1c4a3c | minor #39775 [WIP] Use ::class keyword when possible (fabpot)
+      2021-01-11 09:06:28 | db17469 | Merge branch '4.4' into 5.1
+      2021-01-11 09:08:00 | 785f8b8 | Merge branch '5.2' into 5.x
+      2021-01-11 11:47:58 | 22640fb | Use ::class keyword when possible
+      2021-01-11 12:50:50 | e49580b | Merge branch '4.4' into 5.1
+      2021-01-11 12:52:33 | ebe1832 | Merge branch '5.2' into 5.x
+      2021-01-11 13:11:08 | 667e2f9 | Use ::class keyword when possible
+      2021-01-11 13:44:47 | 4bee5cf | Merge branch '5.2' into 5.x
+      2021-02-03 07:42:09 | 338cddc | Merge branch '4.4' into 5.2 (tag: v5.2.3)
+      2021-02-03 07:42:38 | 528d523 | Merge branch '5.2' into 5.x
+      2021-03-06 10:59:01 | 298a08d | Merge branch '4.4' into 5.2 (tag: v5.2.5)
+      2021-03-06 11:05:19 | 0887a2c | Merge branch '5.2' into 5.x
+      2021-05-16 16:07:46 | d23115e | Merge branch '4.4' into 5.2 (tag: v5.2.9)
+      2021-05-16 16:08:56 | a1385d6 | Merge branch '5.2' into 5.x (tag: v5.3.0-RC1)
+      2021-07-29 09:20:01 | 4500fe6 | Merge branch '4.4' into 5.3 (tag: v5.3.6)
+      2021-07-29 09:20:44 | 41b6571 | Merge branch '5.3' into 5.4
+      2021-07-29 09:21:19 | 023b79a | Merge branch '5.4' into 6.0
+      2021-09-19 16:34:29 | 09743db | [Yaml] Add 0 to float repr
+      2021-09-20 09:13:37 | 251888d | bug #43088 [Yaml] remove shortcut e for option exclude of Yaml/LintCommand - solve conflict with --env -e (Chris53897)
+      2021-11-14 19:37:20 | cc94e33 | Merge branch '4.4' into 5.3
+      2021-11-14 19:37:37 | 9e6346b | Merge branch '5.3' into 5.4 (tag: v5.4.0-BETA2)
+      2021-11-14 19:37:47 | 640e162 | Merge branch '5.4' into 6.0 (tag: v6.0.0-BETA2)
+      2021-12-07 14:27:08 | d34390f | Remove FQCN type hints on properties (tag: v6.0.1)
+      2022-01-02 12:41:36 | d7827c7 | Bump license year
+      2022-01-02 12:51:59 | 32e33ce | Merge branch '4.4' into 5.3
+      2022-01-02 12:53:40 | 37bcbbb | Merge branch '5.3' into 5.4
+      2022-01-02 12:55:41 | fa3be9d | Merge branch '5.4' into 6.0
+      2022-01-02 12:56:25 | 6e54cff | Merge branch '6.0' into 6.1
+      2022-06-25 10:00:53 | 518ff4c | minor #46767 Use preg_last_error_msg() when possible (nicolas-grekas)
+      2022-06-25 10:13:46 | 150c4cb | feature #46771 [Yaml] Add support for `!php/enum *->value` syntax (nicolas-grekas)
+      2022-07-20 16:55:56 | f41d702 | Fix CS (tag: v6.0.11)
+      2022-07-20 17:45:06 | cc48dd4 | Merge branch '6.0' into 6.1 (tag: v6.1.3)
+      2022-07-20 17:45:30 | 443c826 | Merge branch '6.1' into 6.2
+      2022-10-07 11:02:12 | e65020d | Merge branch '5.4' into 6.0 (tag: v6.0.14)
+      2022-10-07 11:04:03 | 66c6b0c | Merge branch '6.0' into 6.1 (tag: v6.1.6)
+      2022-10-07 11:04:14 | a2eda75 | Merge branch '6.1' into 6.2
+      2022-10-09 11:55:43 | b5fbe4f | feature #47730 Ban DateTime from the codebase (WebMamba) (tag: v6.2.0-BETA1)
+      2023-01-01 11:32:19 | 74f2ca5 | Bump license year to 2023
+      2023-01-01 11:36:10 | b8ee261 | Merge branch '5.4' into 6.0
+      2023-01-01 11:36:55 | 3415e6b | Merge branch '6.0' into 6.1
+      2023-01-01 11:38:09 | ab4d9cb | Merge branch '6.1' into 6.2
+      2023-01-01 11:38:37 | f18e233 | Merge branch '6.2' into 6.3
+      2023-01-10 21:52:35 | 21f313e | Merge branch '5.4' into 6.0
+      2023-01-10 21:53:01 | 468e41d | Merge branch '6.0' into 6.1 (tag: v6.1.11, origin/6.1)
+      2023-01-10 21:53:53 | 2bbfbda | Merge branch '6.1' into 6.2 (tag: v6.2.5)
+      2023-01-24 17:02:24 | 675e51d | Update license years (last time)
+      2023-02-02 10:44:01 | 100be1d | Merge branch '5.4' into 6.2
+      2023-02-02 10:48:03 | f06e75f | Merge branch '6.2' into 6.3
+      2023-02-04 11:36:43 | 864837e | feature #49164 [Yaml] Feature #48920  Allow milliseconds and microseconds in dates (dustinwilson)
+      2023-10-29 02:31:00 | 9758b6c | Merge branch '5.4' into 6.3 (HEAD -> 6.3, origin/HEAD, origin/6.3)
+
+Nicolas Grekas (540):
+      2014-05-12 12:37:25 | 2e257c2 | Lower mbstring dep, remove it for Yaml and CssSelector components (tag: v2.3.16, tag: v2.3.15, tag: v2.3.14)
+      2014-03-27 13:46:24 | 3871bd0 | [Yaml] Cleanups for object maps
+      2014-12-12 19:24:25 | 4a179e0 | Merge branch '2.7'
+      2014-11-20 00:23:28 | 8823b96 | [3.0] Update required PHP to 5.5.9
+      2015-01-03 18:33:07 | 82462a9 | Merge branch '2.5' into 2.6 (tag: v2.6.3, tag: v2.6.2)
+      2015-01-03 18:46:01 | 59180ea | Merge branch '2.6' into 2.7
+      2015-01-03 18:56:00 | 313e8ac | Merge branch '2.7'
+      2015-01-13 17:17:46 | d04b392 | [PhpUnitBridge] new bridge for testing with PHPUnit
+      2015-02-21 16:23:59 | a44bed2 | Merge branch '2.7'
+      2015-02-24 11:06:17 | 9ec0da5 | [2.3] require-dev PHPUnit bridge
+      2015-02-24 14:52:21 | d286fcd | Merge branch '2.3' into 2.6
+      2015-03-12 13:28:44 | 0cd8e72 | Merge branch '2.3' into 2.6 (tag: v2.6.5)
+      2015-03-13 13:36:02 | 06cea54 | Merge branch '2.7'
+      2015-03-13 20:49:40 | 6411b65 | [2.7] add @group legacy
+      2015-04-18 18:02:51 | 7e9e156 | Merge branch '2.3' into 2.6
+      2015-04-18 18:11:06 | b1cb65b | Merge branch '2.6' into 2.7
+      2015-04-24 10:02:53 | 4ededb1 | Merge branch '2.7' into 2.8
+      2015-04-24 10:09:27 | c31c2da | Merge branch '2.8'
+      2015-05-12 18:16:46 | 2396832 | Merge branch '2.7' into 2.8
+      2015-05-12 18:48:43 | ee79a2d | Merge branch '2.8'
+      2015-06-10 18:27:02 | 9808e75 | bug #14900 Silence deprecation warnings by default (reecefowell) (tag: v2.7.1)
+      2015-06-18 15:58:06 | 51a0a87 | Merge branch '2.3' into 2.6
+      2015-06-18 16:03:50 | 69a58e5 | Merge branch '2.6' into 2.7
+      2015-06-18 19:14:27 | a15e132 | Merge branch '2.7' into 2.8
+      2015-06-18 19:25:07 | bc1a510 | Merge branch '2.8'
+      2015-06-18 21:45:22 | 917af7b | [PhpUnitBridge] Enforce @-silencing of deprecation notices according to new policy
+      2015-06-19 18:09:14 | f248a72 | Merge branch '2.7' into 2.8
+      2015-06-30 09:51:58 | c956b2c | Towards 100% HHVM compat (tag: v2.3.31)
+      2015-06-30 19:10:16 | 446353c | Merge branch '2.3' into 2.6 (tag: v2.6.10)
+      2015-07-01 14:25:50 | 4bfbe0e | Merge branch '2.6' into 2.7 (tag: v2.7.2)
+      2015-07-01 23:40:29 | d9a9f9c | Merge branch '2.8'
+      2015-07-28 15:35:05 | 85b490e | [php7] Fix for substr() always returning a string
+      2015-07-28 17:07:07 | 71340e9 | Merge branch '2.3' into 2.7 (tag: v2.7.3)
+      2015-07-29 10:12:56 | 6eef147 | Merge branch '2.7' into 2.8
+      2015-08-01 09:48:35 | 394fc49 | Merge branch '2.8'
+      2015-08-11 10:58:34 | 194f4e0 | Merge branch '2.3' into 2.7
+      2015-10-02 09:55:14 | 24e6c2a | Merge branch '2.3' into 2.7
+      2015-10-02 09:55:39 | b0a34de | Merge branch '2.7' into 2.8
+      2015-10-02 15:08:08 | 4309568 | [3.0] Clean Form, Validator, DowCrawler and some more
+      2015-10-09 19:17:11 | 5ecb7db | [ci] Enable collecting and replaying skipped tests
+      2015-10-08 12:41:54 | 3f5067d | [tests] Use @requires annotation when possible
+      2015-10-10 12:14:14 | b4e41de | minor #16190 [ci] Enable collecting and replaying skipped tests (nicolas-grekas)
+      2015-10-10 12:26:25 | 8914247 | Merge branch '2.3' into 2.7
+      2015-10-10 12:36:22 | cc1284d | Merge branch '2.7' into 2.8
+      2015-10-10 13:22:50 | b4fff5e | Merge branch '2.8'
+      2015-10-11 11:09:32 | 725887b | [PhpUnit] Auto-register SymfonyTestsListener
+      2015-10-11 12:14:55 | ec5cc3c | Merge branch '2.8'
+      2015-10-11 11:09:32 | d843474 | [ci] SymfonyTestsListener is now auto-registered (tag: v2.3.34)
+      2015-10-11 12:38:55 | eca9019 | Merge branch '2.3' into 2.7 (tag: v2.7.6)
+      2015-10-13 19:01:35 | 1a620f7 | Merge branch '2.8'
+      2015-10-14 17:40:43 | 6b316fb | Rely on iconv and symfony/polyfill-*
+      2015-11-09 13:46:27 | 3a3a7ab | Merge branch '2.8'
+      2015-11-10 13:42:06 | 3d9f37b | Remove some more legacy code (tag: v3.0.0-BETA1)
+      2015-11-18 11:19:46 | 6d7a3b7 | Add missing exclusions from phpunit.xml.dist (tag: v2.3.35)
+      2015-11-18 16:41:01 | 4cfcd7a | Merge branch '2.3' into 2.7 (tag: v2.7.7)
+      2015-11-18 16:45:00 | f65177d | Merge branch '2.7' into 2.8
+      2015-11-18 16:48:51 | eab2309 | Merge branch '2.8'
+      2015-11-26 10:02:09 | 6eaa5ce | Merge branch '2.8'
+      2015-12-22 13:25:57 | 6fbc4e2 | Merge branch '2.7' into 2.8
+      2015-12-22 13:39:06 | 2dbeffd | Merge branch '2.8' into 3.0
+      2015-12-22 13:39:31 | e14ec77 | Merge branch '3.0'
+      2015-12-28 16:03:05 | 5642dfd | minor #17086 CS: use nowdoc instead of heredoc (gharlan)
+      2015-12-28 16:11:03 | 50b75b6 | Merge branch '2.3' into 2.7
+      2015-12-28 16:12:56 | cee3fdd | Merge branch '2.7' into 2.8
+      2015-12-28 16:14:56 | f9d5918 | Merge branch '2.8' into 3.0
+      2015-12-28 16:15:29 | 216c272 | Merge branch '3.0'
+      2016-01-06 13:01:25 | 26eb9cb | Merge branch '2.8' into 3.0
+      2016-01-06 13:01:46 | 9b785b0 | Merge branch '3.0'
+      2016-01-13 11:54:41 | b202959 | [Yaml] Fix tests on PHP 7.0.2 (tag: v2.3.37)
+      2016-01-13 13:26:43 | a91e8af | Merge branch '2.3' into 2.7 (tag: v2.7.9)
+      2016-01-13 13:27:03 | 34c8a4b | Merge branch '2.7' into 2.8 (tag: v2.8.2)
+      2016-01-13 13:30:06 | b95b976 | Merge branch '2.8' into 3.0
+      2016-02-02 12:49:18 | 33fd1b2 | Merge branch '2.7' into 2.8
+      2016-02-02 16:44:19 | 3cf0709 | Merge branch '2.8' into 3.0 (tag: v3.0.2)
+      2016-02-04 15:57:09 | 61d3365 | Merge branch '3.0'
+      2016-02-18 11:57:30 | 323c53c | Merge branch '2.3' into 2.7
+      2016-02-18 11:58:48 | a254665 | Merge branch '2.7' into 2.8
+      2016-02-18 12:00:02 | 08cb8f7 | Merge branch '2.8' into 3.0
+      2016-02-18 12:00:40 | d5a450f | Merge branch '3.0'
+      2016-02-23 10:38:51 | fc0ad7a | Fix merge (tag: v2.7.10)
+      2016-02-23 10:41:20 | 2a4ee40 | Merge branch '2.7' into 2.8 (tag: v2.8.3)
+      2016-03-10 17:06:18 | 38aebd1 | [Yaml] Fix tests
+      2016-05-29 12:50:57 | 737c6a2 | Merge branch '3.1'
+      2016-06-06 12:00:08 | 4c2dc51 | Fix merge (tag: v2.7.14)
+      2016-06-06 14:11:27 | 815fabf | Merge branch '2.7' into 2.8 (tag: v2.8.7)
+      2016-06-06 14:33:26 | fd2f945 | Merge branch '2.8' into 3.0 (tag: v3.0.7)
+      2016-06-06 14:34:54 | 56832b4 | Merge branch '3.0' into 3.1
+      2016-06-06 14:53:30 | 3efdbaf | Merge branch '3.1'
+      2016-06-14 13:47:22 | 8c157a6 | Merge branch '2.7' into 2.8
+      2016-06-14 14:04:19 | 18bba0c | Merge branch '2.8' into 3.0
+      2016-06-14 14:18:07 | c5a7e7f | Merge branch '3.0' into 3.1 (tag: v3.1.1)
+      2016-06-14 14:18:32 | 382e85a | Merge branch '3.1'
+      2016-06-16 11:25:06 | 4e6f495 | Merge branch '2.8' into 3.0
+      2016-06-16 11:27:19 | 0855bc8 | Tweak merge
+      2016-06-16 11:27:44 | 7b04f78 | Merge branch '3.0' into 3.1
+      2016-06-16 11:28:45 | ddabada | minor #19067 [3.1] update tests to use the new error assertion helper (xabbuh)
+      2016-06-16 11:32:17 | fd3260e | Merge branch '3.1'
+      2016-06-16 11:33:40 | 90ce58f | Fix merge
+      2016-06-16 11:34:05 | b2449dc | Merge branch '3.0' into 3.1
+      2016-06-16 11:34:19 | c13d694 | Merge branch '3.1'
+      2016-07-01 19:00:00 | 7a7c4d1 | Merge branch '3.0' into 3.1
+      2016-07-01 19:06:07 | b696489 | Merge branch '3.1'
+      2016-07-17 12:06:15 | 0ceab13 | Merge branch '2.7' into 2.8 (tag: v2.8.9)
+      2016-07-17 16:54:30 | 2a9101d | Merge branch '2.8' into 3.0 (tag: v3.0.9, origin/3.0)
+      2016-07-17 17:02:08 | 1819adf | Merge branch '3.0' into 3.1 (tag: v3.1.3)
+      2016-07-17 17:08:33 | cd3288c | Merge branch '3.1'
+      2016-08-07 18:19:41 | 9255a2e | Merge branch '3.1'
+      2016-08-29 11:54:53 | 6e73e8c | Merge branch '3.1'
+      2016-10-20 16:28:37 | a11873c | [PhpUnitBridge] Drop ErrorAssert in favor of @expectedDeprecation
+      2016-10-20 16:28:37 | 7d200b1 | [3.1][PhpUnitBridge] Drop ErrorAssert in favor of @expectedDeprecation
+      2016-10-21 23:59:10 | 396784c | [2.8][PhpUnitBridge] Drop ErrorAssert in favor of @expectedDeprecation (tag: v2.8.13)
+      2016-10-22 00:10:51 | 3d42c56 | Merge branch '3.1'
+      2016-10-24 21:31:12 | 7ff51b0 | [Yaml] Fix 7.1 compat (tag: v3.1.6)
+      2016-10-24 21:44:12 | d2cab32 | Merge branch '3.1' (tag: v3.2.0-BETA1)
+      2016-11-02 16:42:53 | 6e4a258 | [Yaml] Clean some messages + add test case
+      2016-11-03 10:44:55 | cf51568 | minor #20364 CS: apply rules (keradus)
+      2016-11-03 10:52:58 | 58666e4 | Merge branch '2.7' into 2.8
+      2016-11-03 11:04:31 | 9f95e4a | Merge branch '2.8' into 3.1
+      2016-11-03 11:09:47 | b2010d5 | erge branch '3.1'
+      2016-11-19 00:17:59 | f2300ba | Merge branch '3.1' (tag: v3.2.0-RC2, tag: v3.2.0)
+      2016-12-08 18:18:22 | 947cdd0 | Merge branch '3.1' into 3.2
+      2016-12-08 18:31:48 | 7ad8477 | Merge branch '3.2'
+      2017-01-03 16:49:52 | dbe61fe | Merge branch '2.7' into 2.8 (tag: v2.8.16)
+      2017-01-03 16:51:21 | df9f281 | Merge branch '2.8' into 3.1 (tag: v3.1.9)
+      2017-01-03 16:51:32 | 50eadbd | Merge branch '3.1' into 3.2 (tag: v3.2.2)
+      2017-01-03 16:51:44 | 22c2fd4 | Merge branch '3.2'
+      2017-02-18 20:06:33 | ca21067 | Merge branch '2.7' into 2.8
+      2017-02-18 20:28:00 | 7c07f58 | Merge branch '2.8' into 3.2
+      2017-02-18 20:35:19 | dc55881 | Merge branch '3.2'
+      2017-02-20 16:49:17 | e55a8e4 | Merge branch '3.2'
+      2017-02-21 11:33:48 | 707f112 | Merge branch '2.7' into 2.8
+      2017-02-21 12:11:04 | 34c922c | Merge branch '2.8' into 3.2
+      2017-02-21 13:07:34 | eac0024 | Merge branch '3.2'
+      2017-02-21 17:41:00 | 5247d5c | Merge branch '2.8' into 3.2
+      2017-02-21 17:51:50 | 372979f | Merge branch '3.2'
+      2017-03-07 19:19:54 | 841f675 | Merge branch '2.7' into 2.8
+      2017-03-07 19:20:19 | 340d60a | Merge branch '2.8' into 3.2
+      2017-03-07 19:28:52 | e1f5aff | Merge branch '3.2'
+      2017-03-07 19:54:31 | d1abb47 | Merge branch '3.2'
+      2017-03-20 11:46:40 | 8cb74a2 | Merge branch '2.7' into 2.8
+      2017-03-20 12:32:19 | 7772dd9 | Merge branch '2.8' into 3.2
+      2017-03-20 12:41:03 | 596e1fa | [Yaml] CS (tag: v2.7.26)
+      2017-03-20 12:41:44 | 286d848 | Merge branch '2.7' into 2.8 (tag: v2.8.19)
+      2017-03-20 12:45:15 | 62b4cdb | Merge branch '2.8' into 3.2 (tag: v3.2.7)
+      2017-03-20 13:06:58 | eca1dd6 | Merge branch '3.2'
+      2017-03-20 13:10:47 | d3a4b00 | [Yaml] Fix pcre.backtrack_limit reached
+      2017-04-05 10:26:56 | 0b751d9 | [DI/Yaml] Remove `@experimental` flag from "instanceof" and "prototype"
+      2017-04-11 21:34:35 | 7f7cac7 | Merge branch '2.7' into 2.8
+      2017-04-11 21:36:00 | 420de14 | Merge branch '2.8' into 3.2
+      2017-04-11 21:40:10 | 85b765b | Merge branch '3.2'
+      2017-04-11 23:42:49 | 2f557a5 | Fix bad merge
+      2017-04-11 23:43:03 | d9d771a | Merge branch '3.2'
+      2017-04-12 23:43:31 | e389c47 | Merge branch '3.2'
+      2017-05-15 15:04:53 | 924d16e | Merge branch '3.2' (tag: v3.3.0-RC1)
+      2017-05-18 15:56:38 | 3f7aa55 | Merge branch '3.4'
+      2017-05-18 10:23:23 | e1ec1ea | Tweak travis and appveyor for Symfony 4
+      2017-05-24 11:41:50 | af35d97 | [Yaml] Add missing deprecation annotation
+      2017-05-24 12:02:43 | b580550 | [3.4] Allow 4.* deps
+      2017-05-24 14:37:21 | f52d3dc | Merge branch '3.3' into 3.4
+      2017-05-24 14:42:26 | 688ed36 | Merge branch '3.4'
+      2017-05-24 17:31:45 | 0a114ae | Merge branch '3.2' into 3.3
+      2017-05-24 17:44:14 | 7e40fc6 | Merge branch '3.3' into 3.4
+      2017-05-28 13:56:20 | 885db86 | Merge branch '3.2' into 3.3 (tag: v3.3.0)
+      2017-05-28 13:56:43 | 148fc19 | Merge branch '3.3' into 3.4
+      2017-05-28 14:01:50 | 5037d79 | Merge branch '3.4'
+      2017-06-02 12:43:35 | 78a0c5d | Merge branch '2.8' into 3.2 (tag: v3.2.14, tag: v3.2.13, tag: v3.2.12, tag: v3.2.11, tag: v3.2.10, origin/3.2)
+      2017-06-02 12:51:43 | a5ecefd | Merge branch '3.2' into 3.3
+      2017-06-02 12:54:06 | 7684b37 | Merge branch '3.3' into 3.4
+      2017-06-03 01:30:16 | 5f6b55e | Merge branch '3.3' into 3.4
+      2017-06-08 17:28:59 | e3d5c65 | [Yaml] Remove line number in deprecation notices
+      2017-06-12 19:03:21 | 02878ee | Merge branch '3.3' into 3.4
+      2017-06-14 10:34:46 | c58111d | Merge branch '3.3' into 3.4
+      2017-07-26 09:46:38 | 8ccc032 | Merge branch '3.3' into 3.4
+      2017-07-26 09:59:36 | 2d4303b | Merge branch '3.4'
+      2017-07-28 16:02:25 | 1d8c2a9 | Bump minimal PHP version to ^5.5.9|>=7.0.8 (tag: v3.3.9, tag: v3.3.8, tag: v3.3.7)
+      2017-08-03 12:34:20 | 99f52b1 | Merge branch '3.3' into 3.4
+      2017-08-03 12:50:20 | e205e80 | Merge branch '3.4'
+      2017-08-16 19:10:21 | 96b1bcc | feature #23815 [FrameworkBundle][SecurityBundle][TwigBundle][Yaml] remove deprecated code (xabbuh)
+      2017-08-21 11:40:46 | 5a58daa | [Console] Add protected static $defaultName to set the default name of a Command
+      2017-08-25 13:57:40 | 066b3d0 | Merge branch '3.4'
+      2017-09-06 22:16:37 | 5364048 | Merge branch '3.4'
+      2017-09-15 12:59:38 | 40ca98b | Merge branch '2.7' into 2.8
+      2017-09-15 13:08:59 | d0fc816 | Merge branch '2.8' into 3.3
+      2017-09-15 13:12:22 | 870c996 | Merge branch '3.3' into 3.4
+      2017-09-15 13:16:43 | bad7d42 | Merge branch '3.4'
+      2017-09-17 13:10:12 | 2e2015b | CS fixes
+      2017-09-17 13:10:45 | a0e1568 | Merge branch '3.3' into 3.4
+      2017-09-28 17:19:20 | 700f850 | fix merge
+      2017-09-28 18:24:12 | 0ae7958 | feature #22200 [DI] Reference tagged services in config (ro0NL)
+      2017-09-29 12:52:28 | 08c3ef6 | bug #24191 [DependencyInjection] include file and line number in deprecation (xabbuh)
+      2017-10-02 00:00:16 | f0e77ff | Merge branch '2.7' into 2.8
+      2017-10-02 09:42:24 | ca02ef4 | Merge branch '2.8' into 3.3
+      2017-10-02 09:49:52 | 56b7cf3 | Merge branch '3.3' into 3.4
+      2017-10-02 09:59:24 | faa2b59 | Merge branch '3.4'
+      2017-10-05 17:38:30 | 842fb6d | Merge branch '2.7' into 2.8 (tag: v2.8.28)
+      2017-10-05 17:43:42 | 8c7bf1e | Merge branch '2.8' into 3.3 (tag: v3.3.10)
+      2017-10-05 17:46:27 | 70b09b9 | Merge branch '3.3' into 3.4
+      2017-10-05 18:11:25 | eacd3da | Merge branch '3.4'
+      2017-10-09 11:45:52 | de1f807 | Merge branch '3.4'
+      2017-10-09 17:52:13 | e99024f | Merge branch '3.3' into 3.4 (tag: v3.4.0-BETA3, tag: v3.4.0-BETA2, tag: v3.4.0-BETA1)
+      2017-10-09 17:53:01 | 348343c | Merge branch '3.4' (tag: v4.0.0-BETA1)
+      2017-10-19 04:32:22 | f63664a | Remove some visual debt by adding type hints on final methods/classes (tag: v4.0.0-BETA3, tag: v4.0.0-BETA2)
+      2017-10-28 21:51:46 | 88036f6 | Remove useless docblocks (tag: v2.7.38, tag: v2.7.37, tag: v2.7.36)
+      2017-11-05 18:25:56 | d819bf2 | Merge branch '2.7' into 2.8 (tag: v2.8.31, tag: v2.8.30, tag: v2.8.29)
+      2017-10-28 21:15:32 | bb53b87 | Replace more docblocks by type-hints
+      2017-11-10 22:37:45 | 686c7fc | Merge branch '3.4' (tag: v4.0.0-RC2, tag: v4.0.0-RC1, tag: v4.0.0-BETA4)
+      2017-11-29 12:33:18 | 968ef42 | Merge branch '2.7' into 2.8 (tag: v2.8.32)
+      2017-12-04 15:17:59 | 4b67140 | Merge branch '3.3' into 3.4
+      2017-12-04 15:31:58 | 4e53ae9 | Merge branch '3.4' into 4.0
+      2017-12-04 15:32:14 | f1dede9 | Merge branch '4.0'
+      2017-12-04 21:34:52 | 873417c | Merge branch '3.4' into 4.0 (tag: v4.0.1)
+      2017-12-04 21:35:44 | 752a3f5 | Merge branch '4.0'
+      2017-12-08 18:24:53 | be35993 | Merge branch '3.3' into 3.4
+      2017-12-08 18:26:26 | 5009c3e | minor #25402 Remove some unused variables and properties (tgalopin)
+      2017-12-08 18:46:13 | aeb0ee7 | Merge branch '3.4' into 4.0
+      2017-12-08 18:52:55 | 73afed1 | fix merge
+      2017-12-08 18:58:17 | 5748d4f | Merge branch '4.0'
+      2017-12-12 11:41:51 | a5ee52d | Merge branch '3.4' into 4.0 (tag: v4.0.2)
+      2017-12-12 11:59:50 | bf50a3d | Merge branch '4.0'
+      2018-01-02 18:45:22 | 354ba8b | Merge branch '2.7' into 2.8
+      2018-01-02 18:47:19 | 41f9773 | Merge branch '2.8' into 3.3
+      2018-01-02 18:47:31 | 050b4ca | Merge branch '3.3' into 3.4
+      2018-01-02 19:33:53 | 6c0417a | Merge branch '3.4' into 4.0
+      2018-01-02 19:34:13 | 4fb731d | Merge branch '4.0'
+      2018-01-21 22:05:02 | eab73b6 | Merge branch '3.3' into 3.4 (tag: v3.4.4)
+      2018-01-21 22:06:11 | ffc60bd | Merge branch '3.4' into 4.0 (tag: v4.0.4)
+      2018-01-21 22:07:38 | a8906f0 | Merge branch '4.0'
+      2018-02-11 20:17:44 | 70c2b7d | Merge branch '3.4' into 4.0
+      2018-02-11 20:18:00 | b33f2fb | Merge branch '4.0'
+      2018-02-19 19:50:22 | c236211 | Merge branch '3.4' into 4.0
+      2018-02-19 19:51:42 | d17d6c3 | Merge branch '4.0'
+      2018-02-22 14:40:25 | 90fbbce | Merge branch '4.0'
+      2018-04-06 14:01:31 | e2c80e6 | [Yaml] Throw parse error on unfinished inline map (tag: v2.7.46)
+      2018-05-02 01:52:40 | 51356b7 | Merge branch '2.7' into 2.8 (tag: v2.8.43, tag: v2.8.42, tag: v2.8.41, tag: v2.8.40)
+      2018-05-02 01:53:27 | e091086 | Merge branch '2.8' into 3.4
+      2018-05-02 02:00:51 | 849c100 | Merge branch '3.4' into 4.0
+      2018-05-02 02:02:13 | a2e5f1f | Merge branch '4.0'
+      2018-05-30 10:24:25 | 80e4bfa | Revert "feature #26702 Mark ExceptionInterfaces throwable (ostrolucky)" (tag: v4.1.2, tag: v4.1.1, tag: v4.1.0)
+      2018-05-31 13:18:23 | baca290 | Merge branch '4.1'
+      2018-07-26 11:45:46 | 2ed2a51 | Merge branch '2.8' into 3.4
+      2018-07-26 11:51:09 | c4d091d | Merge branch '3.4' into 4.0
+      2018-07-26 11:55:25 | 0aee6d6 | Merge branch '4.0' into 4.1
+      2018-07-26 11:59:12 | fe8de29 | Merge branch '4.1'
+      2018-07-26 12:03:18 | fbf8766 | Alpha-ordering for "use" statements (tag: v2.8.45, tag: v2.8.44)
+      2018-07-26 12:06:28 | 87bd4af | Merge branch '2.8' into 3.4
+      2018-07-26 12:08:35 | 2e50b32 | Merge branch '3.4' into 4.0
+      2018-07-26 12:10:45 | aaf0ebc | Merge branch '4.0' into 4.1
+      2018-07-26 12:13:01 | 2677ebf | Merge branch '4.1'
+      2018-07-26 13:03:52 | dfc2bcb | minor #28025 Use an empty string as default for assertEquals (DavidPrevot)
+      2018-07-26 14:00:39 | 7411d22 | Merge branch '3.4' into 4.0
+      2018-07-26 14:00:49 | a085c7c | Merge branch '4.0' into 4.1
+      2018-07-26 14:01:15 | b8a63a7 | Merge branch '4.1'
+      2018-07-26 14:19:56 | 810af2d | Merge branch '2.8' into 3.4 (tag: v3.4.14)
+      2018-07-26 14:22:46 | 05f66d7 | Merge branch '3.4' into 4.0 (tag: v4.0.15, tag: v4.0.14, origin/4.0)
+      2018-07-26 14:24:31 | 46bc69a | Merge branch '4.0' into 4.1 (tag: v4.1.3)
+      2018-07-26 14:25:51 | 2e09dcb | Merge branch '4.1'
+      2018-08-18 19:52:46 | b832cc2 | Merge branch '3.4' into 4.1 (tag: v4.1.4)
+      2018-08-18 19:57:16 | 6a8916b | Merge branch '4.1'
+      2018-09-02 20:11:59 | 84fa64e | Merge branch '2.8' into 3.4
+      2018-10-02 15:28:39 | 9368e44 | Merge branch '2.8' into 3.4
+      2018-10-02 19:27:16 | 0e16589 | CS fix (tag: v2.8.47)
+      2018-10-02 19:33:53 | 640b6c2 | Merge branch '2.8' into 3.4 (tag: v3.4.18, tag: v3.4.17)
+      2018-10-02 19:33:59 | 367e689 | Merge branch '3.4' into 4.1 (tag: v4.1.7, tag: v4.1.6)
+      2018-10-02 19:36:15 | 7228a3e | Merge branch '4.1' (tag: v4.2.0-BETA1)
+      2018-11-11 22:48:54 | 291e13d | Merge branch '2.8' into 3.4 (tag: v3.4.20, tag: v3.4.19)
+      2018-11-11 22:51:29 | fe87e3b | Merge branch '3.4' into 4.1 (tag: v4.1.9, tag: v4.1.8)
+      2018-11-11 22:51:51 | c41175c | Merge branch '4.1' (tag: v4.2.1, tag: v4.2.0-RC1, tag: v4.2.0-BETA2, tag: v4.2.0)
+      2018-12-13 15:30:33 | 32f16c3 | Merge branch '3.4' into 4.1
+      2018-12-13 15:39:50 | 14ba315 | Merge branch '4.1' into 4.2
+      2018-12-13 15:43:21 | 3a51c82 | Merge branch '4.2'
+      2018-12-19 22:15:57 | dfb3b1e | bug #29639 [Yaml] detect circular references (xabbuh)
+      2018-12-24 12:47:50 | d32010d | Merge branch '4.1' into 4.2
+      2018-12-24 13:03:37 | c6ddd5b | Merge branch '4.2'
+      2019-02-23 18:06:07 | 57f1ce8 | Apply php-cs-fixer rule for array_key_exists() (tag: v3.4.23)
+      2019-02-23 18:17:42 | 761fa56 | Merge branch '3.4' into 4.2 (tag: v4.2.4)
+      2019-02-23 18:22:31 | 2fb3704 | Merge branch '4.2'
+      2019-05-28 18:41:12 | b4d262d | Allow Symfony 5.0
+      2019-05-28 19:26:29 | 6a3b551 | Merge branch '4.4'
+      2019-05-28 16:10:17 | f3d466c | Bump Symfony 5.0 to PHP 7.2
+      2019-05-28 20:17:01 | c4963c6 | Bump deps to ^4.4|^5.0 for Symfony 5.0
+      2019-05-29 11:53:30 | 1ae0b34 | Add back all conflict rules
+      2019-07-24 17:47:26 | 9468fef | Merge branch '3.4' into 4.2 (tag: v4.2.12, tag: v4.2.11, origin/4.2)
+      2019-07-24 17:47:54 | 34d29c2 | Merge branch '4.2' into 4.3 (tag: v4.3.3)
+      2019-07-24 17:49:41 | 77ce7e0 | Merge branch '4.3' into 4.4
+      2019-07-24 17:52:25 | 9d10e25 | Merge branch '4.4'
+      2019-07-31 15:41:55 | 120fe36 | Merge branch '3.4' into 4.3
+      2019-07-31 15:44:11 | c4fb14a | Merge branch '4.3' into 4.4
+      2019-07-31 15:45:18 | ade7d28 | Merge branch '4.4'
+      2019-07-31 22:19:25 | 39c0132 | Make tests support phpunit 8
+      2019-08-01 01:28:44 | c5d6274 | Merge branch '3.4' into 4.3
+      2019-08-01 01:33:28 | e377df5 | Merge branch '4.3' into 4.4
+      2019-08-01 01:36:24 | 3cee70c | Merge branch '4.4'
+      2019-08-01 12:21:10 | 22c4341 | Merge branch '3.4' into 4.3
+      2019-08-01 12:21:25 | 5617e62 | Merge branch '4.3' into 4.4
+      2019-08-01 12:33:55 | ae403e9 | Merge branch '4.4'
+      2019-08-01 14:49:11 | 5b56e36 | Merge branch '4.3' into 4.4
+      2019-08-01 14:53:34 | 1a5df0e | Merge branch '4.4'
+      2019-08-01 15:52:58 | 70d308f | [Yaml] fix test for PHP 7.4
+      2019-08-01 15:54:17 | 94f08e1 | Merge branch '3.4' into 4.3
+      2019-08-01 15:54:25 | d335fb0 | Merge branch '4.3' into 4.4
+      2019-08-01 15:54:36 | 380138f | Merge branch '4.4'
+      2019-08-02 00:14:19 | 8f4ad7e | Merge branch '3.4' into 4.3
+      2019-08-02 00:16:36 | 6812b00 | Merge branch '4.3' into 4.4
+      2019-08-02 00:17:12 | 5f8dc04 | Merge branch '4.4'
+      2019-08-02 14:51:32 | 47b855b | Merge branch '3.4' into 4.3
+      2019-08-02 15:22:55 | 260ee7d | Merge branch '4.3' into 4.4
+      2019-08-02 15:41:59 | bb4ec31 | Merge branch '4.4'
+      2019-08-02 16:23:07 | c90e14e | Adopt `@PHPUnit55Migration:risky` rule of php-cs-fixer
+      2019-08-03 17:00:31 | 3fba26c | Merge branch '3.4' into 4.3
+      2019-08-03 17:00:43 | 33a124c | Merge branch '4.3' into 4.4
+      2019-08-03 17:07:42 | f2c5c88 | Merge branch '4.4'
+      2019-08-04 00:50:52 | 5e7c473 | Merge branch '3.4' into 4.3
+      2019-08-04 00:59:26 | 6ba5369 | Merge branch '4.3' into 4.4
+      2019-08-04 01:02:11 | e47c4e9 | Merge branch '4.4'
+      2019-08-04 01:13:25 | 090881c | bug #32910 [Yaml] PHP-8: Uncaught TypeError: abs() expects parameter 1 to be int or float, string given (Aleksandr Dankovtsev)
+      2019-08-04 01:32:39 | 24f8ccb | Merge branch '3.4' into 4.3
+      2019-08-04 01:33:03 | 915e204 | Merge branch '4.3' into 4.4
+      2019-08-04 01:33:58 | 8e426dd | Merge branch '4.4'
+      2019-08-04 10:03:54 | 5e9cbd0 | Merge branch '4.4'
+      2019-08-05 17:12:50 | 62d7920 | Merge branch '4.4'
+      2019-08-06 10:11:09 | 42a8be3 | Merge branch '3.4' into 4.3
+      2019-08-06 10:11:23 | 5743a65 | Merge branch '4.3' into 4.4
+      2019-08-06 10:16:59 | d103cf7 | Merge branch '4.4'
+      2019-08-08 12:20:29 | 775457d | Merge branch '4.4'
+      2019-08-08 15:07:40 | 5c42497 | Merge branch '4.3' into 4.4
+      2019-08-08 15:08:24 | 667d72c | Merge branch '4.4'
+      2019-08-14 15:26:46 | 3836b11 | Merge branch '3.4' into 4.3
+      2019-08-14 15:37:46 | 5d17fd3 | Merge branch '4.3' into 4.4
+      2019-08-14 15:45:29 | 2ffe97f | Merge branch '4.4'
+      2019-08-20 16:44:39 | 8574112 | Merge branch '3.4' into 4.3
+      2019-08-20 17:44:19 | 5966efd | Merge branch '4.3' into 4.4
+      2019-08-20 17:46:00 | c9483da | Merge branch '4.4'
+      2019-08-20 14:52:38 | f609e5b | Add return types to internal|final|private methods
+      2019-08-20 19:53:57 | d290e0b | Merge branch '4.4'
+      2019-08-21 16:30:43 | dfa2c49 | Add return types to tests and final|internal|private methods
+      2019-08-21 18:37:45 | 4fb7142 | Merge branch '4.4'
+      2019-08-30 15:41:22 | 9973789 | Merge branch '3.4' into 4.3
+      2019-08-30 15:49:06 | 3ef0425 | Merge branch '4.3' into 4.4
+      2019-08-30 15:51:40 | d5aad7d | Merge branch '4.4'
+      2019-09-08 23:44:36 | 59d077a | Merge branch '4.4'
+      2019-09-09 09:40:31 | eafa9b6 | Require exact match when reading from stdin with a dash
+      2019-09-10 19:53:00 | 24075a7 | Merge branch '3.4' into 4.3
+      2019-09-10 19:53:10 | 40ff940 | Merge branch '4.3' into 4.4
+      2019-09-10 20:00:13 | f0a2682 | Merge branch '4.4'
+      2019-09-18 15:09:11 | 2bc5687 | minor #33523 Fix lint commands frozen on empty stdin (chalasr)
+      2019-09-19 19:03:37 | eb1e901 | Merge branch '4.4'
+      2019-09-24 19:05:28 | 04f2179 | Merge branch '4.4'
+      2019-09-27 01:15:24 | 23544ec | Merge branch '4.4'
+      2019-10-07 15:45:39 | 144a5c6 | Merge branch '4.4'
+      2019-10-17 15:23:42 | 8caed6e | Replace STDIN by php://stdin
+      2019-10-18 14:23:15 | 0b17448 | Merge branch '3.4' into 4.3
+      2019-10-18 14:24:32 | b0b5b00 | Merge branch '4.3' into 4.4
+      2019-10-18 17:28:29 | e616c4d | Merge branch '4.4'
+      2019-10-22 20:21:12 | 7a253ae | Merge branch '4.4'
+      2019-10-28 20:07:32 | 7fbd58a | Merge branch '3.4' into 4.3
+      2019-10-28 23:30:34 | b58a531 | Merge branch '4.3' into 4.4
+      2019-10-29 00:51:41 | 77b5e83 | Merge branch '4.4'
+      2019-10-30 16:23:44 | 8b24107 | Merge branch '4.3' into 4.4
+      2019-10-30 16:25:47 | 267f649 | Merge branch '4.4'
+      2019-11-12 17:58:10 | 2b50f04 | Merge branch '4.4' (tag: v5.0.0-RC1, tag: v5.0.0-BETA2, tag: v5.0.0-BETA1)
+      2019-11-18 20:27:11 | 51b6844 | Allow PHP ^7.2.5 (tag: v5.0.1, tag: v5.0.0)
+      2019-11-21 10:02:52 | 1ff992f | Merge branch '5.0'
+      2019-12-07 19:25:26 | 2375571 | Merge branch '3.4' into 4.3
+      2019-12-07 19:27:44 | c286a10 | Merge branch '4.3' into 4.4
+      2019-12-07 19:40:37 | f4b4812 | Merge branch '4.4' into 5.0
+      2019-12-07 19:42:39 | 159e659 | Merge branch '5.0'
+      2019-12-10 11:51:28 | 44b1f27 | bug #34449 [Yaml] Implement multiline string as scalar block for tagged values (natepage)
+      2019-12-10 13:30:59 | 13934d9 | Merge branch '3.4' into 4.3
+      2019-12-10 13:33:21 | a08832b | Merge branch '4.3' into 4.4 (tag: v4.4.2)
+      2019-12-10 14:06:55 | 847661e | Merge branch '4.4' into 5.0 (tag: v5.0.2)
+      2019-12-10 14:07:17 | a79900f | Merge branch '5.0'
+      2020-01-04 15:24:57 | ba65ebe | Merge branch '3.4' into 4.3
+      2020-01-04 16:00:46 | b7883aa | Merge branch '4.3' into 4.4
+      2020-01-04 17:08:26 | 205038a | Merge branch '4.4' into 5.0
+      2020-01-04 17:20:45 | 855f5c7 | Merge branch '5.0'
+      2020-01-21 11:40:24 | 3842b95 | Merge branch '4.4' into 5.0
+      2020-01-21 11:44:52 | 8a48999 | Merge branch '5.0'
+      2020-01-21 14:09:03 | 8e0a954 | bug #35364 [Yaml] Throw on unquoted exclamation mark (fancyweb) (tag: v4.3.11, tag: v4.3.10, origin/4.3)
+      2020-01-21 14:12:16 | cd014e4 | Merge branch '4.3' into 4.4 (tag: v4.4.4, tag: v4.4.3)
+      2020-01-21 14:12:28 | 69b44e3 | Merge branch '4.4' into 5.0 (tag: v5.0.4, tag: v5.0.3)
+      2020-01-21 14:13:09 | c0b02e2 | Merge branch '5.0'
+      2020-02-03 13:45:06 | 94d005c | Merge branch '3.4' into 4.4 (tag: v4.4.5)
+      2020-02-01 14:00:36 | 0c7023a | Leverage trigger_deprecation() from symfony/deprecation-contracts
+      2020-03-11 20:49:34 | 28f08c4 | Merge branch '3.4' into 4.4
+      2020-03-12 20:08:07 | 664b291 | Merge branch '4.4' into 5.0
+      2020-03-12 20:11:13 | 0bd96cb | Merge branch '5.0'
+      2020-03-30 14:41:10 | ef16689 | Merge branch '3.4' into 4.4 (tag: v4.4.7)
+      2020-03-30 14:42:42 | ad5e9c8 | Merge branch '4.4' into 5.0 (tag: v5.0.7)
+      2020-03-30 14:43:41 | 2432896 | Merge branch '5.0'
+      2020-04-06 13:01:14 | e366a2e | [PropertyAccess] fix tests
+      2020-04-06 13:16:26 | 7c77e4e | Merge branch '3.4' into 4.4
+      2020-04-06 13:40:56 | 0d662ec | Merge branch '4.4' into 5.0
+      2020-04-06 13:46:53 | acd1e50 | Merge branch '5.0'
+      2020-04-15 18:59:10 | 1c092c4 | Merge branch '4.4' into 5.0
+      2020-04-15 19:09:08 | ab3bc01 | Merge branch '5.0'
+      2020-04-28 20:55:16 | b385dce | Merge branch '3.4' into 4.4 (tag: v4.4.8)
+      2020-04-28 20:58:55 | 482fb4e | Merge branch '4.4' into 5.0 (tag: v5.0.8)
+      2020-04-28 21:01:52 | 0beceb5 | Merge branch '5.0'
+      2020-05-04 17:02:18 | 1113c68 | Merge branch '3.4' into 4.4
+      2020-05-04 17:05:24 | a17fd43 | Merge branch '4.4' into 5.0
+      2020-05-04 17:13:31 | 24151aa | Merge branch '5.0'
+      2020-05-05 10:39:02 | fb3e343 | Merge branch '3.4' into 4.4
+      2020-05-05 10:39:14 | 2bc165e | Merge branch '4.4' into 5.0
+      2020-05-05 10:46:02 | ef63108 | Merge branch '5.0' (tag: v5.1.0-BETA1)
+      2020-05-16 12:03:35 | 38af7cc | Merge branch '3.4' into 4.4
+      2020-05-16 12:10:03 | 0f18586 | Merge branch '4.4' into 5.0
+      2020-05-16 12:12:54 | 5a87b78 | Merge branch '5.0' (tag: v5.1.0-RC1)
+      2020-05-20 11:37:50 | c2d2cc6 | Use ">=" for the "php" requirement (tag: v4.4.9, tag: v4.4.11, tag: v4.4.10)
+      2020-05-20 20:38:26 | 29b60e8 | Merge branch '4.4' into 5.0 (tag: v5.0.9, tag: v5.0.11, tag: v5.0.10, origin/5.0)
+      2020-05-20 20:43:50 | ea34235 | Merge branch '5.0' into 5.1 (tag: v5.1.3, tag: v5.1.2, tag: v5.1.1, tag: v5.1.0-RC2, tag: v5.1.0)
+      2020-09-02 19:06:40 | c2162b5 | Enable "native_constant_invocation" CS rule
+      2020-09-02 19:08:58 | 4b9c6dc | Merge branch '3.4' into 4.4
+      2020-09-02 19:23:27 | 0a22f3e | Merge branch '4.4' into 5.1
+      2020-09-08 17:19:54 | 700095b | Merge branch '4.4' into 5.1
+      2020-10-06 14:13:36 | afffc8b | Remove "branch-alias", populate "version"
+      2020-10-06 14:41:17 | 427cd70 | Merge branch '3.4' into 4.4
+      2020-10-06 14:49:34 | 2bc68fd | Merge branch '4.4' into 5.1
+      2020-10-06 17:37:11 | f67f57d | Update versions in composer.json
+      2020-10-06 18:45:41 | 613fe78 | Merge branch '3.4' into 4.4
+      2020-10-06 18:48:42 | 22f9ce0 | Merge branch '4.4' into 5.1
+      2020-10-07 15:58:11 | 3fa7e30 | Remove "version" from composer.json files, use "branch-version" instead
+      2020-10-13 15:30:56 | 40aeda7 | Merge branch '3.4' into 4.4
+      2020-10-13 15:35:38 | c52ea66 | Merge branch '4.4' into 5.1
+      2020-10-13 16:20:16 | 482fcb6 | Fix branch-version
+      2020-10-13 16:20:53 | 6113602 | Merge branch '3.4' into 4.4
+      2020-10-13 16:21:37 | 0fd4738 | Merge branch '4.4' into 5.1
+      2020-10-24 13:23:57 | 88289ca | Remove branch-version (keep them for contracts only) (tag: v3.4.47, tag: v3.4.46, origin/3.4)
+      2020-10-24 14:50:19 | 543cb4d | Merge branch '3.4' into 4.4 (tag: v4.4.16)
+      2020-10-24 15:01:57 | f06777b | Merge branch '4.4' into 5.1
+      2020-10-24 15:03:25 | f284e03 | fix merge (tag: v5.2.0-RC1, tag: v5.2.0-BETA3, tag: v5.1.8)
+      2020-12-08 19:59:59 | bbce94f | Apply "visibility_required" CS rule to constants (tag: v4.4.18)
+      2020-12-08 20:02:38 | 290ea5e | Merge branch '4.4' into 5.1 (tag: v5.2.1, tag: v5.1.10)
+      2020-12-08 20:04:48 | d2d600f | Merge branch '5.2' into 5.x
+      2021-01-12 17:25:50 | 5d62c4f | Merge branch '4.4' into 5.1
+      2021-01-12 17:29:08 | 17a2833 | Merge branch '5.2' into 5.x
+      2021-01-15 15:40:32 | 53c6779 | [Console] enable describing commands in ways that make the `list` command lazy
+      2021-01-25 16:59:38 | 0a7db77 | Merge branch '4.4' into 5.1
+      2021-01-25 17:09:21 | 0f20e29 | Merge branch '5.2' into 5.x
+      2021-01-27 13:01:46 | 6bb8b36 | Merge branch '4.4' into 5.1 (tag: v5.2.2, tag: v5.1.11, origin/5.1)
+      2021-01-27 13:19:48 | d8b64db | Merge branch '5.2' into 5.x
+      2021-02-22 18:48:39 | 7d6ae0c | Merge branch '4.4' into 5.2 (tag: v5.2.4)
+      2021-02-23 13:10:15 | 5fb6f09 | Merge branch '5.2' into 5.x
+      2021-04-01 13:42:13 | 7e46b52 | Merge branch '4.4' into 5.2
+      2021-04-01 13:43:52 | e61bcd0 | Merge branch '5.2' into 5.x
+      2021-05-19 16:18:37 | efdac1e | Bump Symfony 6 to PHP 8
+      2021-05-20 15:59:02 | 666c9f0 | Bump symfony/* deps to ^5.4|^6.0
+      2021-05-24 10:57:42 | 14401c2 | [Form] fix support for years outside of the 32b range on x86 arch
+      2021-05-24 13:32:03 | 1b0476c | Merge branch '4.4' into 5.2
+      2021-05-24 13:34:54 | 5559a8c | Merge branch '5.2' into 5.3
+      2021-05-24 13:36:18 | ad4cce9 | Merge branch '5.3' into 5.4
+      2021-05-24 13:36:28 | 0d357b5 | Merge branch '5.4' into 6.0
+      2021-05-26 20:39:37 | 81cdac5 | Fix CS in README files (tag: v4.4.25)
+      2021-05-26 20:40:38 | cd7930d | Merge branch '4.4' into 5.2 (tag: v5.2.10)
+      2021-05-26 20:43:10 | 3bbcf26 | Merge branch '5.2' into 5.3 (tag: v5.3.0)
+      2021-05-26 20:43:50 | 55f55b0 | Merge branch '5.3' into 5.4
+      2021-05-26 20:44:04 | f7e9a51 | Merge branch '5.4' into 6.0
+      2021-05-28 11:33:28 | 3b0ac4d | [Yaml] add types to all arguments
+      2021-05-28 11:40:58 | 7cda211 | [Yaml] Leverage array_is_list()
+      2021-06-02 13:10:31 | 5de2cb2 | Merge branch '5.4' into 6.0
+      2021-06-02 19:09:43 | 326cf2f | Update phpunit.xml.dist files for phpunit >= 9.3
+      2021-06-24 11:07:28 | 9f8fa61 | Merge branch '4.4' into 5.2 (tag: v5.2.11)
+      2021-06-24 11:13:00 | 485c83a | Merge branch '5.2' into 5.3 (tag: v5.3.3)
+      2021-06-24 11:13:23 | 2e59187 | Merge branch '5.3' into 5.4
+      2021-06-24 11:13:46 | 6138b3e | Merge branch '5.4' into 6.0
+      2021-06-29 13:31:08 | 362b342 | Add more types
+      2021-06-30 16:02:00 | 8e3c2dd | CS fixes
+      2021-06-30 16:06:15 | 605aaaa | Merge branch '4.4' into 5.2
+      2021-06-30 16:49:12 | 1674652 | Merge branch '5.2' into 5.3
+      2021-06-30 16:58:03 | 8e4d606 | Merge branch '5.3' into 5.4
+      2021-06-30 17:18:39 | 7c878ab | Merge branch '5.4' into 6.0
+      2021-07-12 12:26:55 | 22486cc | Add return types, round 1
+      2021-07-13 12:59:24 | d5a2222 | bug #42074 Fix ctype_digit deprecation (alexpott)
+      2021-07-13 13:03:28 | d09b3c9 | Merge branch '4.4' into 5.2
+      2021-07-13 13:04:56 | b634e9d | Merge branch '5.2' into 5.3
+      2021-07-13 13:07:36 | 86f6be8 | Merge branch '5.3' into 5.4
+      2021-07-13 13:08:27 | adc73d5 | Merge branch '5.4' into 6.0
+      2021-07-13 14:47:05 | 0e271d5 | [Contracts] add return types and bump to v3
+      2021-07-15 11:28:09 | 726e80e | minor #42118 [Yaml] Add types to private properties (derrabus)
+      2021-07-15 11:28:58 | ed93804 | minor #42119 [Yaml] Remove compat code for MB function overloading (derrabus)
+      2021-07-20 16:07:23 | 0293364 | Add return type unions to private/internal/final/test methods
+      2021-07-21 15:38:00 | 46c4a17 | Merge branch '4.4' into 5.2 (tag: v5.2.12)
+      2021-07-21 15:40:44 | 90909bd | Merge branch '5.2' into 5.3 (tag: v5.3.4)
+      2021-07-21 15:43:48 | 1eb028d | Merge branch '5.3' into 5.4
+      2021-07-21 15:48:45 | e850002 | Merge branch '5.4' into 6.0
+      2021-08-12 17:46:41 | 633ab0f | Add return types - batch 1/n
+      2021-08-12 16:32:19 | 9cb8298 | Cleanup more `@return` annotations
+      2021-08-17 18:35:52 | 5b4568a | Merge branch '5.4' into 6.0
+      2021-09-07 16:39:06 | 53cc3bd | Remove deprecated code paths
+      2021-09-30 17:50:34 | 0cc1b71 | Use #[AsCommand] to describe commands
+      2021-10-05 18:32:15 | b516d90 | Add type to final/internal public/protected properties
+      2021-10-25 18:10:37 | 3857e0c | Merge branch '5.4' into 6.0
+      2021-10-26 19:02:09 | 78ba967 | Merge branch '5.4' into 6.0 (tag: v6.0.0-BETA1)
+      2021-11-28 18:23:54 | dc07a31 | Merge branch '4.4' into 5.3 (tag: v5.3.13)
+      2021-11-28 18:25:38 | 034ccc0 | Merge branch '5.3' into 5.4 (tag: v5.4.0)
+      2021-11-28 18:34:37 | f3064a2 | Merge branch '5.4' into 6.0 (tag: v6.0.0)
+      2021-12-17 00:58:21 | b9eb163 | [5.4] cs fixes (tag: v5.4.2)
+      2021-12-17 01:13:01 | ed602f3 | [6.0] cs fixes (tag: v6.0.2)
+      2021-12-17 01:14:15 | bdd43a0 | Merge branch '6.0' into 6.1
+      2022-01-26 19:05:39 | c441e9d | Merge branch '4.4' into 5.3 (tag: v5.3.14, origin/5.3)
+      2022-01-26 19:28:35 | 3ed802c | Merge branch '5.3' into 5.4
+      2022-01-26 19:32:32 | e80f87d | minor #45085 [Yaml] Improve the deprecation warnings for octal numbers to suggest migrating (stof) (tag: v5.4.3)
+      2022-01-26 20:23:29 | e77f3ea | Merge branch '5.4' into 6.0 (tag: v6.0.3)
+      2022-01-27 13:12:23 | 6e66c5b | Merge branch '6.0' into 6.1
+      2022-02-09 17:00:38 | a07ffe7 | Bump minimum version of PHP to 8.1
+      2022-06-20 14:50:59 | 04e4292 | Merge branch '4.4' into 5.4 (tag: v5.4.10)
+      2022-06-20 14:58:32 | 3b03908 | Merge branch '5.4' into 6.0 (tag: v6.0.10)
+      2022-06-20 15:01:07 | b01c4e7 | Merge branch '6.0' into 6.1 (tag: v6.1.2)
+      2022-06-24 15:33:15 | f8439b7 | Use preg_last_error_msg() when possible
+      2022-06-24 15:56:06 | 5e96a3d | [Yaml] Remove legacy parsing rule
+      2022-06-24 15:29:51 | 03fba3f | [Yaml] Add support for `!php/enum *->value` syntax
+      2022-06-27 16:16:42 | c2b28c1 | CS fixes (tag: v4.4.44)
+      2022-06-27 19:58:25 | 05d4ea5 | Merge branch '4.4' into 5.4 (tag: v5.4.11)
+      2022-06-27 20:10:44 | f866108 | Merge branch '5.4' into 6.0
+      2022-06-27 20:24:16 | f11d812 | Merge branch '6.0' into 6.1
+      2022-06-27 20:24:53 | 6de93a2 | Merge branch '6.1' into 6.2
+      2022-08-02 13:13:15 | 5d30210 | minor #46739 [Yaml] Improve test coverage in DumperTest and ParserTest (donquixote)
+      2022-08-02 18:47:23 | aeccc4d | cs fix (tag: v4.4.45, origin/4.4)
+      2022-08-02 18:49:45 | 7a3aa21 | Merge branch '4.4' into 5.4 (tag: v5.4.12)
+      2022-08-02 19:01:06 | 8c68efb | Merge branch '5.4' into 6.0 (tag: v6.0.12)
+      2022-08-02 19:17:38 | 86ee4d8 | Merge branch '6.0' into 6.1 (tag: v6.1.4)
+      2022-08-02 19:18:05 | 1ceefd2 | Merge branch '6.1' into 6.2
+      2022-09-02 17:55:07 | 2235592 | CS fixes
+      2022-10-03 18:07:37 | e83fe9a | Guard scripts from being run in non-CLI contexts (tag: v5.4.14)
+      2022-11-02 00:49:27 | 438a69f | Use ??= more
+      2022-12-13 12:57:04 | edcdc11 | bug #48331 [Yaml] fix dumping top-level tagged values (xabbuh) (tag: v5.4.17)
+      2022-12-14 18:52:41 | 76c0891 | Merge branch '5.4' into 6.0 (tag: v6.0.17)
+      2022-12-14 19:05:20 | ef4e569 | Merge branch '6.0' into 6.1 (tag: v6.1.9)
+      2022-12-14 19:11:27 | 6ed8243 | Merge branch '6.1' into 6.2 (tag: v6.2.2)
+      2023-01-11 14:56:25 | 8d6fc4d | Merge branch '6.2' into 6.3
+      2023-01-13 12:23:11 | baf5e57 | minor #48793 Leverage arrow function syntax for closure (tigitz)
+      2023-02-06 13:38:33 | 97235cb | Merge branch '5.4' into 6.2
+      2023-02-07 12:49:56 | a5e8304 | Merge branch '6.2' into 6.3
+      2023-02-14 11:44:56 | 8ec38e4 | Merge branch '5.4' into 6.2
+      2023-02-14 11:53:37 | a3fedae | Fix merge
+      2023-02-14 12:04:20 | 17bb6ce | Merge branch '6.2' into 6.3
+      2023-02-14 16:19:26 | 55071ed | [Yaml] Fix parsing sub-second dates on x86
+      2023-02-16 12:57:23 | e8e6a1d | Merge branch '5.4' into 6.2 (tag: v6.2.7)
+      2023-02-21 19:34:40 | 3713e20 | Fix phpdocs in components (tag: v5.4.21)
+      2023-04-28 16:25:36 | 61916f3 | Merge branch '5.4' into 6.2 (tag: v6.2.10, origin/6.2)
+      2023-04-28 16:28:14 | a9a8337 | Merge branch '6.2' into 6.3 (tag: v6.3.0-RC1, tag: v6.3.0-BETA1, tag: v6.3.0)
+
+Christian Flothmann (187):
+      2014-07-26 16:09:47 | d4174c9 | fix some docblocks
+      2014-08-15 16:16:41 | 319624e | [YAML] resolve variables in inlined YAML
+      2014-08-29 15:30:22 | 33dc401 | fix handling of empty sequence items
+      2014-09-03 21:52:14 | 1fb23d4 | improve error when detecting unquoted asterisks
+      2014-08-29 15:31:22 | 5c650ad | properly mask escape sequences in quoted strings
+      2014-11-01 15:21:10 | e8c8971 | improve error message for multiple documents
+      2014-11-01 15:49:09 | 2b0e2ce | don't override internal PHP constants
+      2014-11-17 17:32:09 | 5ea930e | compare version using PHP_VERSION_ID (tag: v2.3.22)
+      2015-01-16 17:59:09 | 88a2dfd | execute cheaper checks before more expensive ones
+      2015-05-01 17:06:45 | 263b44e | link to https://symfony.com where possible (tag: v2.3.30, tag: v2.3.29, tag: v2.3.28)
+      2015-06-09 23:29:28 | d0afbab | [Yaml] remove partial deprecation annotation
+      2015-07-22 09:30:32 | c044d17 | [Yaml] throw a ParseException on invalid data type (tag: v2.6.13, tag: v2.6.12, tag: v2.6.11, origin/2.6)
+      2015-10-29 00:33:57 | d542bb6 | [Yaml] escape backtick in markdown changelog
+      2015-11-03 10:24:46 | 5ff00ea | [Yaml] deprecate unquoted indicator characters (tag: v2.8.0-BETA1)
+      2015-11-24 23:31:58 | a1a044d | [Yaml] sync changelog and upgrade files
+      2015-11-25 15:40:04 | fc96822 | [Yaml] more fixes to changelog and upgrade files
+      2015-11-29 21:05:35 | 385ab31 | [Yaml] look for colon in parsed inline string
+      2015-12-05 13:55:16 | 5f77b9a | [Yaml] do not remove "comments" in scalar blocks
+      2015-12-05 19:57:30 | 8f5afcf | [Yaml] fix indented line handling in folded blocks (tag: v2.3.36)
+      2015-12-31 12:55:37 | 7b5c058 | cast arrays to objects after parsing has finished
+      2015-12-28 17:55:02 | 5547431 | [Yaml] recognize when a block scalar is left
+      2016-01-20 22:11:57 | 031a751 | tag for dumped PHP objects must be a local one
+      2016-01-20 22:11:57 | d5a7902 | tag for dumped PHP objects must be a local one
+      2016-01-20 22:22:01 | 886a29d | [Yaml] deprecate parsing the !!php/object tag
+      2016-01-27 22:42:59 | 05e5fd6 | [Yaml] dump customization option with dumper flags
+      2016-02-05 10:58:37 | 3043d9c | feature #17578 [Yaml] dump customization option with dumper flags (xabbuh)
+      2016-02-08 21:49:14 | f20a2f4 | introduce flags to customize the parser behavior
+      2016-02-09 23:01:34 | a3b577f | [Yaml] fix typos in changelog and upgrade files
+      2016-02-09 22:56:50 | afb873f | dumper flag to enable exceptions on invalid types
+      2016-02-09 22:49:29 | 86cf936 | [Yaml] mark the Inline class as internal
+      2016-02-10 01:58:46 | 7ba6686 | deprecate the Dumper::setIndentation() method
+      2016-02-08 21:04:09 | 871f18d | [Yaml] properly parse lists in object maps
+      2016-02-15 21:17:14 | 20668c7 | [Yaml] always restore the error handler in tests
+      2016-02-16 11:48:00 | 51b0636 | Merge branch '3.0'
+      2016-02-18 00:15:58 | af253bb | [Yaml] fix default timezone to be UTC (tag: v2.3.38)
+      2016-02-15 20:14:40 | 03d3eda | deprecate starting plain scalars with % characters
+      2016-02-18 00:09:28 | 13797a2 | [Yaml] support to parse and dump DateTime objects
+      2016-02-08 20:17:53 | c0de3e6 | [Yaml] add option to dump objects as maps
+      2016-02-20 12:54:12 | 921ba0d | [Yaml] add support for the !!binary tag
+      2016-02-27 12:37:11 | c9821ff | option to dump multi line strings as scalar blocks
+      2016-03-01 23:23:51 | 9e27bd3 | ensure dump indentation to be greather than zero
+      2016-03-24 16:09:50 | e4fbcc6 | fix testing deprecation messages (tag: v2.8.6, tag: v2.8.5)
+      2016-03-24 16:26:59 | d6fa3dd | fix testing deprecation messages
+      2016-03-24 15:13:08 | 9dd47fa | dump non UTF-8 encoded strings as binary data
+      2016-05-14 18:06:20 | 641bbd0 | feature #18486 [Yaml] Allow using _ in some numeric notations (Taluu)
+      2016-05-14 19:19:31 | 87c7053 | [Yaml] deprecate comma separators in floats
+      2016-05-14 18:57:37 | 2790a4f | chomp newlines only at the end of YAML documents
+      2016-05-22 19:02:36 | fdb604a | [Yaml] properly handle unindented collections
+      2016-05-23 12:57:38 | 41280a4 | [Yaml] fix exception contexts
+      2016-05-24 21:14:09 | 34b1e0c | [Yaml] fix falsely triggered deprecation
+      2016-05-27 00:33:50 | eca51b7 | [Yaml] search for colons in strings only (tag: v3.1.0)
+      2016-06-11 00:57:14 | f3c0ae4 | [Yaml] properly count skipped comment lines
+      2016-06-14 15:01:38 | 2cd852f | update tests to use the new error assertion helper
+      2016-06-14 15:01:38 | 95a2e68 | update tests to use the new error assertion helper
+      2016-06-17 17:16:22 | da8e4c0 | parse embedded mappings only if value is a string
+      2016-07-29 00:09:37 | f891dd5 | deprecate missing space after mapping key colon
+      2016-08-05 01:00:11 | f08589c | [Yaml] update changelog and upgrade files
+      2016-08-27 12:58:27 | 4290e55 | [Yaml] improve deprecation message and changelog
+      2016-08-25 09:47:13 | 77d486a | [Yaml] improve changelog and upgrade entries
+      2016-08-27 14:14:18 | bb72480 | [Yaml] sync test and actually triggered message
+      2015-12-05 12:54:40 | 7fbb0df | [Yaml] fix parsing multi-line mapping values
+      2016-11-04 13:57:19 | cc82ea6 | [Yaml] set arguments depending on the PHP version
+      2016-12-03 12:52:31 | da61ca5 | fix the inline level for dumped multi-line strings (tag: v3.1.8)
+      2016-12-10 13:07:06 | a7095af | do not trigger deprecations for valid YAML (tag: v3.2.1)
+      2016-12-28 21:13:31 | d5512e7 | handle empty lines inside unindented collection
+      2016-12-29 14:24:11 | e06c215 | [Yaml] parse multi-line strings
+      2017-01-01 13:31:45 | 425dbc2 | [Yaml] add missing indicator character
+      2017-02-17 13:55:39 | dfe3462 | consistently parse omitted keys as the colon
+      2017-02-17 16:04:52 | 52ff438 | [Yaml] add tests for specific mapping keys
+      2017-02-17 09:51:07 | 67119aa | [Yaml] deprecate parsing mappings without keys
+      2017-02-20 09:42:42 | 0560fc7 | fix DUMP_EMPTY_ARRAY_AS_SEQUENCE flag value
+      2017-01-01 13:29:29 | 1c2132a | parse omitted inlined mapping values as null
+      2017-02-20 09:08:19 | 8a93b80 | deprecate implicit string casting of mapping keys
+      2017-03-07 19:47:02 | 093e416 | [Yaml] dump escape sequences when possible (tag: v3.2.6, tag: v3.2.5)
+      2017-03-20 00:19:14 | 9399377 | [Yaml] deprecate "? " starting unquoted strings
+      2017-04-04 16:06:55 | 2b14928 | report deprecations when linting YAML files
+      2017-04-04 17:26:39 | 49c2554 | don't keep internal state between parser runs
+      2017-04-09 21:13:48 | 1c1117c | Merge branch '2.7' into 2.8
+      2017-04-09 23:04:44 | fc84720 | Merge branch '2.8' into 3.2
+      2017-04-10 09:31:22 | 192c211 | Merge branch '3.2'
+      2017-04-11 10:48:47 | f9bafc4 | [Yaml] release memory after parsing
+      2017-04-11 12:19:47 | 86219ff | fix risky tests
+      2017-04-12 09:19:06 | add8d73 | fail when detecting risky tests
+      2017-04-12 22:06:01 | 4bb699b | add changelog for the DUMP_OBJECT_AS_MAP flag
+      2017-04-12 22:41:43 | 5b8d971 | respect inline level when dumping objects as maps
+      2017-05-21 15:39:29 | a506187 | [Yaml] fix colon without space deprecation
+      2017-05-22 12:14:20 | ee9f650 | [Yaml] fix multiline block handling
+      2017-05-19 10:52:04 | 2a64660 | [Yaml] remove deprecated features
+      2017-05-23 12:43:45 | 6887cbf | [Yaml] parse PHP constants in mapping keys
+      2017-06-24 12:47:31 | 1faeaf2 | Merge branch '3.3' into 3.4
+      2017-06-24 15:58:08 | e7a2b21 | Merge branch '3.4'
+      2017-06-24 16:18:23 | 0e2ccfd | [Yaml] remove deprecated unspecific tag behavior
+      2017-06-24 17:09:41 | d9b345a | [Yaml] deprecate the !str tag
+      2017-06-30 11:50:50 | f46d917 | [Yaml] fix the displayed line number
+      2017-08-04 16:29:48 | 1395ddb | minor #22913 [Yaml] Deprecate tags using colon (GuilhemN)
+      2017-08-04 18:24:51 | 0ff01bc | Merge branch '3.4'
+      2017-08-04 18:42:05 | 5aba7f5 | remove legacy php/const and php/object tag support
+      2017-08-02 10:15:14 | 69139ae | [Yaml] parse inlined tags without values
+      2017-08-07 13:35:57 | 33085f8 | remove deprecated code
+      2017-08-29 23:51:11 | bd9dcff | [Yaml] mark some classes as final
+      2017-08-31 12:19:27 | 27934a0 | Merge branch '3.4'
+      2017-06-26 09:08:08 | da28ae7 | [Yaml] use scalar type hints where possible
+      2017-09-01 09:00:27 | c076a2d | [Yaml] add inline parser context initializer
+      2017-09-19 12:04:34 | eaa08af | [Yaml] support parsing files
+      2017-09-28 13:45:51 | 8903998 | include file and line no in deprecation message
+      2017-09-13 20:40:55 | 602c9b7 | parse merge keys with PARSE_OBJECT_FOR_MAP flag
+      2017-09-28 17:12:58 | 07983c0 | Merge branch '3.4'
+      2017-09-13 21:06:14 | d44c306 | include file and line number in deprecation
+      2017-09-29 14:19:35 | 50c33cf | Merge branch '3.3' into 3.4
+      2017-09-29 14:32:05 | 00425ff | Merge branch '3.4'
+      2017-10-03 18:01:31 | 64ee9d2 | fix refreshing line numbers for the inline parser
+      2017-10-03 18:15:12 | b3680a0 | treat trailing backslashes in multi-line strings
+      2017-10-04 01:12:02 | eb877f1 | [Yaml] parse references on merge keys (tag: v2.7.35)
+      2017-10-06 15:26:09 | dcf3a9d | parse references on merge keys with objects
+      2017-10-06 15:19:42 | e3378cb | [Yaml] initialize inline line numbers
+      2017-11-20 10:47:12 | ad601e4 | substitute aliases in inline mappings (tag: v2.7.39)
+      2017-11-29 15:25:49 | ba8e62c | Merge branch '2.8' into 3.3
+      2017-11-29 16:28:14 | b3d0c9c | Merge branch '3.3' into 3.4 (tag: v3.4.0)
+      2017-11-29 16:42:03 | 7be8741 | Merge branch '3.4' into 4.0 (tag: v4.0.0)
+      2017-11-29 16:47:22 | 4856ec5 | Merge branch '4.0'
+      2017-12-01 13:47:04 | d31d4c9 | do not eagerly filter comment lines
+      2017-12-04 16:06:32 | 3635376 | parse newlines in quoted multiline strings (tag: v3.3.14)
+      2017-12-05 08:42:45 | 7c97fe6 | do not evaluate PHP constant names
+      2017-12-05 13:00:13 | 8c26ed8 | fix some edge cases with indented blocks
+      2017-12-11 18:47:32 | 778b433 | empty lines don't count for indent detection
+      2018-01-20 17:02:12 | 049b49a | trim spaces from unquoted scalar values
+      2018-01-20 18:04:53 | af61597 | don't split lines on carriage returns when dumping (tag: v3.3.18, tag: v3.3.17, tag: v3.3.16, origin/3.3)
+      2018-02-16 12:50:28 | 6af4263 | bug #25787 Yaml parser regression with comments and non-strings (alexpott) (tag: v3.4.6, tag: v3.4.5)
+      2018-04-08 10:53:13 | d20bd2b | Merge branch '2.7' into 2.8 (tag: v2.8.39)
+      2018-04-08 11:21:29 | 033cfa6 | Merge branch '2.8' into 3.4 (tag: v3.4.9)
+      2018-04-08 11:49:08 | 275ad09 | Merge branch '3.4' into 4.0 (tag: v4.0.9)
+      2018-04-08 12:02:26 | abab82a | Merge branch '4.0'
+      2018-08-01 21:31:02 | c6a122d | save preg_match() calls when possible
+      2018-08-10 10:34:36 | c2f4812 | clean up unused code (tag: v3.4.15)
+      2018-12-18 11:15:13 | 463d57b | [Yaml] detect circular references
+      2019-01-01 16:42:07 | 554a59a | update year in license files (tag: v3.4.21)
+      2019-01-03 12:05:57 | dd31d71 | Merge branch '3.4' into 4.1 (tag: v4.1.10)
+      2019-01-03 12:07:35 | d0aa6c0 | Merge branch '4.1' into 4.2 (tag: v4.2.2)
+      2019-01-03 12:16:58 | 6e8c0d1 | Merge branch '4.2'
+      2019-05-31 13:46:22 | e464640 | drop support for mappings in multi-line blocks
+      2019-07-04 23:22:47 | 051d045 | fix inline handling when dumping tagged values (tag: v3.4.30)
+      2019-07-26 16:36:30 | 578af22 | add some missing type declarations
+      2019-07-27 21:05:40 | 71d7207 | add parameter type declarations to private methods
+      2019-08-29 11:14:38 | 717182d | fix dumping not inlined scalar tag values
+      2019-09-09 14:39:48 | 768f817 | don't dump a scalar tag value on its own line (tag: v3.4.32)
+      2019-09-09 14:28:51 | 2d43e0d | properly catch legacy tag syntax usages
+      2019-09-16 08:06:55 | f50e0e2 | Merge branch '4.4'
+      2019-09-20 17:22:14 | baddff9 | hint to the --parse-tags when parsing tags fails
+      2017-12-05 10:15:46 | 424ac8e | fix parsing inline YAML spanning multiple lines
+      2019-12-04 14:33:46 | 1b78a23 | fix parsing negative octal numbers
+      2020-01-13 11:00:59 | aa46bc2 | fix PHP const mapping keys using the inline notation (tag: v3.4.37)
+      2020-03-07 14:56:51 | 8874912 | [Yaml] fix dumping strings containing CRs
+      2020-05-04 19:35:27 | 4af90fd | properly handle empty lines
+      2019-12-04 14:12:45 | 86849af | prevent notice for invalid octal numbers on PHP 7.4
+      2019-12-04 14:12:45 | 13edc5b | support YAML 1.2 octal notation, deprecate YAML 1.1 one
+      2020-08-13 20:28:52 | e06e21e | stop using deprecated PHPUnit APIs
+      2020-08-23 10:58:10 | 968ffcf | account for is_numeric() behavior changes in PHP 8
+      2020-08-26 09:25:12 | 4152e36 | fix more numeric cases changing in PHP 8 (tag: v3.4.44)
+      2020-09-08 14:16:46 | defb343 | Merge branch '3.4' into 4.4
+      2020-09-18 11:50:51 | 50f080d | fix parsing comments not prefixed by a space
+      2020-09-18 16:54:02 | 55f2c00 | Merge branch '3.4' into 4.4
+      2020-09-18 17:27:32 | ab2d6c0 | Merge branch '4.4' into 5.1
+      2020-09-18 18:57:36 | ec3c2ac | [Yaml] simplify the test (tag: v3.4.45)
+      2020-11-14 17:49:24 | 443c622 | remove unreachable code
+      2019-09-24 01:08:17 | b9ce672 | fix lexing nested sequences/mappings
+      2020-11-21 12:37:14 | 1e18203 | Merge branch '4.4' into 5.1
+      2020-11-21 12:41:20 | 1ea2135 | Merge branch '5.2' into 5.x
+      2020-11-17 19:51:58 | 7531361 | fix lexing strings containing escaped quotation characters (tag: v4.4.17)
+      2020-11-30 15:47:21 | 9919460 | fix lexing inline sequences/mappings with trailing whitespaces
+      2020-12-01 17:29:09 | ae13f07 | fix lexing backslashes in single quoted strings
+      2020-12-01 19:22:27 | c4960cd | fix lexing mapping values with trailing whitespaces
+      2020-12-04 11:57:25 | 8fe9e4e | bug #39267 [Yaml] fix lexing backslashes in single quoted strings (xabbuh)
+      2020-09-30 10:20:36 | 2fcf81b | do not dump extra trailing newlines for multiline blocks
+      2021-01-02 18:54:29 | 3fda4df | keep trailing newlines when dumping multi-line strings
+      2021-01-09 15:36:14 | 8e9fcae | quote all dumped unicode spaces
+      2021-01-11 16:44:09 | dd3f776 | a colon followed by spaces exclusively separates mapping keys and values
+      2021-01-21 13:46:59 | b1181c4 | slightly clarify command descriptions
+      2021-04-23 10:45:19 | ef879ba | bug #40514 [Yaml] Allow tabs as separators between tokens (bertramakers)
+      2021-04-23 14:33:54 | 8c5137b | make fabbot happy
+      2021-04-23 15:08:29 | e1515d3 | minor #40924 [Yaml] make fabbot happy (xabbuh)
+      2021-04-23 14:09:20 | 1c2fd24 | expose references detected in inline notation structures (tag: v4.4.22)
+      2021-10-26 11:14:16 | c55bc64 | skip command completion tests with older Symfony Console versions (tag: v5.4.0-BETA1)
+      2021-11-05 16:49:25 | f1dc583 | revert using functions provided by polyfill packages
+      2021-11-13 12:58:14 | 878d63b | don't try to replace references in quoted strings
+      2021-11-18 21:10:16 | 2c309e2 | properly parse quoted strings tagged with !!str (tag: v4.4.34)
+      2022-11-25 18:40:49 | ebd37c7 | parse unquoted digits in tag values as integers (tag: v5.4.16)
+      2022-11-25 18:00:04 | 12402e1 | fix dumping top-level tagged values
+
+Alexander M. Turek (51):
+      2019-08-06 18:03:31 | 0af80ab | Turned return type annotations of private methods into php return types.
+      2019-08-20 00:30:37 | 3dc414b | Fix inconsistent return points. (tag: v3.4.31)
+      2019-08-20 00:30:37 | 5a0b7c3 | Fix inconsistent return points. (tag: v4.3.4)
+      2019-09-30 16:36:09 | e108a60 | Add types to constructors and private/final/internal methods (Batch III)
+      2020-07-13 01:27:19 | e7fa059 | Fix PHPUnit 8.5 deprecations. (tag: v3.4.43)
+      2020-08-08 17:41:28 | 36a366d | Modernized deprecated PHPUnit assertion calls
+      2020-11-16 01:55:04 | 34b513f | Merge branch '4.4' into 5.1 (tag: v5.2.0-RC2)
+      2020-11-28 13:57:20 | bb73619 | Merge branch '4.4' into 5.1 (tag: v5.2.0, tag: v5.1.9)
+      2020-11-28 14:24:57 | 7b2bec8 | Merge branch '5.2' into 5.x
+      2020-11-30 20:05:38 | 0b9c65b | Merge branch '4.4' into 5.1
+      2020-11-30 20:27:11 | e7234c3 | Merge branch '5.2' into 5.x
+      2020-12-01 23:33:29 | 3ebea6b | Merge branch '4.4' into 5.1
+      2020-12-02 11:55:39 | 728ea9a | Merge branch '5.2' into 5.x
+      2020-12-05 13:32:07 | e47a0d2 | Merge branch '4.4' into 5.1
+      2020-12-05 13:59:40 | 7238908 | Merge branch '5.2' into 5.x
+      2020-12-27 02:49:32 | 3181afc | CS: Apply ternary_to_null_coalescing fixer
+      2020-12-27 16:02:18 | d702551 | Merge branch '4.4' into 5.1
+      2020-12-27 16:21:48 | 1016728 | Merge branch '5.2' into 5.x
+      2021-01-01 23:51:20 | 1fe7c75 | Merge branch '4.4' into 5.1
+      2021-01-02 02:50:33 | 9b33583 | Merge branch '5.2' into 5.x
+      2021-01-04 01:00:02 | ac200c1 | Merge branch '4.4' into 5.1
+      2021-01-04 01:10:36 | 861d4af | Merge branch '5.2' into 5.x
+      2021-02-21 22:10:16 | 29e6130 | Switched to non-null defaults in exception constructors (tag: v4.4.20)
+      2021-04-12 01:55:21 | 5cdc184 | Merge branch '4.4' into 5.2
+      2021-04-12 02:07:08 | 8c98ad2 | Merge branch '5.2' into 5.x (tag: v5.3.0-BETA1)
+      2021-04-23 19:56:33 | 6796885 | Merge branch '4.4' into 5.2
+      2021-04-23 19:57:12 | afe64a9 | Merge branch '5.2' into 5.x
+      2021-04-29 23:47:09 | 76546cb | Merge branch '4.4' into 5.2 (tag: v5.2.7)
+      2021-04-29 23:52:27 | 23cdfa5 | Merge branch '5.2' into 5.x
+      2021-05-15 20:17:06 | 8b6d1b9 | Fixed deprecation warnings about passing null as parameter (tag: v4.4.24)
+      2021-05-19 19:46:45 | eb8b14f | Allow Symfony 6
+      2021-05-19 20:58:23 | 7509aa4 | Merge branch '5.4' into 6.0
+      2021-06-05 23:03:01 | eee9793 | Fix incompatible implicit float-to-int conversions
+      2021-06-06 12:50:27 | 29a0064 | Merge branch '4.4' into 5.2
+      2021-06-06 12:51:56 | 71719ab | Merge branch '5.2' into 5.3 (tag: v5.3.2)
+      2021-06-06 12:52:30 | e24ecd6 | Merge branch '5.3' into 5.4
+      2021-06-06 12:52:58 | 3d2b4f1 | Merge branch '5.4' into 6.0
+      2021-07-15 04:04:23 | c64b254 | [Yaml] Add types to private properties
+      2021-07-15 04:10:54 | 44d76be | [Yaml] Remove compat code for MB function overloading
+      2021-06-07 02:15:42 | 2b5f2ae | Leverage str_contains/str_starts_with (tag: v4.4.27)
+      2021-07-27 19:14:06 | 3abcc4d | Remove polyfills from Yaml and Dotenv (tag: v4.4.29)
+      2021-09-21 23:58:13 | a168d2d | Merge branch '5.4' into 6.0
+      2021-11-07 16:29:17 | 6e88d8c | Merge branch '5.4' into 6.0
+      2021-11-20 19:42:42 | 226638a | Merge branch '4.4' into 5.3 (tag: v5.3.11)
+      2021-11-20 19:53:16 | 0baa75b | Merge branch '5.3' into 5.4
+      2021-11-20 20:00:10 | e40ca91 | Merge branch '5.4' into 6.0 (tag: v6.0.0-RC1)
+      2021-11-23 01:12:26 | 4fc8ecf | Allow v3 contracts where possible (tag: v5.4.0-RC1)
+      2022-11-25 21:58:46 | eb85bd1 | Merge branch '5.4' into 6.0 (tag: v6.0.16)
+      2022-11-25 21:59:16 | 20e9985 | Merge branch '6.0' into 6.1 (tag: v6.1.8)
+      2022-11-25 22:00:27 | f2570f2 | Merge branch '6.1' into 6.2 (tag: v6.2.0-RC2, tag: v6.2.0)
+      2022-12-19 11:23:22 | 240ccc2 | feature #48127 [Yaml] Add flag to dump numeric key as string (alamirault)
+
+Thomas Calvet (17):
+      2019-10-24 12:57:16 | 5dca0bd | [Yaml][Parser] Remove the getLastLineNumberBeforeDeprecation() internal unused method
+      2019-10-24 15:44:17 | dab657d | Remove unused local variables in tests (tag: v3.4.36, tag: v3.4.35, tag: v3.4.34, tag: v3.4.33)
+      2019-10-29 21:32:45 | 324cf4b | [4.3] Remove unused local variables (tag: v4.3.9, tag: v4.3.8, tag: v4.3.7, tag: v4.3.6)
+      2019-11-12 17:50:35 | 76de473 | Allow \Throwable $previous everywhere (tag: v4.4.1, tag: v4.4.0-RC1, tag: v4.4.0-BETA2, tag: v4.4.0-BETA1, tag: v4.4.0)
+      2020-01-14 11:16:44 | bc63e15 | [Yaml][Inline] Fail properly on empty object tag and empty const tag (tag: v3.4.38)
+      2020-01-16 17:27:16 | 12df25e | [Yaml] Throw on unquoted exclamation mark
+      2020-01-16 22:30:36 | 3024e3d | [Yaml] Deprecate using the object and const tag without a value
+      2020-04-16 19:48:01 | 5f947e5 | Use ExpectDeprecationTrait
+      2021-05-21 14:44:13 | 23727d8 | [Yaml] Remove deprecated code
+      2021-11-25 15:05:50 | a19f7c4 | Fix redundant type casts (tag: v4.4.36)
+      2021-12-08 16:13:04 | 70c973f | Leverage str_starts_with(), str_ends_with() and str_contains()
+      2022-02-15 18:42:18 | 8bdf056 | Leverage the match expression
+      2022-03-31 19:23:12 | d30f4b1 | Leverage non-capturing catches
+      2022-04-14 11:23:11 | 85d7045 | Minor cleanup (tag: v6.1.0-BETA1)
+      2022-04-15 16:56:01 | 84ce4f9 | Clean skippable tests that are never skipped (tag: v6.1.0-RC1, tag: v6.1.0-BETA2, tag: v6.1.0)
+      2023-02-08 00:57:52 | 20dfa1e | Remove some dead code
+      2023-07-28 18:01:18 | e23292e | Fix symfony/deprecation-contracts require (tag: v6.3.3)
+
+Tobias Schultze (16):
+      2014-06-18 18:18:19 | 0fdc794 | [Yaml] refactoring of merges for performance
+      2014-06-18 19:42:59 | f24ad3a | [Yaml] fix priority of sequence merges according to spec
+      2014-06-18 21:47:01 | fcfc291 | [Yaml] fix overwriting of keys after merged map
+      2014-06-20 23:32:40 | 014038a | Use PSR-4 everywhere instead of PSR-0
+      2015-09-28 03:26:11 | 2755b39 | use try-finally when possible
+      2015-09-28 19:58:12 | ddf8cc1 | remove api tags from code
+      2015-09-29 15:06:14 | 5125ca1 | Merge branch '2.3' into 2.7
+      2015-09-29 15:32:55 | 02ce3ee | Merge branch '2.7' into 2.8
+      2015-09-29 17:08:28 | 9066962 | Merge branch '2.8'
+      2015-10-29 15:12:54 | e332b3e | Merge branch '2.8'
+      2016-01-04 17:49:16 | 8dde76b | Merge branch '2.3' into 2.7
+      2016-01-04 17:50:03 | 219c92c | Merge branch '2.7' into 2.8
+      2016-01-04 17:51:01 | 884a07f | Merge branch '2.8' into 3.0
+      2016-01-04 17:51:32 | e03ca5f | Merge branch '3.0'
+      2020-03-26 00:25:16 | b404374 | add missing gitattributes for phpunit-bridge
+      2021-07-04 20:20:55 | 54262b5 | Leverage str_ends_with
+
+Christophe Coevoet (12):
+      2013-10-11 02:23:27 | a3e81e8 | [Yaml] Fixed the escaping of strings starting with a dash when dumping (tag: v2.2.10)
+      2014-12-30 01:41:34 | 4dcc4f2 | Fix phpdoc and coding standards
+      2015-03-30 10:37:12 | 0027285 | Add parsing of hexadecimal strings for PHP 7
+      2015-12-01 19:13:59 | d21e957 | Reapply the Yaml bugfix of #16745
+      2015-12-05 14:06:38 | 0717f9a | Merge branch '2.3' into 2.7
+      2015-12-05 14:09:21 | d4a7fbb | Merge branch '2.7' into 2.8
+      2015-12-05 14:13:14 | fb16dc9 | Merge branch '2.8' into 3.0
+      2015-12-05 14:13:35 | abdbf5f | Merge branch '3.0'
+      2015-12-05 16:47:06 | aceecdb | minor #16748 [DX][YAML] Improved Deprecation Notices (peterrehm)
+      2017-02-17 14:56:33 | 673f24c | Merge branch '3.2'
+      2018-07-05 14:24:53 | acaaa95 | Enable the fixer enforcing fully-qualified calls for compiler-optimized functions
+      2022-01-20 13:09:37 | ee79e7e | [Yaml] Improve the deprecation warnings for octal numbers to suggest migrating
+
+Robin Chalas (12):
+      2016-06-22 02:06:25 | 91fe65b | Add Yaml LintCommand
+      2016-06-23 22:46:29 | bec0b09 | [Yaml] Avoid using both Input/Output and SymfonyStyle in LintCommand
+      2016-08-29 21:58:41 | 01b75ac | [FrameworkBundle] Fix test scanning the full tmp directory
+      2016-09-15 02:10:05 | 46b44cb | [Yaml] Port of #19922 for 3.2
+      2017-03-22 12:36:03 | 7b3437d | [Yaml] Fix error handling in parser
+      2017-05-22 10:27:42 | 9a5f840 | CS Fixes
+      2017-06-13 23:44:19 | 9b8c71a | [Yaml] Fix linting yaml with constants as keys
+      2017-08-05 17:43:05 | 1cc4766 | Add scalar typehints/return types on final/internal/private code
+      2019-09-09 09:13:16 | 0940ee9 | Fix lint commands frozen on empty stdin
+      2020-01-11 21:51:52 | dc344b7 | fix CS
+      2020-02-03 16:51:17 | a4b613d | Merge branch '4.4' into 5.0 (tag: v5.0.5)
+      2020-02-03 16:51:48 | c62ae33 | Merge branch '5.0'
+
+Alex Pott (8):
+      2014-02-22 18:29:19 | 084bfa4 | Optimise Inline::evaluateScalar() for parsing strings.
+      2014-02-23 14:43:36 | a68fb8d | Avoid unnecessary line indentation calculation.
+      2014-02-24 01:20:36 | 510f3da | Improve performance of getNextEmbedBlock by removing unnecessary preg_match and function calls.
+      2014-09-21 23:22:48 | d865924 | [Yaml] Ensure whole number floats have their data type is persisted.
+      2015-01-12 14:05:05 | 37fd173 | [YAML] Fix one-liners to work with multiple new lines
+      2016-08-04 15:37:15 | 557dd1b | Add Yaml::PARSE_EXCEPTION_ON_DUPLICATE to throw exceptions on duplicates
+      2018-01-14 00:35:11 | 9e642c3 | Yaml parser regression with comments and non-strings
+      2021-07-12 23:04:52 | 099377a | Fix ctype_digit deprecation
+
+Jérémy Derussé (7):
+      2019-08-01 10:31:22 | ec0045b | Fix assertInternalType deprecation in phpunit 9
+      2019-08-01 17:27:42 | a77d5fe | Replace calls to setExpectedException by Pollyfill
+      2019-08-02 01:48:42 | dab2c2e | Fix deprecated phpunit annotation
+      2019-08-02 20:02:27 | a551af1 | Remove use of ForwardCompatTrait
+      2019-08-05 11:06:54 | 2724c44 | Use namespaced Phpunit classes
+      2019-08-06 01:37:40 | 5d61fdb | Use assertStringContainsString when needed
+      2019-08-08 12:17:10 | 4e543ce | Disable phpunit typehint patch on 4.3 branch
+
+Graham Campbell (6):
+      2014-11-30 16:33:44 | 4407ef9 | Docblock fixes
+      2014-12-02 22:42:47 | 12b26e2 | PSR-2 fixes (tag: v2.3.23)
+      2014-12-03 23:18:13 | d95156e | Removed unused imports
+      2014-12-05 23:11:30 | 304fea2 | [2.6] CS Fixes And Removed An Unused Import
+      2014-12-21 20:00:50 | 0fbbefc | [2.3] CS And DocBlock Fixes
+      2014-12-01 00:18:40 | 0004c8e | [3.0] Removed some old hacks
+
+Guilhem Niot (6):
+      2017-03-06 23:37:41 | 55913cb | [Yaml] Fix the tests
+      2017-05-25 12:38:18 | 49c74ed | [Yaml] Deprecate using the non-specific tag
+      2017-05-18 20:45:50 | d623d89 | [Yaml] Support tagged scalars
+      2017-07-23 15:40:01 | ddc2332 | Suggest using quotes instead of Yaml::PARSE_KEYS_AS_STRINGS (tag: v3.3.6)
+      2017-05-29 23:10:45 | 240ab5d | [Yaml] Recommend using quotes instead of PARSE_KEYS_AS_STRINGS
+      2017-05-25 13:16:49 | 38d3087 | [Yaml] Deprecate tags using colon
+
+Maxime Steinhausser (6):
+      2017-03-02 01:34:49 | 902dfb7 | [Yaml] Fix legacy support for omitting mapping key
+      2017-05-21 12:14:40 | 7b4942b | Remove PHP < 7.1.3 code
+      2017-05-25 13:50:57 | 30e42c8 | Remove some more PHP < 7.1.3 code
+      2017-09-17 20:52:58 | 4dff272 | Merge branch '3.4'
+      2017-09-26 09:12:47 | ea18e8d | Merge branch '3.4'
+      2020-11-03 19:31:16 | 0ad59b6 | [Console][Yaml] Linter: add Github annotations format for errors
+
+Oskar Stark (6):
+      2017-09-28 09:42:58 | f3969e7 | removed useless PHPDoc
+      2019-03-25 10:48:46 | 212a27b | use behavior instead of behaviour (tag: v3.4.29, tag: v3.4.28, tag: v3.4.27, tag: v3.4.26, tag: v3.4.25, tag: v3.4.24)
+      2019-07-23 09:41:15 | 2cf32e0 | [Yaml] Add flag to dump NULL as ~
+      2021-01-14 10:17:09 | acc0ba1 | No patch version in CHANGELOG
+      2021-01-22 15:09:22 | 17ed9f1 | Use createMock() and use import instead of FQCN (tag: v4.4.19)
+      2022-12-14 17:42:16 | c8336db | Migrate to `static` data providers using `rector/rector`
+
+Peter Rehm (6):
+      2015-11-29 23:43:36 | f8cb690 | Improved error messages for Yaml Deprecations
+      2016-08-05 12:04:52 | 0040166 | Improved deprecation message
+      2017-02-08 10:24:27 | cb20be7 | Update to PHPUnit namespaces
+      2017-02-20 16:34:33 | 3083165 | Updated PHPUnit namespaces
+      2017-02-20 17:23:32 | 2bf08e8 | Further refactorings to PHPUnit namespaces
+      2017-02-20 17:21:46 | d19eb3e | Refactored other PHPUnit method calls to work with namespaced PHPUnit 6
+
+Dariusz Ruminski (5):
+      2015-03-21 13:51:07 | f14a1bb | CS: Convert double quotes to single quotes
+      2015-03-28 01:06:33 | 48ee9a9 | CS: Unary operators should be placed adjacent to their operands
+      2015-04-16 10:01:03 | 8b200e4 | CS fixes
+      2015-12-01 14:58:24 | 4713bfe | CS: remove unneeded parentheses around control statements
+      2016-10-30 12:34:06 | 02ca717 | CS: apply rules
+
+Hugo Hamon (5):
+      2011-02-13 17:31:54 | 9b3d27c | [Yaml] fix some php documentation
+      2014-12-21 14:39:54 | a07570d | Adds deprecation notices for structures to be removed in 3.0.
+      2014-12-30 02:26:56 | 3431576 | Normalized @deprecated annotations.
+      2014-12-30 12:01:12 | 8e744ef | Fixes more deprecation notices.
+      2015-01-04 15:37:24 | 193d609 | Fixes more deprecation notices as per @stof review.
+
+sun (5):
+      2012-08-05 02:46:53 | a129755 | Added Yaml\Dumper::setIndentation() method to allow a custom indentation level of nested nodes.
+      2012-08-07 11:40:56 | 6b3eb66 | Force the value of Dumper::setIndentation($num) to be of type integer.
+      2012-08-05 02:46:53 | 8a6017b | Added Yaml\Dumper::setIndentation() method to allow a custom indentation level of nested nodes.
+      2014-02-25 04:33:01 | 40cd9e2 | Follow-up to #10312: Fixed minor performance related issues in Yaml\Inline. (tag: v2.3.11)
+      2014-05-15 04:05:21 | b4b09c6 | Fixed YAML Parser does not ignore duplicate keys, violating YAML spec. (tag: v2.5.0-RC1, tag: v2.5.0)
+
+Antoine Lamirault (4):
+      2022-11-09 00:23:16 | 9461dec | [Yaml] Extract duplicate code to private function
+      2022-11-07 00:16:38 | 9d49876 | [Yaml] Add flag to dump numeric key as string
+      2023-01-09 23:33:27 | 71c05db | [Yaml] Minor: Update Inline parse phpdoc (tag: v5.4.19)
+      2023-03-27 21:06:57 | abb0f24 | Harmonize command formats and ensure autocompletion is same
+
+Bernhard Schussek (4):
+      2013-01-05 21:52:40 | edec5d7 | Fixed @expectedException definitions to reference absolute exception paths
+      2014-08-04 14:16:36 | 63b0d36 | Merge branch '2.3' into 2.4
+      2014-08-05 13:00:40 | 5a75366 | Merge branch '2.4' into 2.5 (tag: v2.5.3)
+      2014-08-05 13:07:51 | f910f16 | Merge branch '2.5'
+
+Erin Millard (4):
+      2013-01-18 03:32:48 | 60aac13 | [Yaml] fixed #6770
+      2013-01-18 03:42:00 | 0cbc6f6 | [Yaml] fixed #6773
+      2013-03-23 05:54:33 | 1238ede | [Yaml] fixed bugs with folded scalar parsing (tag: v2.1.9)
+      2013-05-10 04:09:46 | 347a7a0 | Fixed parsing of leading blank lines in folded scalars. Closes #7989. (tag: v2.1.13, tag: v2.1.12, tag: v2.1.11, origin/2.1)
+
+Gabriel Ostrolucký (4):
+      2017-02-25 03:07:57 | 1509643 | [Yaml] Stop replacing NULLs when merging
+      2018-03-29 00:15:25 | 6f9908c | Mark ExceptionInterfaces throwable
+      2018-03-29 00:15:25 | 76f0406 | Mark ExceptionInterfaces throwable
+      2018-11-25 04:27:51 | 006a538 | Optimize perf by replacing call_user_func with dynamic vars
+
+Guilhem N (4):
+      2016-12-07 19:45:19 | 90cba5f | [Yaml] Small optimization of the parser
+      2017-01-07 14:16:59 | ae24423 | [Yaml] Remove an unused argument
+      2017-01-10 20:32:05 | d67fe7e | [Yaml] Remove internal arguments from the api
+      2017-02-06 20:23:56 | 6095f97 | [Yaml] Add tags support
+
+Javier Eguiluz (4):
+      2016-03-03 15:05:42 | 006f8b8 | Updated all the README files
+      2020-03-25 15:02:26 | e701b47 | Fixed some typos (tag: v3.4.39)
+      2021-07-13 11:50:48 | 6d747d1 | [Yaml] Fixed an exception message
+      2023-02-04 18:44:32 | 8151e65 | Misc code improvements and optimizations
+
+Jordi Boggiano (4):
+      2011-02-18 13:37:03 | a310e67 | [Yaml] Fix warning
+      2012-02-25 06:26:20 | 029384a | Add branch-alias for composer
+      2012-02-27 12:59:20 | 2552c64 | Removed version field
+      2012-04-27 14:47:50 | ec5deeb | Update branch aliases
+
+Kévin Dunglas (4):
+      2016-01-13 19:23:43 | 73fe0ef | Merge branch '3.0'
+      2016-07-10 12:48:49 | 4341144 | [Yaml] Fix PHPDoc of the Yaml class (tag: v2.7.16)
+      2017-05-18 09:33:50 | d7906a0 | Allow individual bridges, bundles and components to be used with 4.0
+      2017-12-31 15:09:44 | 55f8cd2 | Update LICENSE year... forever
+
+Nyholm (4):
+      2019-09-05 18:26:55 | a520095 | Adding .gitattributes to remove Tests directory from "dist"
+      2020-10-14 10:00:24 | 9ae9181 | [CI] Silence errors when remove file/dir on test tearDown()
+      2020-10-13 22:49:43 | 22a640f | [CI] Fixed build on AppVeyor
+      2020-11-30 13:43:40 | 8cac71f | Added test for issue 39229
+
+Pascal Borreli (4):
+      2011-02-27 20:30:31 | bfb8c07 | [Yaml] Removed useless else
+      2011-04-23 19:05:44 | 3d86445 | [Phpdoc] Cleaning/fixing
+      2012-12-15 02:27:02 | c91b7a6 | Fixed typos
+      2013-04-21 16:26:17 | 4ae8967 | Fixed PHPDocs
+
+Saro0h (4):
+      2014-12-04 01:04:33 | ce4e2aa | Removed all $that variables
+      2014-12-26 21:16:39 | 4d01ae4 | [Yaml] Removed the ability to parse a file in Yaml::parse()
+      2015-01-01 03:12:43 | 2b58669 | Updated copyright to 2015
+      2015-03-31 00:50:18 | 14559ab | Removed deprecation in YAML component
+
+Vladimir Reznichenko (4):
+      2015-03-06 22:37:36 | fa2d0a2 | [2.3] [Config] [Console] [DependencyInjection] [DomCrawler] [Form] [HttpKernel] [PropertyAccess] [Security] [Translation] [Yaml] static code analysis, code cleanup
+      2015-03-07 22:12:23 | aeb83d1 | Php Inspections (EA Extended) - static code analysis includes: (tag: v2.3.26)
+      2015-06-06 09:25:15 | 4d771d4 | [2.3] Static Code Analysis for Components
+      2017-02-05 20:30:23 | 59cf221 | Static code analysis with Php Inspections (EA Extended)
+
+Wouter de Jong (4):
+      2021-08-15 15:57:53 | ad0c49e | Merge branch '5.4' into 6.0
+      2023-02-13 02:00:27 | a8161cc | Add PHP types to private methods and functions
+      2023-02-13 01:57:18 | c5f3f54 | Add void return types
+      2023-04-23 00:52:28 | 9c50aaf | Add remaining missing return types to safe methods
+
+Yonel Ceruto (4):
+      2018-05-04 02:18:14 | c5010cc | Hide short exception trace by default (tag: v3.4.13, tag: v3.4.12, tag: v3.4.11, tag: v3.4.10)
+      2018-09-19 23:27:12 | 07a9881 | [Yaml] Added support for multiple files or directories in LintCommand
+      2019-09-07 01:34:50 | 6b1d00b | deprecated not passing dash symbol (-) to STDIN commands
+      2019-09-09 05:35:18 | b512bb3 | remove legacy code from STDIN commands
+
+Alexandre Daubois (3):
+      2021-04-04 21:39:25 | bcef62d | [Yaml] Fixed infinite loop when parser goes through an additional and invalid closing tag
+      2021-06-10 10:06:30 | e096ef4 | [DependencyInjection] Add support of PHP enumerations (tag: v4.4.26)
+      2023-02-05 12:12:16 | 7432eef | [Tests] Migrate data providers to static ones
+
+Christian Schmidt (3):
+      2017-01-31 14:07:40 | fb6e139 | [Yaml] Allow dumping empty array as YAML sequence
+      2017-01-31 16:59:05 | a066341 | Dump empty object as mapping
+      2017-02-17 10:57:20 | 99c2623 | Bump version number
+
+Dany Maillard (3):
+      2017-07-04 17:13:47 | 7f4a2ae | Remove !str support
+      2017-07-04 20:44:25 | c5c56c0 | Add some meta infos
+      2018-08-29 00:39:52 | 5baf0f8 | Fix code examples in PHPDoc (tag: v2.8.46)
+
+Gregor Harlan (3):
+      2015-03-31 02:38:19 | 6b7ad66 | CS: Use "self" keyword instead of class name if possible
+      2015-12-21 14:01:57 | b7d1b5c | use nowdoc instead of heredoc
+      2019-10-16 01:08:58 | 471ca8e | [Yaml] Throw exception for tagged invalid inline elements
+
+Lukas Kahwe Smith (3):
+      2011-01-18 18:41:21 | 54d2a55 | fixes else -> } else
+      2011-02-04 21:10:13 | bd14fe1 | some fixes by just "blindly" trying to make phpStorm code analysis happier
+      2011-11-04 00:11:40 | 0bff1fb | added basic README files for all components
+
+Roland Franssen (3):
+      2016-09-25 11:27:07 | 368b973 | fixed expected exception annotations (tag: v3.1.5)
+      2016-11-08 00:01:27 | db8dae7 | fixed phpdoc (tag: v2.7.22, tag: v2.7.21)
+      2017-03-28 13:05:21 | 83acd5a | [DI] Reference tagged services in config
+
+Romain Neutron (3):
+      2012-08-30 23:54:08 | 85d2214 | [Yaml] Normalize exceptions
+      2016-10-28 10:34:49 | fc738a6 | [Yaml] Fix String offset cast error in Inline parser
+      2017-12-20 17:36:51 | 62f83ca | [2.7][DX] Use constant message contextualisation for deprecations
+
+Włodzimierz Gajda (3):
+      2012-04-26 21:34:19 | 7269bf2 | [2.1][Component][Yaml] fix 4022
+      2012-07-04 20:22:41 | aeba5f4 | [Finder] tests for Yaml class
+      2012-11-08 13:51:48 | e1aff68 | Fix export-ignore on Windows (tag: v2.1.4)
+
+Abdellatif Ait boudad (2):
+      2015-01-10 11:51:00 | 7eec0f6 | [Yaml] fixed parse shortcut Key after unindented collection.
+      2015-07-01 17:16:54 | 000e7fc | Merge remote-tracking branch 'origin/2.7' into 2.8
+
+Andreas Hennings (2):
+      2022-06-20 06:03:35 | 07e392f | [Yaml] Enhance coverage in yaml DumperTest. (tag: v4.4.43)
+      2022-06-21 22:37:16 | 0e43701 | [Yaml] Improve test coverage in DumperTest and ParserTest
+
+Christian Raue (2):
+      2014-07-06 13:04:43 | 41b2e66 | added XSD to PHPUnit configuration (tag: v2.3.17)
+      2014-07-07 14:13:42 | ec2c1cd | removed defaults from PHPUnit configuration (tag: v2.3.18)
+
+Igor Wiedler (2):
+      2011-09-24 21:13:35 | e60c0d6 | [composer] add composer.json (tag: v2.0.4)
+      2012-10-04 19:17:57 | c02e2fb | [2.1] Exclude tests from zips via gitattributes
+
+Jakub Zalas (2):
+      2012-05-18 12:37:57 | 5a30c45 | [Yaml] Fixed double quotes escaping in Dumper.
+      2016-01-27 19:53:33 | ae86499 | [YAML] Refine the return value of Yaml::parse()
+
+Jean-François Simon (2):
+      2013-07-11 13:21:24 | dbc00ae | [Yaml] removed wrong comment removal inside a string block (tag: v2.2.5, tag: v2.2.4)
+      2013-08-24 10:35:53 | d135717 | [Yaml] fixed embedded folded string parsing (tag: v2.2.6)
+
+Joschi Kuphal (2):
+      2016-06-11 12:46:35 | 3009360 | [YAML] Fixed parsing problem with nested DateTime lists
+      2016-06-11 12:46:35 | 647e2c7 | [YAML] Fixed parsing problem with nested DateTime lists
+
+Kris Wallsmith (2):
+      2010-10-17 15:45:15 | ffb82ce | Removed all those spaces after @author that were bothering me so…
+      2012-01-11 23:20:58 | dec12c2 | optimized string starts with checks
+
+Lee Rowlands (2):
+      2015-01-06 07:18:13 | a74c466 | Remove duplicate 'require'
+      2015-01-06 12:37:09 | 6f22e4c | Add comment as requested
+
+Maksim Kotlyar (2):
+      2012-01-13 12:48:50 | 7555587 | [Yaml][Parser] throw an exception if not readable
+      2012-01-13 19:48:38 | 5a83afd | [Yaml][Parser] changes according review (tag: v2.0.10)
+
+Martin Hasoň (2):
+      2012-12-06 12:03:32 | 4fdae9f | Removed useless branch alias for dev-master in composer.json (tag: v2.1.6, tag: v2.1.5)
+      2013-07-16 14:31:14 | 3837ccd | Added missing files .gitignore (tag: v2.3.3)
+
+Pavel Volokitin (2):
+      2013-04-12 13:29:40 | 9a0076d | [Yaml] fixed handling an empty value
+      2013-04-12 13:31:52 | 4ef80f5 | [Yaml] improved boolean naming ($notEOF -> !$EOF) (tag: v2.1.10)
+
+Pierre du Plessis (2):
+      2017-11-08 16:32:34 | 0938408 | [YAML] Allow to parse custom tags when linting yaml files (tag: v3.3.13, tag: v3.3.12, tag: v3.3.11)
+      2019-08-05 11:53:31 | c0c6320 | [Yaml] Removed unused $nullAsTilde property
+
+Richard Bradley (2):
+      2017-01-13 19:26:16 | 149dd4e | #20411 fix Yaml parsing for very long quoted strings (tag: v2.7.24)
+      2017-02-03 19:27:28 | 2aeee3b | #20411 fix Yaml parsing for very long quoted strings
+
+Samuel ROZE (2):
+      2018-09-02 20:33:37 | e8614ca | Merge branch '3.4' into 4.1
+      2018-09-02 20:48:09 | 24d8e1b | Merge branch '4.1'
+
+William DURAND (2):
+      2012-04-27 17:21:31 | e8492ce | [Components] Tests/Autoloading fixes
+      2012-08-22 17:48:41 | f18e004 | Add minimum-stability (dev) in each component (tag: v2.1.2, tag: v2.1.1, tag: v2.1.0)
+
+maxime.steinhausser (2):
+      2015-09-21 16:29:45 | bf55724 | [Yaml] Fix improper comments removal inside strings
+      2015-10-02 14:13:24 | 9199327 | [Yaml] Add regression test for comments indents
+
+Aleksandr Dankovtsev (1):
+      2019-08-01 14:16:39 | 59ee8f4 | [Yaml] PHP-8: Uncaught TypeError: abs() expects parameter 1 to be int or float, string given
+
+Alexander (1):
+      2012-12-12 14:51:43 | fb72a16 | [Yaml] Add test showing that dates before 01 Jan 1970 are correctly parsed
+
+Alexander Schwenn (1):
+      2015-01-03 13:27:34 | a52353b | [Yaml] Update README.md (tag: v2.3.24)
+
+Andre Eckardt (1):
+      2020-09-02 23:39:27 | 96800ef | [Yaml Parser] fixed Parser to skip comments when inlining sequences
+
+Anne-Sophie Bachelard (1):
+      2015-10-30 22:48:51 | a718a62 | added the new Composer exclude-from-classmap option
+
+Anto (1):
+      2018-03-03 17:10:27 | a42f9da | [Yaml] Fix regression when trying to parse multiline (tag: v3.4.8, tag: v3.4.7)
+
+Anton Bakai (1):
+      2016-05-24 23:58:05 | 2cb5f36 | Fix for #18843 (tag: v2.3.42, origin/2.3)
+
+Artyum Petrov (1):
+      2023-04-20 18:24:19 | 2e5a87f | Add "composer require..." in all exception messages when needed
+
+Asmir Mustafic (1):
+      2017-04-12 13:55:45 | 4cbc9e2 | Test case for not in-lined map-objects
+
+Baptiste Clavié (1):
+      2016-03-10 14:33:16 | 4faa06e | [Yaml] Allow using _ in some numeric notations
+
+Bert Ramakers (1):
+      2021-03-18 23:21:03 | ea53824 | Fix issue 40507: Tabs as separators between tokens
+
+Brad Treloar (1):
+      2023-04-20 06:26:18 | 4cd2e3e | [Dumper] Trim leading newlines when checking if value begins with a space (tag: v5.4.23)
+
+Brikou CARRE (1):
+      2011-04-15 23:12:02 | e107d5f | removed empty lines/trailing spaces
+
+Christin Gruber (1):
+      2021-08-07 19:53:13 | 2b3a8e5 | [Yaml] Add an --exclude option to lint:yaml command
+
+Christopher Georg (1):
+      2021-09-18 13:14:06 | 4174dee | fix: #43086 remove shortcut e for option exclude of Yaml/LintCommand - solve conflict with --env -e
+
+Claus Due (1):
+      2019-10-21 21:04:17 | 33cd3ef | [YAML] Improve performance of YAML parser
+
+Dane Powell (1):
+      2021-03-05 20:58:50 | 3871c72 | Fix #36973: Command description consistency (tag: v4.4.21)
+
+Dariusz (1):
+      2017-09-15 13:36:22 | 8bf9136 | CS: recover no_break_comment
+
+Dariusz Górecki (1):
+      2013-04-02 13:39:57 | 438f79c | [CS Fix] Consistent coding-style of concatenation operator usage
+
+David Fuhr (1):
+      2014-11-29 14:55:00 | 917c465 | Adjust error_reporting to allow deprecation messages for 3.0
+
+David Prévot (1):
+      2018-07-09 06:43:47 | 4598d79 | Use an empty string as default for assertEquals
+
+David Stone (1):
+      2015-09-14 18:56:48 | a15e1a2 | [Yaml] Allow tabs before comments at the end of a line
+
+Diego Saint Esteben (1):
+      2016-01-02 03:11:38 | 3c26ed0 | Update copyright year
+
+Disquedur (1):
+      2014-10-22 22:27:13 | 99b4ee7 | Remove aligned '=>' and '='
+
+Dominique Bongiraud (1):
+      2011-01-15 16:29:43 | 1d31820 | normalized license messages in PHP files
+
+Drak (1):
+      2012-10-19 20:43:59 | d689441 | Nsdocblocks
+
+Dustin Wilson (1):
+      2023-01-31 07:23:35 | eaa9afa | [Yaml] Feature #48920  Allow milliseconds and microseconds in dates
+
+Eddie Jaoude (1):
+      2013-02-21 13:16:13 | befe12a | Added unit tests to Dumper
+
+Ener-Getick (1):
+      2016-08-31 16:10:08 | 1a9d264 | [Yaml] Remove legacy code (tag: v2.7.20, tag: v2.7.19, tag: v2.7.18, tag: v2.7.17)
+
+Filippo Tessarotto (1):
+      2012-09-28 11:34:16 | f965c71 | Optimize autoload prefix in composer.json
+
+Florin Patan (1):
+      2012-12-16 16:02:54 | 365b4df | Fixed most of the docblocks/unused namespaces
+
+Fran Moreno (1):
+      2021-05-01 02:51:39 | 505f470 | Remove spaces between arguments (tag: v5.3.0-BETA2)
+
+François-Xavier de Guillebon (1):
+      2022-08-26 17:19:22 | 2ef9166 | Replace get_class() calls by ::class
+
+Gerrit Drost (1):
+      2015-06-01 19:24:07 | 54c88f3 | Issue #14815
+
+Gert de Pagter (1):
+      2018-05-01 21:24:18 | 5bbd7e6 | Use symfony/polyfill-ctype (tag: v2.7.51, tag: v2.7.50, tag: v2.7.49, tag: v2.7.48, tag: v2.7.47, origin/2.7)
+
+Gocha Ossinkine (1):
+      2020-05-07 20:31:15 | f45861c | [Yaml] Fix escaped quotes in quoted multi-line string
+
+Gordon Franke (1):
+      2013-03-05 12:51:02 | 783c78d | remove dead code in yaml component
+
+Grégoire Paris (1):
+      2018-11-11 14:11:22 | 02c1859 | Bump phpunit XSD version to 5.2 (tag: v2.8.52, tag: v2.8.50, tag: v2.8.49, tag: v2.8.48, origin/2.8)
+
+Grégoire Pineau (1):
+      2022-08-25 17:59:21 | b01d384 | [CS] Remove @inheritdoc PHPDoc
+
+Hamza Makraz (1):
+      2021-10-23 20:50:37 | ac32825 | Add suggestions for the option 'format' of lints commands: twig, yaml and xliff
+
+Harm van Tilborg (1):
+      2014-08-19 16:37:53 | 8f55e1a | Added fixture to test parsing of hash keys ending with a space and #
+
+Jan Rosier (1):
+      2020-01-01 14:03:25 | 91f7f20 | Update year in license files
+
+Jan Schädlich (1):
+      2019-11-13 00:43:16 | ca79349 | [Yaml] Introduce yaml-lint binary
+
+Jeremy Mikola (1):
+      2011-07-14 00:58:57 | 53532d0 | [Yaml] Wrap numeric strings in quotes when dumping (tag: v2.0.0)
+
+Jordan Samouh (1):
+      2017-03-29 13:18:37 | bd17d50 | [Component] [Yaml] [Parser] :  can parse with trailing space as 2.8
+
+Joris de Wit (1):
+      2011-09-23 01:48:21 | cc7ccbd | change nested collection indentation from 2 to 4
+
+Jose Gonzalez (1):
+      2015-09-12 18:58:59 | c5bf124 | [Yaml] Fix the parsing of float keys (tag: v2.3.33)
+
+Joshua Nye (1):
+      2020-08-05 23:33:59 | 12473fe | [Yaml] Fix for #36624; Allow PHP constant as first key in block
+
+Jules Pietri (1):
+      2016-04-23 08:47:09 | b2c4f0f | [Yaml] added support for parsing PHP constants
+
+Julien Falque (1):
+      2020-09-07 21:13:13 | b7d9b4a | Prevent parsing invalid octal digits as octal numbers
+
+Julius Beckmann (1):
+      2014-11-29 16:06:55 | db39f8d | Add a deprecation note about Yaml::parse() file support #12701
+
+Jérôme Tamarelle (1):
+      2022-11-13 01:33:06 | d3cf343 | [Yaml] Restore deprecated php/const: syntax in YAML key (tag: v6.2.0-RC1, tag: v6.2.0-BETA3)
+
+Jörn Lang (1):
+      2018-12-11 16:45:34 | fac7c48 | [Yaml] ensures that the mb_internal_encoding is reset to its initial value
+
+Konstantin.Myakshin (1):
+      2016-01-25 20:00:36 | 965ea10 | Static code analysis
+
+Laurent Bassin (1):
+      2018-09-20 17:39:16 | 61973ec | [Yaml] Skip parser test with root user (tag: v3.4.16)
+
+Laurent Ghirardotti (1):
+      2014-09-26 14:51:50 | 34687c6 | [Doc] Use Markdown syntax highlighting (tag: v2.3.21)
+
+Lenar Lõhmus (1):
+      2011-03-03 14:17:34 | 501ccbc | Check if config/template file is actually readable before further processing
+
+LoginovIlya (1):
+      2021-01-31 18:20:26 | 0a04eb0 | [yaml] Delelte unused comparison operation
+
+Luis Cordova (1):
+      2014-01-07 02:25:20 | d6ce55d | update year on licenses (tag: v2.3.10)
+
+Luis Pabon (1):
+      2019-08-01 13:16:35 | e4f40d7 | Ensure signatures for setUp|tearDown|setUpAfterClass|tearDownAfterClass methods in tests are compatible with phpunit 8.2
+
+Markus Fasselt (1):
+      2020-09-18 11:16:56 | c6d162b | [Yaml Parser] Fix edge cases when parsing multiple documents
+
+Markus Lanthaler (1):
+      2012-04-05 17:34:44 | a4d4995 | [Yaml] fixed phpdoc (closes symfony/Yaml#3)
+
+Martin Hujer (1):
+      2015-11-29 10:43:05 | 9b86f8b | [Yaml] minor CS cleaning
+
+Martin Schuhfuss (1):
+      2011-05-13 00:02:56 | 8c5992e | [Yaml] added exceptions when non-utf8 encoding is detected
+
+Mathieu Rochette (1):
+      2015-07-08 18:38:36 | 2c3e174 | [Yaml] Nested merge keys
+
+Matthew Lewinski (1):
+      2011-03-06 00:39:48 | 8865226 | [Yaml] Improved support for double quoted values.
+
+Michał Strzelecki (1):
+      2014-07-24 12:48:45 | 40dffc7 | added ability for substitute aliases when mapping in YAML is on single line
+
+Nikita Konstantinov (1):
+      2013-08-31 03:32:21 | 991da8a | [Yaml] Fixed filename in the ParseException message
+
+Noah Heck (1):
+      2016-11-17 18:00:37 | 9da3753 | [YAML] Fix processing timestamp with timezone (tag: v3.1.7)
+
+Olivier (1):
+      2013-08-22 10:58:22 | 29b78f7 | [Yaml] Fix comment containing a colon on a scalar line being parsed as a hash.
+
+Ostrzyciel (1):
+      2021-06-19 19:42:24 | bb8972d | [YAML] Double escape strings with single quote marks
+
+Paráda József (1):
+      2016-02-09 02:53:32 | 23d85dd | [Yaml] Fix wrong line number when comments are inserted in the middle of a block.
+
+Paul Matthews (1):
+      2012-04-20 19:15:12 | ac5634a | Fixed quoting issues with Yaml Inline Parser
+
+Peter Thompson (1):
+      2015-01-05 13:24:54 | 6263ee4 | [Yaml] Improve YAML boolean escaping
+
+Reedy (1):
+      2019-10-12 03:27:05 | a3e84ba | Add .gitignore to .gitattributes
+
+Remi Collet (1):
+      2016-07-01 09:55:04 | b57a8d1 | skip test with current phpunit bridge
+
+Richard van Laak (1):
+      2017-06-02 11:44:49 | bc6329b | [Yaml] Clarify "incompatible key casting" deprecation message
+
+Roman Martinuk (1):
+      2021-03-17 18:58:33 | 416d6c0 | fixed parser
+
+Ryan Weaver (1):
+      2011-01-21 04:39:28 | c2d1ebf | [Standards] Changing many instances of "boolean" to "Boolean".
+
+Rémi Blaise (1):
+      2015-04-19 19:34:12 | 6489aed | Add $objectForMap as argument of Yaml::parse()
+
+Shaharia Azam (1):
+      2019-12-21 01:13:14 | ef67314 | Update links to documentation
+
+Simon Berger (1):
+      2021-01-25 01:22:56 | a170990 | Changed private static array-properties to const
+
+Soufian EZ ZANTAR (1):
+      2019-07-27 01:20:27 | 1a0bae0 | fix(yml): fix comment in milti line value
+
+SpacePossum (1):
+      2017-09-07 12:04:22 | 4cffdcf | [CS][2.7] yoda_style, no_unneeded_curly_braces, no_unneeded_final_method, semicolon_after_instruction
+
+Teoh Han Hui (1):
+      2015-08-07 08:28:03 | 1596d1d | [Yaml] Improve newline handling in folded scalar blocks
+
+Thomas Counsell (1):
+      2018-02-06 19:18:24 | f44c40e | [YAML] Issue #26065: leading spaces in YAML multi-line string literals
+
+Tim Nagel (1):
+      2012-06-13 02:07:25 | fada541 | Added failing YAML inline string to tests
+
+Titouan Galopin (1):
+      2017-12-08 17:48:07 | 08b69a6 | Remove some unused variables and properties
+
+Tom Klingenberg (1):
+      2020-09-17 02:48:05 | e6f16d8 | remove superfluous cast
+
+Tyson Andre (1):
+      2017-04-17 06:24:02 | b8e3f3b | Fix minor phpdoc mismatches with the code(detected by phan) (tag: v2.7.28, tag: v2.7.27)
+
+Veres Lajos (1):
+      2015-08-09 02:21:10 | 162a886 | typofix - https://github.com/vlajos/misspell_fixer (tag: v2.3.32)
+
+Victor Berchet (1):
+      2012-03-30 15:49:28 | 365389f | [PhpUnit] Fix the path to the boostrap files in the components
+
+Wouter Diesveld (1):
+      2020-05-04 12:46:19 | b5b70b9 | [Yaml] fix parse error when unindented collections contain a comment
+
+Wouter J (1):
+      2014-12-09 20:32:32 | b9c19ce | Fixed deprecation version
+
+WouterJ (1):
+      2015-12-20 14:25:49 | 79d7494 | Also transform inline mappings to objects
+
+Wybren Koelmans (1):
+      2017-06-29 23:55:41 | 90ab944 | [Yaml][Twig][Lint] Added line numbers to JSON output.
+
+Xavier Perez (1):
+      2011-02-07 15:57:27 | 90c1f5e | [Yaml] Added PHPDoc on getTimestampRegex()
+
+Yassine Guedidi (1):
+      2023-04-02 05:08:55 | e2bacb4 | Apply operator_linebreak PHP-CS-Fixer rule
+
+Yuri Karaban (1):
+      2021-08-21 13:32:00 | 4cbad53 | [Yaml] Use more concise float representation in dump
+
+Zachary Tong (1):
+      2014-01-23 20:32:31 | 154fb8f | [Yaml] Added support for object maps
+
+bronze1man (1):
+      2013-09-18 16:41:53 | 83932db | Fix some annotates
+
+fh-github@fholzhauer.de (1):
+      2013-08-26 22:42:20 | ec9e962 | fixes fabpots comment at yaml pr#6
+
+guiguiboy (1):
+      2018-07-08 17:43:43 | 9744e59 | Added deprecation notice when mapping keys are found in multi-line blocks
+
+javaDeveloperKid (1):
+      2023-10-27 21:30:51 | c6980e8 | Fix passing null to trim() (tag: v5.4.30, origin/5.4)
+
+mamazu (1):
+      2022-01-24 01:00:12 | d7f637c | Making the parser stateless (tag: v4.4.37)
+
+marc.weistroff (1):
+      2012-02-22 13:08:30 | 3e0a191 | Updated LICENSE files copyright (tag: v2.0.13, tag: v2.0.12)
+
+matheo (1):
+      2022-09-29 16:17:42 | 75e5ec8 | Ban DateTime from the codebase
+
+meyerbaptiste (1):
+      2017-06-15 15:58:50 | 1f93a8d | [Yaml] Fix typo: PARSE_KEYS_AS_STRING -> PARSE_KEYS_AS_STRINGS (tag: v3.3.5, tag: v3.3.4, tag: v3.3.3)
+
+natepage (1):
+      2019-11-19 12:02:51 | 2d6c344 | [Yaml] Implement multiline string as scalar block for tagged values
+
+pthompson (1):
+      2015-01-16 16:12:56 | 0438de7 | Inline private 'is quoting required' methods in Escaper
+
+reecefowell (1):
+      2015-06-07 09:33:05 | ab70351 | Silence invasive deprecation warnings, opt-in for warnings
+
+sarah khalil (1):
+      2014-12-18 22:00:19 | 2e8eb8e | [Tests] Silenced all deprecations in tests for 2.3
+
+sdkawata (1):
+      2020-04-24 13:16:04 | 8fef49a | [YAML] escape DEL(\x7f) (tag: v3.4.40)
+
+soyuka (1):
+      2020-04-09 20:51:19 | 8a65d0f | [PhpUnitBridge] add PolyfillTestCaseTrait::expectExceptionMessageMatches to provide FC with recent phpunit versions
+
+tigitz (1):
+      2023-01-01 21:45:34 | 9383748 | Leverage arrow function syntax for closure
+
+victoria (1):
+      2015-01-08 18:45:16 | e814885 | [Yaml] Fixed #10597: Improved Yaml directive parsing
+
