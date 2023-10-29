@@ -1,39 +1,41 @@
 {
-    "name": "symfony/yaml",
+    "name": "phacman/php-yaml",
     "type": "library",
-    "description": "Loads and dumps YAML files",
-    "keywords": [],
-    "homepage": "https://symfony.com",
+    "description": "Compact version: Loads and dumps YAML files",
+    "keywords": ["php", "yaml", "compact"],
+    "homepage": "https://github.com/symfony/yaml",
     "license": "MIT",
     "authors": [
         {
             "name": "Fabien Potencier",
-            "email": "fabien@symfony.com"
+            "email": "fabien@symfony.com",
+            "role": "Author"
         },
         {
-            "name": "Symfony Community",
-            "homepage": "https://symfony.com/contributors"
+            "name": "Pavel Vasin",
+            "email": "phacman@yandex.ru",
+            "role": "Developer"
         }
     ],
+    "scripts": {
+        "test": "phpunit",
+        "format-code": "php-cs-fixer fix --allow-risky=yes"
+    },
     "require": {
-        "php": ">=8.1",
-        "symfony/deprecation-contracts": "^2.5|^3",
-        "symfony/polyfill-ctype": "^1.8"
+        "php": ">=8.1"
     },
     "require-dev": {
-        "symfony/console": "^5.4|^6.0"
-    },
-    "conflict": {
-        "symfony/console": "<5.4"
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3"
     },
     "autoload": {
-        "psr-4": { "Symfony\\Component\\Yaml\\": "" },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
+        "psr-4": {
+            "PhacMan\\Yaml\\": "src/"
+        }
     },
-    "bin": [
-        "Resources/bin/yaml-lint"
-    ],
-    "minimum-stability": "dev"
+    "autoload-dev": {
+        "psr-4": {
+            "PhacMan\\Yaml\\Tests\\": "tests/"
+        }
+    }
 }

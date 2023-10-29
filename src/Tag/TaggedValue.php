@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml\Tag;
+namespace PhacMan\Yaml\Tag;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
@@ -26,12 +26,12 @@ final class TaggedValue
         $this->value = $value;
     }
 
-    public function getTag(): string
+    public function getTag() : string
     {
         return $this->tag;
     }
 
-    public function getValue(): mixed
+    public function getValue() : mixed
     {
         return $this->value;
     }

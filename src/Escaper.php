@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml;
+namespace PhacMan\Yaml;
+
+use function in_array;
 
 /**
  * Escaper encapsulates escaping rules for single and double-quoted
@@ -50,9 +52,9 @@ class Escaper
      *
      * @param string $value A PHP value
      */
-    public static function requiresDoubleQuoting(string $value): bool
+    public static function requiresDoubleQuoting(string $value) : bool
     {
-        return 0 < preg_match('/'.self::REGEX_CHARACTER_TO_ESCAPE.'/u', $value);
+        return 0 < preg_match('/' . self::REGEX_CHARACTER_TO_ESCAPE . '/u', $value);
     }
 
     /**
@@ -60,7 +62,7 @@ class Escaper
      *
      * @param string $value A PHP value
      */
-    public static function escapeWithDoubleQuotes(string $value): string
+    public static function escapeWithDoubleQuotes(string $value) : string
     {
         return sprintf('"%s"', str_replace(self::ESCAPEES, self::ESCAPED, $value));
     }
@@ -70,11 +72,11 @@ class Escaper
      *
      * @param string $value A PHP value
      */
-    public static function requiresSingleQuoting(string $value): bool
+    public static function requiresSingleQuoting(string $value) : bool
     {
         // Determines if a PHP value is entirely composed of a value that would
         // require single quoting in YAML.
-        if (\in_array(strtolower($value), ['null', '~', 'true', 'false', 'y', 'n', 'yes', 'no', 'on', 'off'])) {
+        if (in_array(strtolower($value), ['null', '~', 'true', 'false', 'y', 'n', 'yes', 'no', 'on', 'off'])) {
             return true;
         }
 
@@ -88,7 +90,7 @@ class Escaper
      *
      * @param string $value A PHP value
      */
-    public static function escapeWithSingleQuotes(string $value): string
+    public static function escapeWithSingleQuotes(string $value) : string
     {
         return sprintf("'%s'", str_replace('\'', '\'\'', $value));
     }

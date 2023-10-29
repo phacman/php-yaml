@@ -9,23 +9,27 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml\Tests;
+namespace PhacMan\Yaml\Tests;
 
+use ArrayObject;
+use DateTimeImmutable;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Dumper;
-use Symfony\Component\Yaml\Exception\DumpException;
-use Symfony\Component\Yaml\Exception\ParseException;
-use Symfony\Component\Yaml\Parser;
-use Symfony\Component\Yaml\Tag\TaggedValue;
-use Symfony\Component\Yaml\Yaml;
+use PhacMan\Yaml\Dumper;
+use PhacMan\Yaml\Exception\DumpException;
+use PhacMan\Yaml\Exception\ParseException;
+use PhacMan\Yaml\Parser;
+use PhacMan\Yaml\Tag\TaggedValue;
+use PhacMan\Yaml\Yaml;
+use stdClass;
 
 class DumperTest extends TestCase
 {
-    protected $parser;
-    protected $dumper;
-    protected $path;
+    protected ?Parser $parser;
+    protected ?Dumper $dumper;
+    protected ?string $path;
 
-    protected $array = [
+    protected ?array $array = [
         '' => 'bar',
         'foo' => '#bar',
         'foo\'bar' => [],
@@ -200,7 +204,7 @@ EOF;
     {
         $dump = $this->dumper->dump(['foo' => new A(), 'bar' => 1], 0, 0, Yaml::DUMP_OBJECT);
 
-        $this->assertSame('{ foo: !php/object \'O:30:"Symfony\Component\Yaml\Tests\A":1:{s:1:"a";s:3:"foo";}\', bar: 1 }', $dump, '->dump() is able to dump objects');
+        $this->assertSame('{ foo: !php/object \'O:20:"PhacMan\Yaml\Tests\A":1:{s:1:"a";s:3:"foo";}\', bar: 1 }', $dump, '->dump() is able to dump objects');
     }
 
     public function testObjectSupportDisabledButNoExceptions()
@@ -279,21 +283,21 @@ EOF;
     {
         $tests = [];
 
-        $bar = new \stdClass();
+        $bar = new stdClass();
         $bar->class = 'classBar';
         $bar->args = ['bar'];
-        $zar = new \stdClass();
-        $foo = new \stdClass();
+        $zar = new stdClass();
+        $foo = new stdClass();
         $foo->bar = $bar;
         $foo->zar = $zar;
-        $object = new \stdClass();
+        $object = new stdClass();
         $object->foo = $foo;
         $tests['stdClass'] = [$object, $object];
 
-        $arrayObject = new \ArrayObject();
+        $arrayObject = new ArrayObject();
         $arrayObject['foo'] = 'bar';
         $arrayObject['baz'] = 'foobar';
-        $parsedArrayObject = new \stdClass();
+        $parsedArrayObject = new stdClass();
         $parsedArrayObject->foo = 'bar';
         $parsedArrayObject->baz = 'foobar';
         $tests['ArrayObject'] = [$arrayObject, $parsedArrayObject];
@@ -306,9 +310,9 @@ EOF;
 
     public function testDumpingArrayObjectInstancesRespectsInlineLevel()
     {
-        $deep = new \ArrayObject(['deep1' => 'd', 'deep2' => 'e']);
-        $inner = new \ArrayObject(['inner1' => 'b', 'inner2' => 'c', 'inner3' => $deep]);
-        $outer = new \ArrayObject(['outer1' => 'a', 'outer2' => $inner]);
+        $deep = new ArrayObject(['deep1' => 'd', 'deep2' => 'e']);
+        $inner = new ArrayObject(['inner1' => 'b', 'inner2' => 'c', 'inner3' => $deep]);
+        $outer = new ArrayObject(['outer1' => 'a', 'outer2' => $inner]);
 
         $yaml = $this->dumper->dump($outer, 2, 0, Yaml::DUMP_OBJECT_AS_MAP);
 
@@ -325,9 +329,9 @@ YAML;
 
     public function testDumpingArrayObjectInstancesWithNumericKeysInlined()
     {
-        $deep = new \ArrayObject(['d', 'e']);
-        $inner = new \ArrayObject(['b', 'c', $deep]);
-        $outer = new \ArrayObject(['a', $inner]);
+        $deep = new ArrayObject(['d', 'e']);
+        $inner = new ArrayObject(['b', 'c', $deep]);
+        $outer = new ArrayObject(['a', $inner]);
 
         $yaml = $this->dumper->dump($outer, 0, 0, Yaml::DUMP_OBJECT_AS_MAP);
         $expected = <<<YAML
@@ -338,9 +342,9 @@ YAML;
 
     public function testDumpingArrayObjectInstancesWithNumericKeysRespectsInlineLevel()
     {
-        $deep = new \ArrayObject(['d', 'e']);
-        $inner = new \ArrayObject(['b', 'c', $deep]);
-        $outer = new \ArrayObject(['a', $inner]);
+        $deep = new ArrayObject(['d', 'e']);
+        $inner = new ArrayObject(['b', 'c', $deep]);
+        $outer = new ArrayObject(['a', $inner]);
         $yaml = $this->dumper->dump($outer, 2, 0, Yaml::DUMP_OBJECT_AS_MAP);
         $expected = <<<YAML
 0: a
@@ -355,26 +359,26 @@ YAML;
 
     public function testDumpEmptyArrayObjectInstanceAsMap()
     {
-        $this->assertSame('{  }', $this->dumper->dump(new \ArrayObject(), 2, 0, Yaml::DUMP_OBJECT_AS_MAP));
+        $this->assertSame('{  }', $this->dumper->dump(new ArrayObject(), 2, 0, Yaml::DUMP_OBJECT_AS_MAP));
     }
 
     public function testDumpEmptyStdClassInstanceAsMap()
     {
-        $this->assertSame('{  }', $this->dumper->dump(new \stdClass(), 2, 0, Yaml::DUMP_OBJECT_AS_MAP));
+        $this->assertSame('{  }', $this->dumper->dump(new stdClass(), 2, 0, Yaml::DUMP_OBJECT_AS_MAP));
     }
 
     public function testDumpingStdClassInstancesRespectsInlineLevel()
     {
-        $deep = new \stdClass();
+        $deep = new stdClass();
         $deep->deep1 = 'd';
         $deep->deep2 = 'e';
 
-        $inner = new \stdClass();
+        $inner = new stdClass();
         $inner->inner1 = 'b';
         $inner->inner2 = 'c';
         $inner->inner3 = $deep;
 
-        $outer = new \stdClass();
+        $outer = new stdClass();
         $outer->outer1 = 'a';
         $outer->outer2 = $inner;
 
@@ -836,14 +840,14 @@ YAML;
 
     public function testZeroIndentationThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The indentation must be greater than zero');
         new Dumper(0);
     }
 
     public function testNegativeIndentationThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The indentation must be greater than zero');
         new Dumper(-4);
     }
@@ -969,37 +973,37 @@ YAML;
     public static function getDateTimeData()
     {
         yield 'Date without subsecond precision' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03Z')],
             'date: 2023-01-24T01:02:03+00:00',
         ];
 
         yield 'Date with one digit for milliseconds' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03.4Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03.4Z')],
             'date: 2023-01-24T01:02:03.400+00:00',
         ];
 
         yield 'Date with two digits for milliseconds' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03.45Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03.45Z')],
             'date: 2023-01-24T01:02:03.450+00:00',
         ];
 
         yield 'Date with full milliseconds' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03.456Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03.456Z')],
             'date: 2023-01-24T01:02:03.456+00:00',
         ];
 
         yield 'Date with four digits for microseconds' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03.4567Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03.4567Z')],
             'date: 2023-01-24T01:02:03.456700+00:00',
         ];
 
         yield 'Date with five digits for microseconds' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03.45678Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03.45678Z')],
             'date: 2023-01-24T01:02:03.456780+00:00',
         ];
 
         yield 'Date with full microseconds' => [
-            ['date' => new \DateTimeImmutable('2023-01-24T01:02:03.456789Z')],
+            ['date' => new DateTimeImmutable('2023-01-24T01:02:03.456789Z')],
             'date: 2023-01-24T01:02:03.456789+00:00',
         ];
     }

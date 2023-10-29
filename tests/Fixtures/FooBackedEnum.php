@@ -1,6 +1,6 @@
 <?php
 
-namespace Symfony\Component\Yaml\Tests\Fixtures;
+namespace PhacMan\Yaml\Tests\Fixtures;
 
 enum FooBackedEnum: string
 {

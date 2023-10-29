@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml;
+namespace PhacMan\Yaml;
 
-use Symfony\Component\Yaml\Exception\ParseException;
+use PhacMan\Yaml\Exception\ParseException;
 
 /**
  * Yaml offers convenience methods to load and dump YAML.
@@ -49,7 +49,7 @@ class Yaml
      *
      * @throws ParseException If the file could not be read or the YAML is not valid
      */
-    public static function parseFile(string $filename, int $flags = 0): mixed
+    public static function parseFile(string $filename, int $flags = 0) : mixed
     {
         $yaml = new Parser();
 
@@ -70,7 +70,7 @@ class Yaml
      *
      * @throws ParseException If the YAML is not valid
      */
-    public static function parse(string $input, int $flags = 0): mixed
+    public static function parse(string $input, int $flags = 0) : mixed
     {
         $yaml = new Parser();
 
@@ -88,7 +88,7 @@ class Yaml
      * @param int   $indent The amount of spaces to use for indentation of nested nodes
      * @param int   $flags  A bit field of DUMP_* constants to customize the dumped YAML string
      */
-    public static function dump(mixed $input, int $inline = 2, int $indent = 4, int $flags = 0): string
+    public static function dump(mixed $input, int $inline = 2, int $indent = 4, int $flags = 0) : string
     {
         $yaml = new Dumper($indent);
 

@@ -9,15 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml\Tests;
+namespace PhacMan\Yaml\Tests;
 
+use ArrayObject;
+use DateTime;
+use DateTimeImmutable;
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Exception\ParseException;
-use Symfony\Component\Yaml\Inline;
-use Symfony\Component\Yaml\Tag\TaggedValue;
-use Symfony\Component\Yaml\Tests\Fixtures\FooBackedEnum;
-use Symfony\Component\Yaml\Tests\Fixtures\FooUnitEnum;
-use Symfony\Component\Yaml\Yaml;
+use PhacMan\Yaml\Exception\ParseException;
+use PhacMan\Yaml\Inline;
+use PhacMan\Yaml\Tag\TaggedValue;
+use PhacMan\Yaml\Yaml;
+use PhacMan\Yaml\Tests\Fixtures\FooBackedEnum;
+use PhacMan\Yaml\Tests\Fixtures\FooUnitEnum;
+use stdClass;
+use const LC_NUMERIC;
+use const PHP_INT_MAX;
+use const PHP_INT_SIZE;
 
 class InlineTest extends TestCase
 {
@@ -57,11 +65,11 @@ class InlineTest extends TestCase
     public static function getTestsForParsePhpConstants()
     {
         return [
-            ['!php/const Symfony\Component\Yaml\Yaml::PARSE_CONSTANT', Yaml::PARSE_CONSTANT],
-            ['!php/const PHP_INT_MAX', \PHP_INT_MAX],
-            ['[!php/const PHP_INT_MAX]', [\PHP_INT_MAX]],
-            ['{ foo: !php/const PHP_INT_MAX }', ['foo' => \PHP_INT_MAX]],
-            ['{ !php/const PHP_INT_MAX: foo }', [\PHP_INT_MAX => 'foo']],
+            ['!php/const PhacMan\Yaml\Yaml::PARSE_CONSTANT', Yaml::PARSE_CONSTANT],
+            ['!php/const PHP_INT_MAX', PHP_INT_MAX],
+            ['[!php/const PHP_INT_MAX]', [PHP_INT_MAX]],
+            ['{ foo: !php/const PHP_INT_MAX }', ['foo' => PHP_INT_MAX]],
+            ['{ !php/const PHP_INT_MAX: foo }', [PHP_INT_MAX => 'foo']],
             ['!php/const NULL', null],
         ];
     }
@@ -90,8 +98,8 @@ class InlineTest extends TestCase
     public function testParsePhpEnumThrowsExceptionWhenNotBacked()
     {
         $this->expectException(ParseException::class);
-        $this->expectExceptionMessage('The enum "Symfony\Component\Yaml\Tests\Fixtures\FooUnitEnum::BAR" defines no value next to its name');
-        Inline::parse('!php/enum Symfony\Component\Yaml\Tests\Fixtures\FooUnitEnum::BAR->value', Yaml::PARSE_CONSTANT);
+        $this->expectExceptionMessage('The enum "PhacMan\Yaml\Tests\Fixtures\FooUnitEnum::BAR" defines no value next to its name');
+        Inline::parse('!php/enum PhacMan\Yaml\Tests\Fixtures\FooUnitEnum::BAR->value', Yaml::PARSE_CONSTANT);
     }
 
     public function testParsePhpConstantThrowsExceptionOnInvalidType()
@@ -124,21 +132,21 @@ class InlineTest extends TestCase
 
     public function testDumpNumericValueWithLocale()
     {
-        $locale = setlocale(\LC_NUMERIC, 0);
+        $locale = setlocale(LC_NUMERIC, 0);
         if (false === $locale) {
             $this->markTestSkipped('Your platform does not support locales.');
         }
 
         try {
             $requiredLocales = ['fr_FR.UTF-8', 'fr_FR.UTF8', 'fr_FR.utf-8', 'fr_FR.utf8', 'French_France.1252'];
-            if (false === setlocale(\LC_NUMERIC, $requiredLocales)) {
+            if (false === setlocale(LC_NUMERIC, $requiredLocales)) {
                 $this->markTestSkipped('Could not set any of required locales: '.implode(', ', $requiredLocales));
             }
 
             $this->assertEquals('1.2', Inline::dump(1.2));
-            $this->assertStringContainsStringIgnoringCase('fr', setlocale(\LC_NUMERIC, 0));
+            $this->assertStringContainsStringIgnoringCase('fr', setlocale(LC_NUMERIC, 0));
         } finally {
-            setlocale(\LC_NUMERIC, $locale);
+            setlocale(LC_NUMERIC, $locale);
         }
     }
 
@@ -359,7 +367,7 @@ class InlineTest extends TestCase
             ['2007-10-30T02:59:43Z', gmmktime(2, 59, 43, 10, 30, 2007)],
             ['2007-10-30 02:59:43 Z', gmmktime(2, 59, 43, 10, 30, 2007)],
             ['1960-10-30 02:59:43 Z', gmmktime(2, 59, 43, 10, 30, 1960)],
-            ['1730-10-30T02:59:43Z', \PHP_INT_SIZE === 4 ? '-7547547617' : gmmktime(2, 59, 43, 10, 30, 1730)],
+            ['1730-10-30T02:59:43Z', PHP_INT_SIZE === 4 ? '-7547547617' : gmmktime(2, 59, 43, 10, 30, 1730)],
 
             ['"a \\"string\\" with \'quoted strings inside\'"', 'a "string" with \'quoted strings inside\''],
             ["'a \"string\" with ''quoted strings inside'''", 'a "string" with \'quoted strings inside\''],
@@ -430,7 +438,7 @@ class InlineTest extends TestCase
             ['2007-10-30T02:59:43Z', gmmktime(2, 59, 43, 10, 30, 2007)],
             ['2007-10-30 02:59:43 Z', gmmktime(2, 59, 43, 10, 30, 2007)],
             ['1960-10-30 02:59:43 Z', gmmktime(2, 59, 43, 10, 30, 1960)],
-            ['1730-10-30T02:59:43Z', \PHP_INT_SIZE === 4 ? '-7547547617' : gmmktime(2, 59, 43, 10, 30, 1730)],
+            ['1730-10-30T02:59:43Z', PHP_INT_SIZE === 4 ? '-7547547617' : gmmktime(2, 59, 43, 10, 30, 1730)],
 
             ['"a \\"string\\" with \'quoted strings inside\'"', 'a "string" with \'quoted strings inside\''],
             ["'a \"string\" with ''quoted strings inside'''", 'a "string" with \'quoted strings inside\''],
@@ -468,17 +476,17 @@ class InlineTest extends TestCase
             ['[foo, bar: { foo: bar }]', ['foo', '1' => (object) ['bar' => (object) ['foo' => 'bar']]]],
             ['[foo, \'@foo.baz\', { \'%foo%\': \'foo is %foo%\', bar: \'%foo%\' }, true, \'@service_container\']', ['foo', '@foo.baz', (object) ['%foo%' => 'foo is %foo%', 'bar' => '%foo%'], true, '@service_container']],
 
-            ['{}', new \stdClass()],
-            ['{ foo  : bar, bar : {}  }', (object) ['foo' => 'bar', 'bar' => new \stdClass()]],
-            ['{ foo  : [], bar : {}  }', (object) ['foo' => [], 'bar' => new \stdClass()]],
-            ['{foo: \'bar\', bar: {} }', (object) ['foo' => 'bar', 'bar' => new \stdClass()]],
-            ['{\'foo\': \'bar\', "bar": {}}', (object) ['foo' => 'bar', 'bar' => new \stdClass()]],
+            ['{}', new stdClass()],
+            ['{ foo  : bar, bar : {}  }', (object) ['foo' => 'bar', 'bar' => new stdClass()]],
+            ['{ foo  : [], bar : {}  }', (object) ['foo' => [], 'bar' => new stdClass()]],
+            ['{foo: \'bar\', bar: {} }', (object) ['foo' => 'bar', 'bar' => new stdClass()]],
+            ['{\'foo\': \'bar\', "bar": {}}', (object) ['foo' => 'bar', 'bar' => new stdClass()]],
             ['{\'foo\': \'bar\', "bar": \'{}\'}', (object) ['foo' => 'bar', 'bar' => '{}']],
 
-            ['[foo, [{}, {}]]', ['foo', [new \stdClass(), new \stdClass()]]],
-            ['[foo, [[], {}]]', ['foo', [[], new \stdClass()]]],
-            ['[foo, [[{}, {}], {}]]', ['foo', [[new \stdClass(), new \stdClass()], new \stdClass()]]],
-            ['[foo, {bar: {}}]', ['foo', '1' => (object) ['bar' => new \stdClass()]]],
+            ['[foo, [{}, {}]]', ['foo', [new stdClass(), new stdClass()]]],
+            ['[foo, [[], {}]]', ['foo', [[], new stdClass()]]],
+            ['[foo, [[{}, {}], {}]]', ['foo', [[new stdClass(), new stdClass()], new stdClass()]]],
+            ['[foo, {bar: {}}]', ['foo', '1' => (object) ['bar' => new stdClass()]]],
         ];
     }
 
@@ -566,7 +574,7 @@ class InlineTest extends TestCase
      */
     public function testParseTimestampAsUnixTimestampByDefault(string $yaml, int $year, int $month, int $day, int $hour, int $minute, int $second, int $microsecond)
     {
-        $expectedDate = (new \DateTimeImmutable($yaml, new \DateTimeZone('UTC')))->format('U');
+        $expectedDate = (new DateTimeImmutable($yaml, new DateTimeZone('UTC')))->format('U');
         $this->assertSame($microsecond ? (float) "$expectedDate.$microsecond" : (int) $expectedDate, Inline::parse($yaml));
     }
 
@@ -575,8 +583,8 @@ class InlineTest extends TestCase
      */
     public function testParseTimestampAsDateTimeObject(string $yaml, int $year, int $month, int $day, int $hour, int $minute, int $second, int $microsecond, string $timezone)
     {
-        $expected = (new \DateTime($yaml))
-            ->setTimeZone(new \DateTimeZone('UTC'))
+        $expected = (new DateTime($yaml))
+            ->setTimeZone(new DateTimeZone('UTC'))
             ->setDate($year, $month, $day)
             ->setTime($hour, $minute, $second, $microsecond);
 
@@ -600,8 +608,8 @@ class InlineTest extends TestCase
      */
     public function testParseNestedTimestampListAsDateTimeObject(string $yaml, int $year, int $month, int $day, int $hour, int $minute, int $second, int $microsecond)
     {
-        $expected = (new \DateTime($yaml))
-            ->setTimeZone(new \DateTimeZone('UTC'))
+        $expected = (new DateTime($yaml))
+            ->setTimeZone(new DateTimeZone('UTC'))
             ->setDate($year, $month, $day)
             ->setTime($hour, $minute, $second, $microsecond);
 
@@ -697,7 +705,7 @@ class InlineTest extends TestCase
             '{ user: !metadata [john, 42] }',
         ];
 
-        $arrayObject = new \ArrayObject();
+        $arrayObject = new ArrayObject();
         $arrayObject['foo'] = 'bar';
         $arrayObject[42] = 'baz';
         $arrayObject['baz'] = 43;
@@ -713,27 +721,27 @@ class InlineTest extends TestCase
 
     public function testDumpUnitEnum()
     {
-        $this->assertSame("!php/const Symfony\Component\Yaml\Tests\Fixtures\FooUnitEnum::BAR", Inline::dump(FooUnitEnum::BAR));
+        $this->assertSame("!php/const PhacMan\Yaml\Tests\Fixtures\FooUnitEnum::BAR", Inline::dump(FooUnitEnum::BAR));
     }
 
     public function testParseUnitEnum()
     {
-        $this->assertSame(FooUnitEnum::BAR, Inline::parse("!php/enum Symfony\Component\Yaml\Tests\Fixtures\FooUnitEnum::BAR", Yaml::PARSE_CONSTANT));
+        $this->assertSame(FooUnitEnum::BAR, Inline::parse("!php/enum PhacMan\Yaml\Tests\Fixtures\FooUnitEnum::BAR", Yaml::PARSE_CONSTANT));
     }
 
     public function testParseBackedEnumValue()
     {
-        $this->assertSame(FooBackedEnum::BAR->value, Inline::parse("!php/enum Symfony\Component\Yaml\Tests\Fixtures\FooBackedEnum::BAR->value", Yaml::PARSE_CONSTANT));
+        $this->assertSame(FooBackedEnum::BAR->value, Inline::parse("!php/enum PhacMan\Yaml\Tests\Fixtures\FooBackedEnum::BAR->value", Yaml::PARSE_CONSTANT));
     }
 
     public static function getDateTimeDumpTests()
     {
         $tests = [];
 
-        $dateTime = new \DateTimeImmutable('2001-12-15 21:59:43', new \DateTimeZone('UTC'));
+        $dateTime = new DateTimeImmutable('2001-12-15 21:59:43', new DateTimeZone('UTC'));
         $tests['date-time-utc'] = [$dateTime, '2001-12-15T21:59:43+00:00'];
 
-        $dateTime = new \DateTimeImmutable('2001-07-15 21:59:43', new \DateTimeZone('Europe/Berlin'));
+        $dateTime = new DateTimeImmutable('2001-07-15 21:59:43', new DateTimeZone('Europe/Berlin'));
         $tests['immutable-date-time-europe-berlin'] = [$dateTime, '2001-07-15T21:59:43+02:00'];
 
         return $tests;

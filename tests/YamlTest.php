@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml\Tests;
+namespace PhacMan\Yaml\Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
+use PhacMan\Yaml\Yaml;
 
 class YamlTest extends TestCase
 {
@@ -26,14 +27,14 @@ class YamlTest extends TestCase
 
     public function testZeroIndentationThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The indentation must be greater than zero');
         Yaml::dump(['lorem' => 'ipsum', 'dolor' => 'sit'], 2, 0);
     }
 
     public function testNegativeIndentationThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The indentation must be greater than zero');
         Yaml::dump(['lorem' => 'ipsum', 'dolor' => 'sit'], 2, -4);
     }

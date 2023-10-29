@@ -1,13 +1,30 @@
-Yaml Component
-==============
+# Yaml Compact Version
 
-The Yaml component loads and dumps YAML files.
+The Yaml loads and dumps YAML files.
 
-Resources
----------
+History with a list of original committers/commits: [shortlog.txt](shortlog.txt)
 
- * [Documentation](https://symfony.com/doc/current/components/yaml.html)
- * [Contributing](https://symfony.com/doc/current/contributing/index.html)
- * [Report issues](https://github.com/symfony/symfony/issues) and
-   [send Pull Requests](https://github.com/symfony/symfony/pulls)
-   in the [main Symfony repository](https://github.com/symfony/symfony)
+## Getting Started
+#### Read file
+```php
+use PhacMan\Yaml\Yaml;
+$yaml = Yaml::parseFile('some.yaml');
+print_r($yaml);
+```
+
+#### Write file
+```php
+use PhacMan\Yaml\Yaml;
+$array = [
+    'foo' => 'bar',
+    'bar' => ['foo' => 'bar', 'bar' => 'baz'],
+];
+$yaml = Yaml::dump($array);
+file_put_contents('written.yaml', $yaml);
+```
+
+Usage details: [here](https://symfony.ru/doc/current/components/yaml.html)
+
+### Resources
+
+* Original repository: https://github.com/symfony/yaml

@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml\Exception;
+namespace PhacMan\Yaml\Exception;
 
 /**
- * Exception class thrown when an error occurs during parsing.
+ * Exception class thrown when an error occurs during dumping.
  *
- * @author Romain Neutron <imprec@gmail.com>
+ * @author Fabien Potencier <fabien@symfony.com>
  */
-class RuntimeException extends \RuntimeException implements ExceptionInterface
+class DumpException extends RuntimeException
 {
 }

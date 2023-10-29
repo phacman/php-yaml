@@ -9,13 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\Yaml\Exception;
+namespace PhacMan\Yaml\Exception;
+
+use Throwable;
 
 /**
- * Exception class thrown when an error occurs during dumping.
+ * Exception interface for all exceptions thrown by the component.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DumpException extends RuntimeException
+interface ExceptionInterface extends Throwable
 {
 }
